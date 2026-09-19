@@ -1,15 +1,14 @@
-```html
 <!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Ntertainment Dance School | Inschrijven 2026–2027</title>
+  <title>Ntertainment Dance School | Mijn Ntertainment</title>
 
   <meta
     name="description"
-    content="Ntertainment Dance School — Vind jouw stijl. Vind jouw crew. Ontdek onze danslessen en schrijf je in voor seizoen 2026–2027."
+    content="Ntertainment Dance School — Mijn Ntertainment. Account, dansers, lessen en inschrijvingen."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,35 +22,36 @@
   <style>
 
     /* =========================================================
-       NTERTAINMENT V2.1
-       DESIGN SYSTEM
+       NTERTAINMENT V3
+       FRONTEND / DEMO
     ========================================================= */
 
     :root {
       --black: #111111;
-      --dark: #1a1a1a;
+      --black-2: #1b1b1b;
       --white: #ffffff;
 
       --cream: #f7f5f0;
-      --cream-dark: #ece9e1;
+      --cream-2: #efede7;
 
       --lime: #c8ff2c;
 
-      --grey: #77736c;
-      --grey-light: #dedbd3;
+      --text: #171717;
+      --muted: #77736c;
+      --border: #dedbd3;
 
-      --red: #b93434;
+      --success: #4e8b35;
+      --danger: #b93434;
 
-      --radius-sm: 14px;
-      --radius-md: 22px;
-      --radius-lg: 30px;
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
 
-      --max-width: 1180px;
+      --max-width: 1240px;
+
+      --shadow:
+        0 18px 60px rgba(0,0,0,.08);
     }
-
-    /* =========================================================
-       RESET
-    ========================================================= */
 
     * {
       box-sizing: border-box;
@@ -65,7 +65,7 @@
 
     body {
       background: var(--cream);
-      color: var(--black);
+      color: var(--text);
       font-family: "Inter", Arial, sans-serif;
       line-height: 1.5;
     }
@@ -82,11 +82,7 @@
 
     a {
       color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
+      text-decoration: none;
     }
 
     /* =========================================================
@@ -102,24 +98,22 @@
       margin: 0 auto;
     }
 
-    .section {
-      padding: 80px 0;
+    .hidden {
+      display: none !important;
     }
 
     .eyebrow {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 900;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--grey);
+      color: var(--muted);
     }
 
-    .section-title {
+    .display {
       font-family: "Archivo Black", Impact, sans-serif;
-      font-size: clamp(36px, 5vw, 58px);
-      line-height: 0.95;
-      letter-spacing: -2px;
-      margin-top: 8px;
+      line-height: .9;
+      letter-spacing: -3px;
     }
 
     /* =========================================================
@@ -129,16 +123,16 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
 
-      background: rgba(247, 245, 240, 0.94);
-      backdrop-filter: blur(14px);
+      background: rgba(247,245,240,.94);
+      backdrop-filter: blur(16px);
 
-      border-bottom: 1px solid var(--grey-light);
+      border-bottom: 1px solid var(--border);
     }
 
     .navbar {
-      height: 76px;
+      min-height: 78px;
 
       display: flex;
       align-items: center;
@@ -147,57 +141,87 @@
       gap: 30px;
     }
 
-    .logo {
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 43px;
+      height: 43px;
+
+      display: grid;
+      place-items: center;
+
+      background: var(--black);
+      color: var(--lime);
+
+      border-radius: 10px;
+
       font-family: "Archivo Black", Impact, sans-serif;
-
-      font-size: 25px;
-      letter-spacing: -1.5px;
-
-      white-space: nowrap;
+      font-size: 23px;
     }
 
-    .logo-highlight {
+    .brand-name {
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: 21px;
+      letter-spacing: -1px;
+    }
+
+    .brand-name span {
       background: var(--lime);
-      padding: 2px 7px;
+      padding: 1px 5px;
     }
 
-    .nav-links {
+    .nav {
       display: flex;
       align-items: center;
       gap: 26px;
     }
 
-    .nav-links a {
-      text-decoration: none;
-      font-size: 14px;
+    .nav a {
+      font-size: 13px;
       font-weight: 800;
     }
 
-    .nav-links a:hover {
+    .nav a:hover {
       text-decoration: underline;
     }
 
-    .nav-button {
+    .header-account {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .account-button {
       border: 0;
 
       background: var(--black);
       color: var(--white);
 
-      padding: 13px 19px;
-
       border-radius: 999px;
 
-      font-size: 13px;
+      padding: 12px 18px;
+
+      font-size: 12px;
       font-weight: 900;
     }
 
     .mobile-menu {
       display: none;
 
-      border: 0;
-      background: transparent;
+      width: 42px;
+      height: 42px;
 
-      font-size: 26px;
+      border: 0;
+      border-radius: 50%;
+
+      background: var(--black);
+      color: white;
+
+      font-size: 20px;
     }
 
     /* =========================================================
@@ -205,57 +229,68 @@
     ========================================================= */
 
     .hero {
-      padding: 80px 0 70px;
+      padding: 70px 0 55px;
     }
 
     .hero-grid {
       display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 30px;
+    }
 
-      grid-template-columns: 1.15fr 0.85fr;
+    .hero-main {
+      min-height: 480px;
 
-      gap: 45px;
+      padding: 48px;
 
-      align-items: end;
+      background: var(--white);
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      overflow: hidden;
     }
 
     .hero-title {
+      margin-top: 18px;
+
       font-family: "Archivo Black", Impact, sans-serif;
 
-      font-size: clamp(58px, 8vw, 108px);
+      font-size: clamp(58px, 7vw, 104px);
 
-      line-height: 0.87;
+      line-height: .84;
 
       letter-spacing: -5px;
-
-      margin: 18px 0 30px;
     }
 
-    .hero-title .highlight {
+    .hero-title .lime {
       background: var(--lime);
-      padding: 0 9px;
+      padding: 0 8px;
     }
 
-    .hero-text {
-      max-width: 610px;
+    .hero-copy {
+      max-width: 600px;
 
-      font-size: 18px;
+      margin-top: 28px;
 
-      color: #55514a;
-
-      line-height: 1.65;
+      font-size: 17px;
+      color: #5d5953;
     }
 
     .hero-actions {
       display: flex;
-
       flex-wrap: wrap;
 
       gap: 12px;
 
-      margin-top: 30px;
+      margin-top: 28px;
     }
 
-    .button-primary {
+    .primary {
       border: 0;
 
       background: var(--black);
@@ -265,18 +300,15 @@
 
       border-radius: 999px;
 
+      font-size: 13px;
       font-weight: 900;
     }
 
-    .button-primary:hover {
-      transform: translateY(-1px);
+    .primary:hover {
+      transform: translateY(-2px);
     }
 
-    .button-secondary {
-      display: inline-flex;
-
-      align-items: center;
-
+    .secondary {
       border: 1px solid var(--black);
 
       background: transparent;
@@ -285,95 +317,186 @@
 
       border-radius: 999px;
 
+      font-size: 13px;
       font-weight: 900;
-
-      text-decoration: none;
     }
 
-    /* =========================================================
-       HERO CARD
-    ========================================================= */
+    .hero-side {
+      min-height: 480px;
 
-    .hero-card {
-      position: relative;
-
-      min-height: 350px;
-
-      padding: 30px;
+      padding: 35px;
 
       background: var(--black);
       color: var(--white);
 
       border-radius: var(--radius-lg);
 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
       overflow: hidden;
 
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: space-between;
+      position: relative;
     }
 
-    .hero-card::after {
+    .hero-side::after {
       content: "N";
 
       position: absolute;
 
-      right: -25px;
-      bottom: -75px;
+      right: -30px;
+      bottom: -80px;
 
       font-family: "Archivo Black", Impact, sans-serif;
 
-      font-size: 260px;
+      font-size: 300px;
 
       line-height: 1;
 
-      color: #252525;
+      color: #262626;
     }
 
-    .hero-card-top {
+    .hero-side > * {
       position: relative;
       z-index: 2;
-
-      font-size: 12px;
-
-      font-weight: 900;
-
-      letter-spacing: 1.5px;
     }
 
-    .hero-card-title {
-      position: relative;
-      z-index: 2;
-
+    .hero-side-title {
       font-family: "Archivo Black", Impact, sans-serif;
 
       font-size: 48px;
 
-      line-height: 0.92;
+      line-height: .9;
 
       letter-spacing: -2px;
     }
 
-    .hero-card-bottom {
-      position: relative;
-      z-index: 2;
-
-      color: #bdbbb6;
+    .hero-side-bottom {
+      color: #bbb;
 
       font-size: 13px;
     }
 
     /* =========================================================
-       LESSON SECTION
+       ACCOUNT ENTRY
     ========================================================= */
 
-    .section-header {
+    .account-section {
+      padding: 40px 0 90px;
+    }
+
+    .account-box {
+      background: var(--black);
+      color: var(--white);
+
+      border-radius: var(--radius-lg);
+
+      padding: 55px;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 50px;
+    }
+
+    .account-title {
+      font-family: "Archivo Black", Impact, sans-serif;
+
+      font-size: clamp(42px, 5vw, 68px);
+
+      line-height: .9;
+
+      letter-spacing: -3px;
+    }
+
+    .account-title span {
+      color: var(--lime);
+    }
+
+    .account-description {
+      margin-top: 20px;
+
+      max-width: 520px;
+
+      color: #c2c2c2;
+    }
+
+    .account-options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .account-option {
+      width: 100%;
+
+      padding: 20px;
+
+      border: 1px solid #333;
+
+      background: #1b1b1b;
+
+      border-radius: 16px;
+
+      color: white;
+
+      text-align: left;
+
       display: flex;
+      align-items: center;
+      justify-content: space-between;
 
+      transition: .2s;
+    }
+
+    .account-option:hover {
+      border-color: var(--lime);
+      transform: translateY(-2px);
+    }
+
+    .account-option strong {
+      display: block;
+
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .account-option small {
+      display: block;
+
+      margin-top: 4px;
+
+      color: #999;
+
+      font-size: 12px;
+    }
+
+    .account-arrow {
+      width: 36px;
+      height: 36px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: var(--lime);
+      color: var(--black);
+
+      font-weight: 900;
+    }
+
+    /* =========================================================
+       DASHBOARD
+    ========================================================= */
+
+    .dashboard {
+      padding: 75px 0;
+    }
+
+    .dashboard-header {
+      display: flex;
       align-items: flex-end;
-
       justify-content: space-between;
 
       gap: 20px;
@@ -381,134 +504,274 @@
       margin-bottom: 30px;
     }
 
-    .result-count {
-      color: var(--grey);
+    .dashboard-title {
+      margin-top: 8px;
 
-      font-size: 14px;
+      font-family: "Archivo Black", Impact, sans-serif;
 
-      font-weight: 700;
+      font-size: clamp(42px, 5vw, 62px);
+
+      line-height: .9;
+
+      letter-spacing: -3px;
     }
 
-    /* =========================================================
-       FILTERS
-    ========================================================= */
+    .logout {
+      border: 1px solid var(--black);
 
-    .filter-box {
+      background: transparent;
+
+      padding: 11px 16px;
+
+      border-radius: 999px;
+
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .dashboard-grid {
+      display: grid;
+
+      grid-template-columns: 1.4fr .6fr;
+
+      gap: 20px;
+    }
+
+    .panel {
       background: var(--white);
 
-      border: 1px solid var(--grey-light);
+      border: 1px solid var(--border);
 
       border-radius: var(--radius-lg);
 
+      padding: 28px;
+    }
+
+    .panel-title {
+      font-family: "Archivo Black", Impact, sans-serif;
+
+      font-size: 28px;
+
+      letter-spacing: -1px;
+
+      margin-bottom: 20px;
+    }
+
+    /* =========================================================
+       FAMILY
+    ========================================================= */
+
+    .family-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .person-card {
+      border: 1px solid var(--border);
+
+      background: var(--cream);
+
+      border-radius: 17px;
+
       padding: 18px;
 
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+    .person-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: var(--black);
+      color: var(--lime);
+
+      font-family: "Archivo Black", Impact, sans-serif;
+    }
+
+    .person-name {
+      font-weight: 900;
+    }
+
+    .person-meta {
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--success);
+    }
+
+    .add-child {
+      margin-top: 15px;
+
+      width: 100%;
+
+      padding: 14px;
+
+      border: 1px dashed #aaa;
+
+      border-radius: 14px;
+
+      background: transparent;
+
+      font-weight: 900;
+    }
+
+    /* =========================================================
+       QUICK LINKS
+    ========================================================= */
+
+    .quick-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .quick-link {
+      border: 1px solid var(--border);
+
+      background: var(--cream);
+
+      border-radius: 13px;
+
+      padding: 15px;
+
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .quick-link:hover {
+      background: var(--black);
+      color: white;
+    }
+
+    /* =========================================================
+       LESSONS
+    ========================================================= */
+
+    .lessons-section {
+      padding: 80px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      margin-top: 8px;
+
+      font-family: "Archivo Black", Impact, sans-serif;
+
+      font-size: clamp(42px, 5vw, 65px);
+
+      line-height: .9;
+
+      letter-spacing: -3px;
+    }
+
+    .filters {
       display: grid;
 
       grid-template-columns:
         repeat(4, 1fr)
         auto;
 
-      gap: 12px;
+      gap: 10px;
 
-      margin-bottom: 28px;
+      padding: 16px;
+
+      margin-bottom: 25px;
+
+      background: var(--white);
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius-lg);
     }
 
-    .field label {
+    .filter label {
       display: block;
 
-      margin: 0 0 7px 5px;
+      margin: 0 0 6px 4px;
+
+      color: var(--muted);
 
       font-size: 10px;
-
       font-weight: 900;
 
       letter-spacing: 1px;
 
       text-transform: uppercase;
-
-      color: var(--grey);
     }
 
-    .field select {
+    .filter select {
       width: 100%;
 
-      border: 1px solid var(--grey-light);
+      padding: 13px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 11px;
 
       background: var(--cream);
 
-      padding: 14px;
-
-      border-radius: var(--radius-sm);
-
       outline: none;
-
-      font-weight: 600;
-    }
-
-    .field select:focus {
-      border-color: var(--black);
-    }
-
-    .reset-button {
-      align-self: end;
-
-      height: 48px;
-
-      padding: 0 19px;
-
-      border: 0;
-
-      border-radius: var(--radius-sm);
-
-      background: var(--black);
-
-      color: var(--white);
-
-      font-weight: 900;
-    }
-
-    /* =========================================================
-       STATS
-    ========================================================= */
-
-    .stats {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 9px;
-
-      margin-bottom: 25px;
-    }
-
-    .stat {
-      padding: 8px 13px;
-
-      background: var(--cream-dark);
-
-      border-radius: 999px;
-
-      font-size: 12px;
 
       font-weight: 700;
     }
 
-    .availability-dot {
-      display: inline-block;
+    .reset {
+      align-self: end;
 
-      width: 8px;
-      height: 8px;
+      height: 45px;
 
-      margin-right: 6px;
+      padding: 0 18px;
 
-      border-radius: 50%;
+      border: 0;
 
-      background: var(--lime);
+      border-radius: 11px;
+
+      background: var(--black);
+
+      color: white;
+
+      font-weight: 900;
     }
-
-    /* =========================================================
-       LESSON CARDS
-    ========================================================= */
 
     .lesson-grid {
       display: grid;
@@ -516,184 +779,153 @@
       grid-template-columns:
         repeat(3, 1fr);
 
-      gap: 18px;
+      gap: 16px;
     }
 
-    .lesson-card {
-      background: var(--white);
+    .lesson {
+      background: white;
 
-      border: 1px solid var(--grey-light);
+      border: 1px solid var(--border);
 
-      border-radius: 25px;
+      border-radius: 23px;
 
       padding: 23px;
 
-      min-height: 300px;
+      min-height: 320px;
 
       display: flex;
-
       flex-direction: column;
 
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+      transition: .2s;
     }
 
-    .lesson-card:hover {
+    .lesson:hover {
       transform: translateY(-4px);
-
-      box-shadow:
-        0 15px 45px
-        rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow);
     }
 
-    .lesson-tag {
+    .lesson-category {
       align-self: flex-start;
 
-      padding: 7px 11px;
+      padding: 7px 10px;
 
       border-radius: 999px;
 
       background: var(--black);
-
-      color: var(--white);
+      color: white;
 
       font-size: 10px;
-
       font-weight: 900;
-
-      letter-spacing: 0.5px;
 
       text-transform: uppercase;
     }
 
-    .lesson-title {
+    .lesson h3 {
+      margin: 24px 0 10px;
+
       font-family: "Archivo Black", Impact, sans-serif;
 
       font-size: 30px;
 
-      line-height: 0.95;
+      line-height: .92;
 
       letter-spacing: -1px;
-
-      margin: 23px 0 9px;
     }
 
-    .lesson-meta {
-      color: #5e5a54;
+    .lesson-info {
+      color: #5f5b55;
 
-      font-size: 14px;
+      font-size: 13px;
 
-      line-height: 1.75;
+      line-height: 1.8;
     }
 
-    .lesson-bottom {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 12px;
-
+    .lesson-footer {
       margin-top: auto;
 
       padding-top: 20px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 10px;
     }
 
     .places {
-      font-size: 13px;
-
+      font-size: 12px;
       font-weight: 800;
     }
 
-    .register-button {
+    .lesson-button {
       border: 0;
 
       background: var(--lime);
 
-      padding: 12px 15px;
+      padding: 11px 15px;
 
       border-radius: 999px;
 
-      font-size: 12px;
-
+      font-size: 11px;
       font-weight: 900;
     }
 
-    .register-button:hover {
-      transform: translateY(-1px);
-    }
-
-    .empty-state {
-      grid-column: 1 / -1;
-
-      padding: 50px;
-
-      text-align: center;
-
-      background: var(--white);
-
-      border: 1px dashed var(--grey-light);
-
-      border-radius: var(--radius-md);
-
-      color: var(--grey);
-    }
-
     /* =========================================================
-       BRAND / ABOUT
+       CATEGORIES
     ========================================================= */
 
-    .brand-grid {
+    .categories {
+      padding: 70px 0;
+    }
+
+    .category-grid {
       display: grid;
 
       grid-template-columns:
-        1fr 1fr;
+        repeat(4, 1fr);
 
-      gap: 18px;
+      gap: 12px;
     }
 
-    .brand-panel {
-      min-height: 280px;
+    .category {
+      min-height: 180px;
 
-      padding: 30px;
+      padding: 23px;
 
-      border-radius: var(--radius-lg);
+      border-radius: 22px;
 
       background: var(--black);
+      color: white;
 
-      color: var(--white);
+      display: flex;
+
+      flex-direction: column;
+      justify-content: space-between;
+
+      overflow: hidden;
+
+      position: relative;
     }
 
-    .brand-panel.light {
-      background: var(--white);
-
+    .category:nth-child(even) {
+      background: var(--lime);
       color: var(--black);
-
-      border: 1px solid var(--grey-light);
     }
 
-    .brand-panel h3 {
+    .category-number {
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .category h3 {
       font-family: "Archivo Black", Impact, sans-serif;
 
-      font-size: 32px;
+      font-size: 28px;
 
-      line-height: 0.95;
+      line-height: .9;
 
       letter-spacing: -1px;
-
-      margin-bottom: 18px;
-    }
-
-    .brand-panel p {
-      color: #bbb8b1;
-
-      line-height: 1.7;
-    }
-
-    .brand-panel.light p {
-      color: #605d57;
     }
 
     /* =========================================================
@@ -701,76 +933,79 @@
     ========================================================= */
 
     footer {
-      border-top: 1px solid var(--grey-light);
+      padding: 45px 0 65px;
 
-      padding: 35px 0 50px;
+      border-top: 1px solid var(--border);
     }
 
-    .footer-content {
+    .footer-grid {
       display: flex;
 
-      align-items: center;
-
+      align-items: flex-start;
       justify-content: space-between;
 
-      gap: 20px;
+      gap: 30px;
+    }
 
-      color: var(--grey);
+    .footer-brand {
+      font-family: "Archivo Black", Impact, sans-serif;
+
+      font-size: 25px;
+    }
+
+    .footer-copy {
+      color: var(--muted);
+
+      margin-top: 7px;
 
       font-size: 13px;
     }
 
-    .footer-content strong {
-      color: var(--black);
-    }
-
     /* =========================================================
-       MODAL
+       MODALS
     ========================================================= */
 
-    .modal-overlay {
-      display: none;
-
+    .modal-backdrop {
       position: fixed;
-
       inset: 0;
 
-      z-index: 500;
+      z-index: 2000;
 
-      background: rgba(0, 0, 0, 0.62);
+      display: none;
+
+      align-items: center;
+      justify-content: center;
 
       padding: 20px;
 
-      align-items: center;
-
-      justify-content: center;
+      background: rgba(0,0,0,.65);
     }
 
-    .modal-overlay.open {
+    .modal-backdrop.open {
       display: flex;
     }
 
     .modal {
-      position: relative;
-
-      width: min(560px, 100%);
+      width: min(570px, 100%);
 
       max-height: 90vh;
 
       overflow-y: auto;
 
-      padding: 30px;
+      padding: 32px;
 
       background: var(--cream);
 
-      border-radius: var(--radius-lg);
+      border-radius: 27px;
+
+      position: relative;
     }
 
-    .modal-close {
+    .close {
       position: absolute;
 
-      top: 16px;
-      right: 16px;
+      top: 15px;
+      right: 15px;
 
       width: 38px;
       height: 38px;
@@ -780,119 +1015,166 @@
       border-radius: 50%;
 
       background: var(--black);
-
-      color: var(--white);
+      color: white;
 
       font-size: 20px;
     }
 
     .modal h2 {
+      margin: 8px 45px 8px 0;
+
       font-family: "Archivo Black", Impact, sans-serif;
 
-      font-size: 36px;
+      font-size: 40px;
 
-      line-height: 0.95;
+      line-height: .9;
 
-      letter-spacing: -1px;
-
-      margin: 8px 50px 8px 0;
+      letter-spacing: -2px;
     }
 
     .modal-subtitle {
-      color: var(--grey);
-
-      margin-bottom: 22px;
-    }
-
-    .demo-message {
-      padding: 15px;
-
-      background: var(--white);
-
-      border: 1px solid var(--grey-light);
-
-      border-radius: var(--radius-sm);
+      color: var(--muted);
 
       font-size: 13px;
 
-      line-height: 1.5;
-
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
 
-    .registration-form {
+    .form {
       display: grid;
-
       gap: 12px;
     }
 
-    .registration-form input {
+    .form-group {
+      display: grid;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .form input,
+    .form select {
       width: 100%;
-
-      border: 1px solid var(--grey-light);
-
-      background: var(--white);
 
       padding: 14px;
 
-      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+
+      border-radius: 11px;
+
+      background: white;
 
       outline: none;
     }
 
-    .registration-form input:focus {
+    .form input:focus,
+    .form select:focus {
       border-color: var(--black);
     }
 
-    .modal-submit {
+    .form-submit {
+      margin-top: 7px;
+
+      width: 100%;
+
       border: 0;
 
       background: var(--lime);
 
       padding: 15px;
 
-      border-radius: var(--radius-sm);
+      border-radius: 12px;
 
       font-weight: 900;
+    }
+
+    .form-note {
+      color: var(--muted);
+
+      font-size: 11px;
+
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    .toast {
+      position: fixed;
+
+      right: 20px;
+      bottom: 20px;
+
+      z-index: 4000;
+
+      max-width: 350px;
+
+      padding: 15px 18px;
+
+      background: var(--black);
+      color: white;
+
+      border-radius: 14px;
+
+      box-shadow: var(--shadow);
+
+      font-size: 13px;
+      font-weight: 700;
+
+      display: none;
+    }
+
+    .toast.show {
+      display: block;
     }
 
     /* =========================================================
        RESPONSIVE
     ========================================================= */
 
-    @media (max-width: 950px) {
+    @media (max-width: 1000px) {
 
       .hero-grid {
         grid-template-columns: 1fr;
       }
 
+      .account-box {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
       .lesson-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .filter-box {
-        grid-template-columns:
-          repeat(2, 1fr);
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .reset-button {
-        width: 100%;
+      .filters {
+        grid-template-columns: repeat(2, 1fr);
       }
+
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 700px) {
 
       .container {
-        width:
-          calc(100% - 24px);
+        width: calc(100% - 24px);
       }
 
       .navbar {
-        height: 68px;
+        min-height: 68px;
       }
 
-      .nav-links {
+      .nav {
         display: none;
       }
 
@@ -901,30 +1183,30 @@
       }
 
       .hero {
-        padding: 55px 0 40px;
+        padding-top: 35px;
+      }
+
+      .hero-main,
+      .hero-side {
+        min-height: 400px;
+        padding: 28px;
       }
 
       .hero-title {
-        font-size: 58px;
-
+        font-size: 57px;
         letter-spacing: -3px;
       }
 
-      .hero-card {
-        min-height: 300px;
+      .account-box {
+        padding: 30px 22px;
       }
 
-      .section {
-        padding: 60px 0;
-      }
-
-      .section-header {
+      .dashboard-header {
         align-items: flex-start;
-
         flex-direction: column;
       }
 
-      .filter-box {
+      .filters {
         grid-template-columns: 1fr;
       }
 
@@ -932,21 +1214,21 @@
         grid-template-columns: 1fr;
       }
 
-      .brand-grid {
+      .category-grid {
         grid-template-columns: 1fr;
       }
 
-      .footer-content {
-        align-items: flex-start;
-
+      .footer-grid {
         flex-direction: column;
       }
+
     }
 
   </style>
 </head>
 
 <body>
+
 
 <!-- =========================================================
      HEADER
@@ -956,40 +1238,53 @@
 
   <div class="container navbar">
 
-    <div class="logo">
-      N<span class="logo-highlight">TERTAINMENT</span>
-    </div>
+    <a href="#" class="brand">
 
-    <nav class="nav-links">
+      <div class="brand-mark">
+        N
+      </div>
+
+      <div class="brand-name">
+        N<span>TERTAINMENT</span>
+      </div>
+
+    </a>
+
+
+    <nav class="nav">
+
+      <a href="#aanbod">
+        DANSAANBOD
+      </a>
 
       <a href="#lessen">
-        Lessen
+        LESSEN
       </a>
 
-      <a href="#over">
-        Ntertainment
+      <a href="#account">
+        MIJN NTERTAINMENT
       </a>
-
-      <a href="#contact">
-        Contact
-      </a>
-
-      <button
-        class="nav-button"
-        onclick="scrollToLessons()"
-      >
-        INSCHRIJVEN
-      </button>
 
     </nav>
 
-    <button
-      class="mobile-menu"
-      onclick="scrollToLessons()"
-      aria-label="Naar lessen"
-    >
-      ☰
-    </button>
+
+    <div class="header-account">
+
+      <button
+        class="account-button"
+        onclick="openLogin()"
+      >
+        INLOGGEN
+      </button>
+
+      <button
+        class="mobile-menu"
+        onclick="openLogin()"
+      >
+        ☰
+      </button>
+
+    </div>
 
   </div>
 
@@ -997,365 +1292,638 @@
 
 
 <!-- =========================================================
-     MAIN
+     HERO
 ========================================================= -->
 
 <main>
 
+<section class="hero">
 
-  <!-- HERO -->
+  <div class="container hero-grid">
 
-  <section class="hero">
 
-    <div class="container hero-grid">
+    <div class="hero-main">
 
       <div>
 
         <div class="eyebrow">
-          Dance School · Seizoen 2026–2027
+          NTERTAINMENT DANCE SCHOOL
         </div>
 
         <h1 class="hero-title">
-          FIND YOUR<br>
-          <span class="highlight">STYLE.</span><br>
-          FIND YOUR<br>
-          CREW.
+
+          MOVE.<br>
+
+          <span class="lime">
+            CREATE.
+          </span><br>
+
+          CONNECT.
+
         </h1>
 
-        <p class="hero-text">
-          Ontdek de dansstijl die bij jou past.
-          Van je eerste danspas tot wedstrijdteam,
-          van kids tot adults.
+        <p class="hero-copy">
+
+          Welkom bij Ntertainment.
+          Ontdek onze danslessen, schrijf je in,
+          beheer je gezin en blijf op de hoogte
+          van alles wat er binnen onze dance community
+          gebeurt.
+
         </p>
 
         <div class="hero-actions">
 
           <button
-            class="button-primary"
+            class="primary"
             onclick="scrollToLessons()"
           >
             BEKIJK DE LESSEN →
           </button>
 
-          <a
-            class="button-secondary"
-            href="#over"
+          <button
+            class="secondary"
+            onclick="openRegisterChoice()"
           >
-            ONTDEK NTERTAINMENT
-          </a>
+            ACCOUNT AANMAKEN
+          </button>
 
         </div>
 
       </div>
 
+      <div class="eyebrow">
+        GENK · OUDSBERGEN · MAASMECHELEN · OMGEVING
+      </div>
 
-      <div class="hero-card">
+    </div>
 
-        <div class="hero-card-top">
-          NTERTAINMENT DANCE SCHOOL
-        </div>
 
-        <div class="hero-card-title">
-          MOVE.<br>
-          CREATE.<br>
-          CONNECT.
-        </div>
+    <div class="hero-side">
 
-        <div class="hero-card-bottom">
-          Genk · Oudsbergen · omgeving
-        </div>
+      <div class="eyebrow" style="color:#aaa;">
+        THIS IS NTERTAINMENT
+      </div>
+
+      <div class="hero-side-title">
+
+        FIND YOUR<br>
+        STYLE.<br>
+        FIND YOUR<br>
+        CREW.
+
+      </div>
+
+      <div class="hero-side-bottom">
+
+        Van eerste danspas tot Academy,
+        wedstrijdteam en performance.
 
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 
-  <!-- LESSONS -->
+<!-- =========================================================
+     ACCOUNT
+========================================================= -->
 
-  <section
-    class="section"
-    id="lessen"
-  >
+<section
+  class="account-section"
+  id="account"
+>
 
-    <div class="container">
+  <div class="container">
 
-      <div class="section-header">
+    <div class="account-box">
 
-        <div>
+      <div>
 
-          <div class="eyebrow">
-            2026–2027
-          </div>
-
-          <h2 class="section-title">
-            VIND JOUW LES
-          </h2>
-
+        <div class="eyebrow" style="color:#999;">
+          MIJN NTERTAINMENT
         </div>
 
-        <div
-          class="result-count"
-          id="resultText"
-        >
-          6 lessen
-        </div>
+        <h2 class="account-title">
+
+          ALLES<br>
+          OP <span>ÉÉN</span><br>
+          PLEK.
+
+        </h2>
+
+        <p class="account-description">
+
+          Beheer je eigen profiel, voeg je kinderen toe,
+          ontdek lessen en regel je inschrijvingen vanuit
+          één persoonlijk Ntertainment-account.
+
+        </p>
 
       </div>
 
 
-      <!-- FILTERS -->
+      <div class="account-options">
 
-      <div class="filter-box">
+        <button
+          class="account-option"
+          onclick="openRegister('parent')"
+        >
 
-        <div class="field">
+          <div>
 
-          <label for="location">
-            Locatie
-          </label>
+            <strong>
+              OUDER / VOOGD
+            </strong>
 
-          <select id="location">
+            <small>
+              Beheer één of meerdere kinderen
+            </small>
 
-            <option value="">
-              Alle locaties
-            </option>
+          </div>
 
-            <option value="Genk">
-              Genk
-            </option>
+          <div class="account-arrow">
+            →
+          </div>
 
-            <option value="Oudsbergen">
-              Oudsbergen
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="field">
-
-          <label for="style">
-            Dansstijl
-          </label>
-
-          <select id="style">
-
-            <option value="">
-              Alle stijlen
-            </option>
-
-            <option value="Hip Hop">
-              Hip Hop
-            </option>
-
-            <option value="Dancehall / Ragga">
-              Dancehall / Ragga
-            </option>
-
-            <option value="Modern">
-              Modern
-            </option>
-
-            <option value="Jazz">
-              Jazz
-            </option>
-
-            <option value="High Heels">
-              High Heels
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="field">
-
-          <label for="age">
-            Leeftijd
-          </label>
-
-          <select id="age">
-
-            <option value="">
-              Alle leeftijden
-            </option>
-
-            <option value="3–5 jaar">
-              3–5 jaar
-            </option>
-
-            <option value="6–9 jaar">
-              6–9 jaar
-            </option>
-
-            <option value="10–12 jaar">
-              10–12 jaar
-            </option>
-
-            <option value="13–17 jaar">
-              13–17 jaar
-            </option>
-
-            <option value="18+ jaar">
-              18+ jaar
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="field">
-
-          <label for="day">
-            Dag
-          </label>
-
-          <select id="day">
-
-            <option value="">
-              Alle dagen
-            </option>
-
-            <option value="Maandag">
-              Maandag
-            </option>
-
-            <option value="Dinsdag">
-              Dinsdag
-            </option>
-
-            <option value="Woensdag">
-              Woensdag
-            </option>
-
-          </select>
-
-        </div>
+        </button>
 
 
         <button
-          class="reset-button"
-          onclick="resetFilters()"
+          class="account-option"
+          onclick="openRegister('dancer')"
         >
-          RESET
+
+          <div>
+
+            <strong>
+              DANSER 18+
+            </strong>
+
+            <small>
+              Beheer je eigen account en inschrijvingen
+            </small>
+
+          </div>
+
+          <div class="account-arrow">
+            →
+          </div>
+
+        </button>
+
+
+        <button
+          class="account-option"
+          onclick="openLogin()"
+        >
+
+          <div>
+
+            <strong>
+              IK HEB AL EEN ACCOUNT
+            </strong>
+
+            <small>
+              Log in bij Mijn Ntertainment
+            </small>
+
+          </div>
+
+          <div class="account-arrow">
+            →
+          </div>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     DASHBOARD
+========================================================= -->
+
+<section
+  class="dashboard hidden"
+  id="dashboard"
+>
+
+  <div class="container">
+
+    <div class="dashboard-header">
+
+      <div>
+
+        <div class="eyebrow">
+          MIJN NTERTAINMENT
+        </div>
+
+        <h2
+          class="dashboard-title"
+          id="dashboardWelcome"
+        >
+          WELKOM.
+        </h2>
+
+      </div>
+
+      <button
+        class="logout"
+        onclick="logout()"
+      >
+        UITLOGGEN
+      </button>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+
+      <div class="panel">
+
+        <h3 class="panel-title">
+          MIJN GEZIN
+        </h3>
+
+        <div
+          class="family-list"
+          id="familyList"
+        ></div>
+
+        <button
+          class="add-child"
+          onclick="openAddChild()"
+        >
+          + KIND TOEVOEGEN
         </button>
 
       </div>
 
 
-      <!-- STATS -->
+      <div class="panel">
 
-      <div class="stats">
+        <h3 class="panel-title">
+          SNEL NAAR
+        </h3>
 
-        <div class="stat">
+        <div class="quick-links">
 
-          <strong id="lessonCount">
-            6
-          </strong>
+          <button
+            class="quick-link"
+            onclick="scrollToLessons()"
+          >
+            NIEUWE LES ZOEKEN
+            <span>→</span>
+          </button>
 
-          lessen
+          <button class="quick-link">
+            MIJN INSCHRIJVINGEN
+            <span>→</span>
+          </button>
 
-        </div>
+          <button class="quick-link">
+            MIJN BETALINGEN
+            <span>→</span>
+          </button>
 
-        <div class="stat">
-
-          <span class="availability-dot"></span>
-
-          Plaatsen beschikbaar
-
-        </div>
-
-        <div class="stat">
-
-          Seizoen 2026–2027
-
-        </div>
-
-      </div>
-
-
-      <!-- LESSON CARDS -->
-
-      <div
-        class="lesson-grid"
-        id="lessonGrid"
-      ></div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ABOUT -->
-
-  <section
-    class="section"
-    id="over"
-  >
-
-    <div class="container">
-
-      <div class="section-header">
-
-        <div>
-
-          <div class="eyebrow">
-            Beyond the class
-          </div>
-
-          <h2 class="section-title">
-            MEER DAN DANS
-          </h2>
+          <button class="quick-link">
+            MIJN PROFIEL
+            <span>→</span>
+          </button>
 
         </div>
-
-      </div>
-
-
-      <div class="brand-grid">
-
-
-        <div class="brand-panel">
-
-          <h3>
-            NTERTAINMENT<br>
-            ACADEMY
-          </h3>
-
-          <p>
-            Voor dansers en docenten die verder willen
-            groeien. Training, coaching, wedstrijdteams
-            en performance.
-          </p>
-
-        </div>
-
-
-        <div class="brand-panel light">
-
-          <h3>
-            EVENTS · KAMPEN<br>
-            · WORKSHOPS
-          </h3>
-
-          <p>
-            Naast onze wekelijkse lessen organiseren we
-            performances, kampen en workshops voor
-            verschillende leeftijden en niveaus.
-          </p>
-
-        </div>
-
 
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     LESSONS
+========================================================= -->
+
+<section
+  class="lessons-section"
+  id="lessen"
+>
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">
+        2026 — 2027
+      </div>
+
+      <h2>
+        VIND JOUW LES.
+      </h2>
+
+    </div>
+
+
+    <div class="filters">
+
+      <div class="filter">
+
+        <label>
+          Locatie
+        </label>
+
+        <select id="locationFilter">
+
+          <option value="">
+            Alle locaties
+          </option>
+
+          <option>
+            Genk
+          </option>
+
+          <option>
+            Oudsbergen
+          </option>
+
+          <option>
+            Maasmechelen
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="filter">
+
+        <label>
+          Stijl
+        </label>
+
+        <select id="styleFilter">
+
+          <option value="">
+            Alle stijlen
+          </option>
+
+          <option>
+            Hip Hop
+          </option>
+
+          <option>
+            Dancehall / Ragga
+          </option>
+
+          <option>
+            Modern
+          </option>
+
+          <option>
+            Jazz
+          </option>
+
+          <option>
+            High Heels
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="filter">
+
+        <label>
+          Leeftijd
+        </label>
+
+        <select id="ageFilter">
+
+          <option value="">
+            Alle leeftijden
+          </option>
+
+          <option>
+            Kleuters
+          </option>
+
+          <option>
+            Kids
+          </option>
+
+          <option>
+            Teens
+          </option>
+
+          <option>
+            Adults
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="filter">
+
+        <label>
+          Dag
+        </label>
+
+        <select id="dayFilter">
+
+          <option value="">
+            Alle dagen
+          </option>
+
+          <option>
+            Maandag
+          </option>
+
+          <option>
+            Dinsdag
+          </option>
+
+          <option>
+            Woensdag
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        class="reset"
+        onclick="resetFilters()"
+      >
+        RESET
+      </button>
+
+    </div>
+
+
+    <div
+      class="lesson-grid"
+      id="lessonGrid"
+    ></div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CATEGORIES
+========================================================= -->
+
+<section
+  class="categories"
+  id="aanbod"
+>
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">
+        ONS AANBOD
+      </div>
+
+      <h2>
+        FIND YOUR STYLE.
+      </h2>
+
+    </div>
+
+
+    <div class="category-grid">
+
+
+      <div class="category">
+
+        <div class="category-number">
+          01
+        </div>
+
+        <h3>
+          KLEUTERS
+        </h3>
+
+      </div>
+
+
+      <div class="category">
+
+        <div class="category-number">
+          02
+        </div>
+
+        <h3>
+          KIDS
+        </h3>
+
+      </div>
+
+
+      <div class="category">
+
+        <div class="category-number">
+          03
+        </div>
+
+        <h3>
+          TEENS
+        </h3>
+
+      </div>
+
+
+      <div class="category">
+
+        <div class="category-number">
+          04
+        </div>
+
+        <h3>
+          ADULTS
+        </h3>
+
+      </div>
+
+
+      <div class="category">
+
+        <div class="category-number">
+          05
+        </div>
+
+        <h3>
+          SPECIAL<br>
+          CLASSES
+        </h3>
+
+      </div>
+
+
+      <div class="category">
+
+        <div class="category-number">
+          06
+        </div>
+
+        <h3>
+          N ACADEMY
+        </h3>
+
+      </div>
+
+
+      <div class="category">
+
+        <div class="category-number">
+          07
+        </div>
+
+        <h3>
+          WEDSTRIJD-<br>
+          TEAMS
+        </h3>
+
+      </div>
+
+
+      <div class="category">
+
+        <div class="category-number">
+          08
+        </div>
+
+        <h3>
+          EVENTS
+        </h3>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
 
 </main>
 
@@ -1364,24 +1932,25 @@
      FOOTER
 ========================================================= -->
 
-<footer id="contact">
+<footer>
 
-  <div class="container footer-content">
+  <div class="container footer-grid">
 
     <div>
 
-      <strong>
-        NTERTAINMENT DANCE SCHOOL
-      </strong>
+      <div class="footer-brand">
+        NTERTAINMENT
+      </div>
 
-      <br>
-
-      Find your style. Find your crew.
+      <div class="footer-copy">
+        Dance School · Academy · Events
+      </div>
 
     </div>
 
-    <div>
-      © 2026 Ntertainment
+
+    <div class="footer-copy">
+      © 2026 Ntertainment Dance School
     </div>
 
   </div>
@@ -1390,74 +1959,184 @@
 
 
 <!-- =========================================================
-     REGISTRATION MODAL
+     LOGIN MODAL
 ========================================================= -->
 
 <div
-  class="modal-overlay"
-  id="modalOverlay"
-  onclick="closeModalIfBackground(event)"
+  class="modal-backdrop"
+  id="loginModal"
 >
 
   <div class="modal">
 
     <button
-      class="modal-close"
-      onclick="closeModal()"
-      aria-label="Sluiten"
+      class="close"
+      onclick="closeModal('loginModal')"
     >
       ×
     </button>
 
 
     <div class="eyebrow">
-      Inschrijving
+      MIJN NTERTAINMENT
     </div>
 
-    <h2 id="modalTitle">
-      Les inschrijven
+    <h2>
+      WELKOM TERUG.
     </h2>
 
-    <div
-      class="modal-subtitle"
-      id="modalSubtitle"
-    ></div>
-
-
-    <div class="demo-message">
-
-      <strong>V2.1 demo</strong><br>
-
-      De visuele inschrijfmodule staat klaar.
-      In de volgende fase koppelen we deze aan de
-      echte database, zodat inschrijvingen daadwerkelijk
-      opgeslagen worden.
-
+    <div class="modal-subtitle">
+      Log in op je Ntertainment-account.
     </div>
 
 
-    <div class="registration-form">
+    <form
+      class="form"
+      onsubmit="login(event)"
+    >
 
-      <input
-        type="text"
-        placeholder="Naam ouder / deelnemer"
-      >
+      <div class="form-group">
 
-      <input
-        type="email"
-        placeholder="E-mailadres"
-      >
+        <label>
+          E-MAILADRES
+        </label>
 
-      <input
-        type="text"
-        placeholder="Naam danser / kind"
-      >
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="jouw@email.be"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          WACHTWOORD
+        </label>
+
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="••••••••"
+          required
+        >
+
+      </div>
+
+
+      <button class="form-submit">
+        INLOGGEN →
+      </button>
+
+
+      <div class="form-note">
+
+        Wachtwoord vergeten?
+        In de volgende backend-versie voegen we
+        e-mail wachtwoordherstel toe.
+
+      </div>
+
 
       <button
-        class="modal-submit"
-        onclick="demoRegistration()"
+        type="button"
+        class="secondary"
+        onclick="closeModal('loginModal'); openRegisterChoice();"
       >
-        VERDER →
+        NOG GEEN ACCOUNT? REGISTREREN
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     REGISTER CHOICE MODAL
+========================================================= -->
+
+<div
+  class="modal-backdrop"
+  id="registerChoiceModal"
+>
+
+  <div class="modal">
+
+    <button
+      class="close"
+      onclick="closeModal('registerChoiceModal')"
+    >
+      ×
+    </button>
+
+
+    <div class="eyebrow">
+      ACCOUNT AANMAKEN
+    </div>
+
+    <h2>
+      IK BEN...
+    </h2>
+
+    <div class="modal-subtitle">
+      Kies welk type account bij jou past.
+    </div>
+
+
+    <div class="account-options">
+
+      <button
+        class="account-option"
+        style="background:#fff;color:#111;border-color:#ddd;"
+        onclick="closeModal('registerChoiceModal'); openRegister('parent');"
+      >
+
+        <div>
+
+          <strong>
+            OUDER / VOOGD
+          </strong>
+
+          <small>
+            Ik beheer één of meerdere kinderen.
+          </small>
+
+        </div>
+
+        <div class="account-arrow">
+          →
+        </div>
+
+      </button>
+
+
+      <button
+        class="account-option"
+        style="background:#fff;color:#111;border-color:#ddd;"
+        onclick="closeModal('registerChoiceModal'); openRegister('dancer');"
+      >
+
+        <div>
+
+          <strong>
+            DANSER 18+
+          </strong>
+
+          <small>
+            Ik beheer mijn eigen profiel.
+          </small>
+
+        </div>
+
+        <div class="account-arrow">
+          →
+        </div>
+
       </button>
 
     </div>
@@ -1468,163 +2147,1083 @@
 
 
 <!-- =========================================================
+     REGISTER MODAL
+========================================================= -->
+
+<div
+  class="modal-backdrop"
+  id="registerModal"
+>
+
+  <div class="modal">
+
+    <button
+      class="close"
+      onclick="closeModal('registerModal')"
+    >
+      ×
+    </button>
+
+
+    <div class="eyebrow">
+      NIEUW ACCOUNT
+    </div>
+
+    <h2 id="registerTitle">
+      ACCOUNT AANMAKEN
+    </h2>
+
+    <div
+      class="modal-subtitle"
+      id="registerSubtitle"
+    >
+      Maak je Ntertainment-account aan.
+    </div>
+
+
+    <form
+      class="form"
+      onsubmit="register(event)"
+    >
+
+      <div class="form-group">
+
+        <label>
+          VOORNAAM
+        </label>
+
+        <input
+          type="text"
+          id="registerFirstName"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          ACHTERNAAM
+        </label>
+
+        <input
+          type="text"
+          id="registerLastName"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          E-MAILADRES
+        </label>
+
+        <input
+          type="email"
+          id="registerEmail"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          GSM
+        </label>
+
+        <input
+          type="tel"
+          id="registerPhone"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          GEBOORTEDATUM
+        </label>
+
+        <input
+          type="date"
+          id="registerBirthDate"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          WACHTWOORD
+        </label>
+
+        <input
+          type="password"
+          id="registerPassword"
+          minlength="6"
+          required
+        >
+
+      </div>
+
+
+      <button class="form-submit">
+        ACCOUNT AANMAKEN →
+      </button>
+
+
+      <div class="form-note">
+
+        In deze demo wordt het account lokaal opgeslagen
+        in deze browser. Voor productie koppelen we dit
+        aan een beveiligde Azure database.
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     ADD CHILD MODAL
+========================================================= -->
+
+<div
+  class="modal-backdrop"
+  id="childModal"
+>
+
+  <div class="modal">
+
+    <button
+      class="close"
+      onclick="closeModal('childModal')"
+    >
+      ×
+    </button>
+
+
+    <div class="eyebrow">
+      MIJN GEZIN
+    </div>
+
+    <h2>
+      KIND TOEVOEGEN
+    </h2>
+
+    <div class="modal-subtitle">
+      Voeg een danser toe aan je gezin.
+    </div>
+
+
+    <form
+      class="form"
+      onsubmit="addChild(event)"
+    >
+
+      <div class="form-group">
+
+        <label>
+          VOORNAAM
+        </label>
+
+        <input
+          type="text"
+          id="childFirstName"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          ACHTERNAAM
+        </label>
+
+        <input
+          type="text"
+          id="childLastName"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          GEBOORTEDATUM
+        </label>
+
+        <input
+          type="date"
+          id="childBirthDate"
+          required
+        >
+
+      </div>
+
+
+      <button class="form-submit">
+        KIND TOEVOEGEN →
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     ENROLLMENT MODAL
+========================================================= -->
+
+<div
+  class="modal-backdrop"
+  id="enrollmentModal"
+>
+
+  <div class="modal">
+
+    <button
+      class="close"
+      onclick="closeModal('enrollmentModal')"
+    >
+      ×
+    </button>
+
+
+    <div class="eyebrow">
+      INSCHRIJVEN
+    </div>
+
+    <h2 id="enrollmentTitle">
+      LES INSCHRIJVEN
+    </h2>
+
+    <div
+      class="modal-subtitle"
+      id="enrollmentSubtitle"
+    ></div>
+
+
+    <div
+      id="enrollmentBody"
+    ></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+  class="toast"
+  id="toast"
+></div>
+
+
+<!-- =========================================================
      JAVASCRIPT
 ========================================================= -->
 
 <script>
 
-  /*
-    ============================================================
-    DEMO DATA
-
-    Deze data staat momenteel lokaal in de HTML.
-
-    In de volgende fase vervangen we dit door:
-    Azure Functions + Database.
-    ============================================================
-  */
+  /* =========================================================
+     DEMO LESDATA
+  ========================================================= */
 
   const lessons = [
 
     {
+      id: 1,
       style: "Hip Hop",
-      age: "6–9 jaar",
+      category: "Kids",
+      age: "Kids",
+      ageText: "6–9 jaar",
       location: "Genk",
       day: "Dinsdag",
       time: "18:00–19:00",
-      level: "Kids",
       places: 12
     },
 
     {
+      id: 2,
       style: "Hip Hop",
-      age: "6–9 jaar",
+      category: "Kids",
+      age: "Kids",
+      ageText: "6–9 jaar",
       location: "Genk",
       day: "Woensdag",
       time: "18:00–19:00",
-      level: "Kids",
       places: 9
     },
 
     {
+      id: 3,
       style: "Hip Hop",
-      age: "10–12 jaar",
+      category: "Kids",
+      age: "Kids",
+      ageText: "10–12 jaar",
       location: "Genk",
       day: "Woensdag",
       time: "19:00–20:00",
-      level: "Kids",
       places: 8
     },
 
     {
+      id: 4,
       style: "Dancehall / Ragga",
-      age: "10–12 jaar",
+      category: "Teens",
+      age: "Teens",
+      ageText: "10–17 jaar",
       location: "Genk",
       day: "Maandag",
       time: "18:00–19:00",
-      level: "Teens",
       places: 7
     },
 
     {
+      id: 5,
       style: "Dancehall / Ragga",
-      age: "18+ jaar",
+      category: "Adults",
+      age: "Adults",
+      ageText: "18+",
       location: "Genk",
       day: "Maandag",
       time: "19:00–20:00",
-      level: "Adults",
       places: 11
     },
 
     {
+      id: 6,
       style: "High Heels",
-      age: "18+ jaar",
+      category: "Adults",
+      age: "Adults",
+      ageText: "18+",
       location: "Oudsbergen",
       day: "Maandag",
       time: "20:00–21:00",
-      level: "Adults",
       places: 6
     }
 
   ];
 
 
-  /*
-    ============================================================
-    RENDER LESSONS
-    ============================================================
-  */
+  /* =========================================================
+     STATE
+  ========================================================= */
+
+  let currentUser = null;
+
+  let registerType = "parent";
+
+  let selectedLesson = null;
+
+
+  /* =========================================================
+     STORAGE
+  ========================================================= */
+
+  function getUsers() {
+
+    return JSON.parse(
+      localStorage.getItem("ntertainment_users") || "[]"
+    );
+
+  }
+
+
+  function saveUsers(users) {
+
+    localStorage.setItem(
+      "ntertainment_users",
+      JSON.stringify(users)
+    );
+
+  }
+
+
+  function saveCurrentUser() {
+
+    if (currentUser) {
+
+      localStorage.setItem(
+        "ntertainment_current_user",
+        JSON.stringify(currentUser)
+      );
+
+    } else {
+
+      localStorage.removeItem(
+        "ntertainment_current_user"
+      );
+
+    }
+
+  }
+
+
+  function loadCurrentUser() {
+
+    const stored =
+      localStorage.getItem(
+        "ntertainment_current_user"
+      );
+
+    if (!stored) return;
+
+    try {
+
+      currentUser = JSON.parse(stored);
+
+      showDashboard();
+
+    } catch {
+
+      currentUser = null;
+
+    }
+
+  }
+
+
+  /* =========================================================
+     MODALS
+  ========================================================= */
+
+  function openModal(id) {
+
+    document
+      .getElementById(id)
+      .classList.add("open");
+
+  }
+
+
+  function closeModal(id) {
+
+    document
+      .getElementById(id)
+      .classList.remove("open");
+
+  }
+
+
+  function openLogin() {
+
+    openModal("loginModal");
+
+  }
+
+
+  function openRegisterChoice() {
+
+    openModal("registerChoiceModal");
+
+  }
+
+
+  function openRegister(type) {
+
+    registerType = type;
+
+    if (type === "parent") {
+
+      document.getElementById(
+        "registerTitle"
+      ).textContent =
+        "OUDERACCOUNT";
+
+      document.getElementById(
+        "registerSubtitle"
+      ).textContent =
+        "Maak een account aan en voeg daarna je kinderen toe.";
+
+    } else {
+
+      document.getElementById(
+        "registerTitle"
+      ).textContent =
+        "DANSER 18+";
+
+      document.getElementById(
+        "registerSubtitle"
+      ).textContent =
+        "Maak je eigen zelfstandige Ntertainment-account aan.";
+
+    }
+
+    openModal("registerModal");
+
+  }
+
+
+  /* =========================================================
+     REGISTER
+  ========================================================= */
+
+  function register(event) {
+
+    event.preventDefault();
+
+    const firstName =
+      document.getElementById(
+        "registerFirstName"
+      ).value.trim();
+
+    const lastName =
+      document.getElementById(
+        "registerLastName"
+      ).value.trim();
+
+    const email =
+      document.getElementById(
+        "registerEmail"
+      ).value.trim()
+      .toLowerCase();
+
+    const phone =
+      document.getElementById(
+        "registerPhone"
+      ).value.trim();
+
+    const birthDate =
+      document.getElementById(
+        "registerBirthDate"
+      ).value;
+
+    const password =
+      document.getElementById(
+        "registerPassword"
+      ).value;
+
+
+    const users = getUsers();
+
+
+    if (
+      users.some(
+        user => user.email === email
+      )
+    ) {
+
+      showToast(
+        "Er bestaat al een account met dit e-mailadres."
+      );
+
+      return;
+
+    }
+
+
+    const user = {
+
+      id:
+        Date.now(),
+
+      role:
+        registerType,
+
+      firstName,
+
+      lastName,
+
+      email,
+
+      phone,
+
+      birthDate,
+
+      password,
+
+      children: [],
+
+      createdAt:
+        new Date().toISOString()
+
+    };
+
+
+    users.push(user);
+
+    saveUsers(users);
+
+
+    currentUser = user;
+
+    saveCurrentUser();
+
+
+    closeModal("registerModal");
+
+
+    showDashboard();
+
+
+    showToast(
+      "Welkom bij Ntertainment, " +
+      firstName +
+      "!"
+    );
+
+
+    event.target.reset();
+
+  }
+
+
+  /* =========================================================
+     LOGIN
+  ========================================================= */
+
+  function login(event) {
+
+    event.preventDefault();
+
+
+    const email =
+      document.getElementById(
+        "loginEmail"
+      ).value.trim()
+      .toLowerCase();
+
+    const password =
+      document.getElementById(
+        "loginPassword"
+      ).value;
+
+
+    const users = getUsers();
+
+
+    const user =
+      users.find(
+        item =>
+          item.email === email &&
+          item.password === password
+      );
+
+
+    if (!user) {
+
+      showToast(
+        "E-mailadres of wachtwoord is niet correct."
+      );
+
+      return;
+
+    }
+
+
+    currentUser = user;
+
+    saveCurrentUser();
+
+
+    closeModal("loginModal");
+
+
+    showDashboard();
+
+
+    showToast(
+      "Welkom terug, " +
+      user.firstName +
+      "!"
+    );
+
+  }
+
+
+  /* =========================================================
+     LOGOUT
+  ========================================================= */
+
+  function logout() {
+
+    currentUser = null;
+
+    saveCurrentUser();
+
+    document
+      .getElementById("dashboard")
+      .classList.add("hidden");
+
+
+    showToast(
+      "Je bent uitgelogd."
+    );
+
+  }
+
+
+  /* =========================================================
+     DASHBOARD
+  ========================================================= */
+
+  function showDashboard() {
+
+    if (!currentUser) return;
+
+
+    document
+      .getElementById("dashboard")
+      .classList.remove("hidden");
+
+
+    document.getElementById(
+      "dashboardWelcome"
+    ).textContent =
+
+      "WELKOM, " +
+      currentUser.firstName.toUpperCase() +
+      ".";
+
+
+    renderFamily();
+
+
+    document
+      .getElementById("dashboard")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+
+  }
+
+
+  /* =========================================================
+     FAMILY
+  ========================================================= */
+
+  function renderFamily() {
+
+    const list =
+      document.getElementById(
+        "familyList"
+      );
+
+
+    const people = [];
+
+
+    people.push({
+
+      id: "self",
+
+      firstName:
+        currentUser.firstName,
+
+      lastName:
+        currentUser.lastName,
+
+      birthDate:
+        currentUser.birthDate,
+
+      role:
+        currentUser.role === "parent"
+          ? "Ouder / voogd"
+          : "Danser 18+"
+
+    });
+
+
+    if (
+      currentUser.children &&
+      currentUser.children.length
+    ) {
+
+      currentUser.children.forEach(
+        child => {
+
+          people.push({
+
+            ...child,
+
+            role: "Danser"
+
+          });
+
+        }
+      );
+
+    }
+
+
+    list.innerHTML =
+      people.map(person => {
+
+        const initials =
+          (
+            person.firstName.charAt(0) +
+            person.lastName.charAt(0)
+          ).toUpperCase();
+
+
+        return `
+
+          <div class="person-card">
+
+            <div class="person-left">
+
+              <div class="avatar">
+                ${initials}
+              </div>
+
+              <div>
+
+                <div class="person-name">
+                  ${person.firstName}
+                  ${person.lastName}
+                </div>
+
+                <div class="person-meta">
+                  ${person.role}
+                </div>
+
+                <div class="status">
+                  <span class="status-dot"></span>
+                  Account actief
+                </div>
+
+              </div>
+
+            </div>
+
+            <span>
+              →
+            </span>
+
+          </div>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  /* =========================================================
+     ADD CHILD
+  ========================================================= */
+
+  function openAddChild() {
+
+    if (!currentUser) {
+
+      openLogin();
+
+      return;
+
+    }
+
+
+    if (
+      currentUser.role !== "parent"
+    ) {
+
+      showToast(
+        "Alleen ouderaccounts kunnen kinderen toevoegen."
+      );
+
+      return;
+
+    }
+
+
+    openModal("childModal");
+
+  }
+
+
+  function addChild(event) {
+
+    event.preventDefault();
+
+
+    const firstName =
+      document.getElementById(
+        "childFirstName"
+      ).value.trim();
+
+    const lastName =
+      document.getElementById(
+        "childLastName"
+      ).value.trim();
+
+    const birthDate =
+      document.getElementById(
+        "childBirthDate"
+      ).value;
+
+
+    const child = {
+
+      id:
+        Date.now(),
+
+      firstName,
+
+      lastName,
+
+      birthDate,
+
+      linkedAt:
+        new Date().toISOString()
+
+    };
+
+
+    currentUser.children =
+      currentUser.children || [];
+
+
+    currentUser.children.push(
+      child
+    );
+
+
+    updateCurrentUser();
+
+
+    closeModal("childModal");
+
+
+    event.target.reset();
+
+
+    renderFamily();
+
+
+    showToast(
+      firstName +
+      " is toegevoegd aan je gezin."
+    );
+
+  }
+
+
+  function updateCurrentUser() {
+
+    const users = getUsers();
+
+
+    const index =
+      users.findIndex(
+        user =>
+          user.id === currentUser.id
+      );
+
+
+    if (index >= 0) {
+
+      users[index] =
+        currentUser;
+
+      saveUsers(users);
+
+    }
+
+
+    saveCurrentUser();
+
+  }
+
+
+  /* =========================================================
+     LESSONS
+  ========================================================= */
 
   function renderLessons() {
 
     const location =
-      document.getElementById("location").value;
+      document.getElementById(
+        "locationFilter"
+      ).value;
 
     const style =
-      document.getElementById("style").value;
+      document.getElementById(
+        "styleFilter"
+      ).value;
 
     const age =
-      document.getElementById("age").value;
+      document.getElementById(
+        "ageFilter"
+      ).value;
 
     const day =
-      document.getElementById("day").value;
+      document.getElementById(
+        "dayFilter"
+      ).value;
 
 
-    const filteredLessons =
-      lessons.filter(lesson => {
+    const filtered =
+      lessons.filter(
+        lesson => {
 
-        const locationMatch =
-          !location ||
-          lesson.location === location;
+          return (
 
-        const styleMatch =
-          !style ||
-          lesson.style === style;
+            (!location ||
+              lesson.location === location)
 
-        const ageMatch =
-          !age ||
-          lesson.age === age;
+            &&
 
-        const dayMatch =
-          !day ||
-          lesson.day === day;
+            (!style ||
+              lesson.style === style)
 
+            &&
 
-        return (
-          locationMatch &&
-          styleMatch &&
-          ageMatch &&
-          dayMatch
-        );
+            (!age ||
+              lesson.age === age)
 
-      });
+            &&
 
+            (!day ||
+              lesson.day === day)
 
-    const grid =
-      document.getElementById("lessonGrid");
+          );
 
-
-    document.getElementById(
-      "lessonCount"
-    ).textContent =
-      filteredLessons.length;
-
-
-    document.getElementById(
-      "resultText"
-    ).textContent =
-      filteredLessons.length +
-      (
-        filteredLessons.length === 1
-          ? " les"
-          : " lessen"
+        }
       );
 
 
-    if (filteredLessons.length === 0) {
+    const grid =
+      document.getElementById(
+        "lessonGrid"
+      );
+
+
+    if (!filtered.length) {
 
       grid.innerHTML = `
-        <div class="empty-state">
+
+        <div style="
+          grid-column:1/-1;
+          padding:50px;
+          text-align:center;
+          background:#fff;
+          border:1px dashed #ddd;
+          border-radius:20px;
+        ">
 
           <strong>
             Geen lessen gevonden.
@@ -1632,10 +3231,10 @@
 
           <br>
 
-          Probeer een andere combinatie
-          van filters.
+          Probeer een andere combinatie.
 
         </div>
+
       `;
 
       return;
@@ -1644,92 +3243,69 @@
 
 
     grid.innerHTML =
-      filteredLessons
-        .map((lesson) => {
+      filtered.map(
+        lesson => `
 
-          const originalIndex =
-            lessons.indexOf(lesson);
+          <article class="lesson">
 
+            <span class="lesson-category">
+              ${lesson.category}
+            </span>
 
-          return `
+            <h3>
+              ${lesson.style}
+            </h3>
 
-            <article class="lesson-card">
+            <div class="lesson-info">
 
-              <span class="lesson-tag">
-                ${lesson.level}
-              </span>
+              📍 ${lesson.location}<br>
 
+              📅 ${lesson.day}
+              · ${lesson.time}<br>
 
-              <h3 class="lesson-title">
-                ${lesson.style}
-              </h3>
+              👤 ${lesson.ageText}
 
+            </div>
 
-              <div class="lesson-meta">
+            <div class="lesson-footer">
 
-                📍 ${lesson.location}<br>
-
-                📅 ${lesson.day}
-                · ${lesson.time}<br>
-
-                👤 ${lesson.age}
-
+              <div class="places">
+                🟢 ${lesson.places} plaatsen
               </div>
 
+              <button
+                class="lesson-button"
+                onclick="openEnrollment(${lesson.id})"
+              >
+                INSCHRIJVEN
+              </button>
 
-              <div class="lesson-bottom">
+            </div>
 
-                <div class="places">
+          </article>
 
-                  <span class="availability-dot"></span>
-
-                  ${lesson.places}
-                  plaatsen
-
-                </div>
-
-
-                <button
-                  class="register-button"
-                  onclick="openRegistration(${originalIndex})"
-                >
-                  INSCHRIJVEN
-                </button>
-
-              </div>
-
-            </article>
-
-          `;
-
-        })
-        .join("");
+        `
+      ).join("");
 
   }
 
 
-  /*
-    ============================================================
-    FILTER RESET
-    ============================================================
-  */
-
   function resetFilters() {
 
     document.getElementById(
-      "location"
+      "locationFilter"
     ).value = "";
 
     document.getElementById(
-      "style"
+      "styleFilter"
     ).value = "";
 
     document.getElementById(
-      "age"
+      "ageFilter"
     ).value = "";
 
     document.getElementById(
-      "day"
+      "dayFilter"
     ).value = "";
 
 
@@ -1738,11 +3314,259 @@
   }
 
 
-  /*
-    ============================================================
-    SCROLL TO LESSONS
-    ============================================================
-  */
+  /* =========================================================
+     ENROLLMENT
+  ========================================================= */
+
+  function openEnrollment(id) {
+
+    selectedLesson =
+      lessons.find(
+        lesson =>
+          lesson.id === id
+      );
+
+
+    if (!selectedLesson) return;
+
+
+    document.getElementById(
+      "enrollmentTitle"
+    ).textContent =
+      selectedLesson.style;
+
+
+    document.getElementById(
+      "enrollmentSubtitle"
+    ).textContent =
+
+      selectedLesson.location +
+      " · " +
+      selectedLesson.day +
+      " · " +
+      selectedLesson.time +
+      " · " +
+      selectedLesson.ageText;
+
+
+    const body =
+      document.getElementById(
+        "enrollmentBody"
+      );
+
+
+    if (!currentUser) {
+
+      body.innerHTML = `
+
+        <div style="
+          background:#fff;
+          padding:20px;
+          border-radius:14px;
+          border:1px solid #ddd;
+          margin-bottom:15px;
+        ">
+
+          <strong>
+            Eerst even inloggen.
+          </strong>
+
+          <p style="
+            margin-top:7px;
+            color:#777;
+            font-size:13px;
+          ">
+
+            Je hebt een Ntertainment-account nodig
+            om jezelf of een kind in te schrijven.
+
+          </p>
+
+        </div>
+
+        <button
+          class="form-submit"
+          onclick="
+            closeModal('enrollmentModal');
+            openLogin();
+          "
+        >
+          INLOGGEN →
+        </button>
+
+      `;
+
+      openModal("enrollmentModal");
+
+      return;
+
+    }
+
+
+    const people = [];
+
+
+    people.push({
+
+      id: "self",
+
+      name:
+        currentUser.firstName +
+        " " +
+        currentUser.lastName
+
+    });
+
+
+    if (
+      currentUser.children
+    ) {
+
+      currentUser.children.forEach(
+        child => {
+
+          people.push({
+
+            id:
+              child.id,
+
+            name:
+              child.firstName +
+              " " +
+              child.lastName
+
+          });
+
+        }
+      );
+
+    }
+
+
+    body.innerHTML = `
+
+      <div class="form">
+
+        <div class="form-group">
+
+          <label>
+            VOOR WIE?
+          </label>
+
+          <select id="enrollmentPerson">
+
+            ${people.map(
+              person => `
+
+                <option value="${person.id}">
+                  ${person.name}
+                </option>
+
+              `
+            ).join("")}
+
+          </select>
+
+        </div>
+
+
+        <div style="
+          padding:16px;
+          background:white;
+          border:1px solid #ddd;
+          border-radius:12px;
+          font-size:13px;
+        ">
+
+          <strong>
+            ${selectedLesson.style}
+          </strong>
+
+          <br>
+
+          ${selectedLesson.location}<br>
+          ${selectedLesson.day}
+          · ${selectedLesson.time}<br>
+          ${selectedLesson.ageText}
+
+        </div>
+
+
+        <button
+          class="form-submit"
+          onclick="confirmEnrollment()"
+        >
+          INSCHRIJVING STARTEN →
+        </button>
+
+      </div>
+
+    `;
+
+
+    openModal("enrollmentModal");
+
+  }
+
+
+  function confirmEnrollment() {
+
+    const personId =
+      document.getElementById(
+        "enrollmentPerson"
+      ).value;
+
+
+    closeModal(
+      "enrollmentModal"
+    );
+
+
+    showToast(
+      "Inschrijving gestart. In de volgende versie voegen we betaling en definitieve bevestiging toe."
+    );
+
+  }
+
+
+  /* =========================================================
+     TOAST
+  ========================================================= */
+
+  function showToast(message) {
+
+    const toast =
+      document.getElementById(
+        "toast"
+      );
+
+
+    toast.textContent =
+      message;
+
+
+    toast.classList.add(
+      "show"
+    );
+
+
+    setTimeout(
+      () => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      3500
+    );
+
+  }
+
+
+  /* =========================================================
+     SCROLL
+  ========================================================= */
 
   function scrollToLessons() {
 
@@ -1755,124 +3579,82 @@
   }
 
 
-  /*
-    ============================================================
-    OPEN REGISTRATION MODAL
-    ============================================================
-  */
+  /* =========================================================
+     REGISTER CHOICE
+  ========================================================= */
 
-  function openRegistration(index) {
+  function openRegisterChoice() {
 
-    const lesson =
-      lessons[index];
-
-
-    document.getElementById(
-      "modalTitle"
-    ).textContent =
-      lesson.style;
-
-
-    document.getElementById(
-      "modalSubtitle"
-    ).textContent =
-
-      lesson.level +
-      " · " +
-      lesson.age +
-      " · " +
-      lesson.location +
-      " · " +
-      lesson.day +
-      " " +
-      lesson.time;
-
-
-    document
-      .getElementById("modalOverlay")
-      .classList.add("open");
-
-  }
-
-
-  /*
-    ============================================================
-    CLOSE MODAL
-    ============================================================
-  */
-
-  function closeModal() {
-
-    document
-      .getElementById("modalOverlay")
-      .classList.remove("open");
-
-  }
-
-
-  function closeModalIfBackground(event) {
-
-    if (
-      event.target ===
-      document.getElementById("modalOverlay")
-    ) {
-
-      closeModal();
-
-    }
-
-  }
-
-
-  /*
-    ============================================================
-    DEMO REGISTRATION
-    ============================================================
-  */
-
-  function demoRegistration() {
-
-    alert(
-      "Dit is momenteel V2.1. In de volgende fase koppelen we de inschrijving aan de echte Ntertainment-database."
+    openModal(
+      "registerChoiceModal"
     );
 
   }
 
 
-  /*
-    ============================================================
-    FILTER EVENTS
-    ============================================================
-  */
+  /* =========================================================
+     CLICK OUTSIDE MODAL
+  ========================================================= */
+
+  document
+    .querySelectorAll(".modal-backdrop")
+    .forEach(
+      backdrop => {
+
+        backdrop.addEventListener(
+          "click",
+          event => {
+
+            if (
+              event.target === backdrop
+            ) {
+
+              backdrop.classList.remove(
+                "open"
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+  /* =========================================================
+     FILTER EVENTS
+  ========================================================= */
 
   [
-    "location",
-    "style",
-    "age",
-    "day"
+    "locationFilter",
+    "styleFilter",
+    "ageFilter",
+    "dayFilter"
 
-  ].forEach(id => {
+  ].forEach(
+    id => {
 
-    document
-      .getElementById(id)
-      .addEventListener(
-        "change",
-        renderLessons
-      );
+      document
+        .getElementById(id)
+        .addEventListener(
+          "change",
+          renderLessons
+        );
 
-  });
+    }
+  );
 
 
-  /*
-    ============================================================
-    INITIAL LOAD
-    ============================================================
-  */
+  /* =========================================================
+     INITIAL LOAD
+  ========================================================= */
 
   renderLessons();
+
+  loadCurrentUser();
 
 </script>
 
 </body>
 </html>
-```
