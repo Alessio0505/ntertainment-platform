@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ntertainment — Inschrijven V2</title>
+<style>
+:root{--g:#60765f;--d:#253128;--c:#f7f3ec;--b:#e8dfd2;--w:#fff;--m:#6c746d}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--c);color:var(--d)}
+header{background:var(--d);color:#fff;padding:18px 5%}.nav{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center}.logo{font-weight:900;font-size:25px}.logo span{color:#b9cbb6}
+.hero{padding:55px 5%;background:linear-gradient(135deg,#dfe7dc,var(--c))}.hero>div,.wrap{max-width:1180px;margin:auto}.eyebrow{font-size:11px;letter-spacing:2px;font-weight:900;text-transform:uppercase;color:var(--g)}h1{font-size:clamp(38px,6vw,70px);line-height:.95;margin:12px 0}.hero p{max-width:650px;font-size:18px;color:#566058}
+.wrap{padding:38px 5% 80px}.filters{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:25px}label{font-size:12px;font-weight:800;text-transform:uppercase;display:block;margin-bottom:6px}
+input,select{width:100%;padding:13px;border:1px solid #d9d2c8;border-radius:10px;background:#fff}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid #e1dbd1;border-radius:18px;padding:21px;display:flex;flex-direction:column;min-height:310px;box-shadow:0 5px 18px #00000008}.badge{background:#e5ece2;color:#466044;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:800;display:inline-block}.card h3{font-size:22px;margin:15px 0 7px}.meta{line-height:1.8;color:var(--m);font-size:14px}.price{font-size:23px;font-weight:900;margin:16px 0}.btn{border:0;border-radius:10px;padding:13px 17px;font-weight:900}.primary{background:var(--g);color:#fff}.secondary{background:#eee9e1;color:var(--d)}.card .btn{margin-top:auto;width:100%}.bar{display:flex;justify-content:space-between;align-items:center;margin:20px 0}.status{font-size:13px;color:var(--m)}.modal{position:fixed;inset:0;background:#182119aa;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal.open{display:flex}.box{background:#fff;border-radius:20px;max-width:720px;width:100%;padding:28px;position:relative;max-height:92vh;overflow:auto}.close{position:absolute;right:16px;top:12px;border:0;background:none;font-size:28px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.full{grid-column:1/-1}.summary{background:var(--c);border-radius:12px;padding:15px;margin:15px 0}.actions{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}.success{text-align:center;padding:25px}.check{font-size:55px}.admin{margin-top:55px;background:var(--d);color:#fff;padding:24px;border-radius:18px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:#ffffff12;border-radius:11px;padding:16px}.stat strong{display:block;font-size:27px;margin-top:5px}
+@media(max-width:800px){.filters,.grid,.stats{grid-template-columns:1fr 1fr}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}}@media(max-width:520px){.filters,.grid,.stats{grid-template-columns:1fr}.hero{padding:42px 5%}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="logo">N<span>TERTAINMENT</span></div><small>DANCE SCHOOL</small></div></header>
+<section class="hero"><div><div class="eyebrow">2026 — 2027</div><h1>Find your dance.<br>Find your crew.</h1><p>Bekijk het actuele lesaanbod en schrijf jezelf of je kind online in.</p></div></section>
+<main class="wrap">
+<div class="filters">
+<div><label>Locatie</label><select id="loc"><option value="">Alle locaties</option></select></div>
+<div><label>Stijl</label><select id="sty"><option value="">Alle stijlen</option></select></div>
+<div><label>Leeftijd</label><select id="age"><option value="">Alle leeftijden</option><option value="3">3+</option><option value="6">6+</option><option value="8">8+</option><option value="10">10+</option><option value="11">11+</option><option value="16">16+</option><option value="18">18+</option></select></div>
+<div><label>Dag</label><select id="day"><option value="">Alle dagen</option></select></div>
+</div>
+<div class="bar"><strong id="count"></strong><span class="status" id="apiStatus">Verbinden met platform…</span></div>
+<div id="courses" class="grid"></div>
+<section class="admin"><div class="eyebrow" style="color:#b9cbb6">Admin preview</div><h2>Inschrijvingsdashboard</h2><div class="stats">
+<div class="stat"><small>Lessen</small><strong id="sCourses">0</strong></div><div class="stat"><small>Inschrijvingen</small><strong id="sRegs">0</strong></div><div class="stat"><small>Wachtlijst</small><strong id="sWait">0</strong></div><div class="stat"><small>API</small><strong id="sApi">—</strong></div>
+</div></section>
+</main>
+<footer style="background:#253128;color:#fff;text-align:center;padding:30px">Ntertainment Dance School · V2</footer>
+
+<div class="modal" id="modal"><div class="box"><button class="close" onclick="closeModal()">×</button><div id="modalBody"></div></div></div>
+<script>
+const API="/api";
+let courses=[];
+const $=x=>document.getElementById(x);
+async function api(path,opt={}){const r=await fetch(API+path,{headers:{"Content-Type":"application/json",...(opt.headers||{})},...opt});if(!r.ok)throw new Error(await r.text());return r.json()}
+function uniq(k){return [...new Set(courses.map(x=>x[k]))].sort()}
+function populate(){for(const [id,key] of [["loc","location"],["sty","style"],["day","day"]])uniq(key).forEach(v=>$(id).insertAdjacentHTML("beforeend",`<option>${v}</option>`))}
+function render(){
+ const loc=$("loc").value,sty=$("sty").value,age=+$("age").value,day=$("day").value;
+ const list=courses.filter(c=>(!loc||c.location===loc)&&(!sty||c.style===sty)&&(!age||c.age>=age)&&(!day||c.day===day));
+ $("count").textContent=`${list.length} ${list.length===1?"les":"lessen"} gevonden`;
+ $("courses").innerHTML=list.map(c=>`<article class="card"><span class="badge">${c.style}</span><h3>${c.name}</h3><div class="meta">📍 ${c.location}<br>📅 ${c.day}<br>🕐 ${c.time}<br>👥 ${c.capacity} plaatsen</div><div class="price">€ ${c.price}<small style="font-size:11px;color:#777"> / seizoen</small></div><button class="btn primary" onclick="openReg('${c.id}')">INSCHRIJVEN</button></article>`).join("")||`<div style="grid-column:1/-1;text-align:center;padding:45px;background:#fff;border-radius:18px">Geen lessen gevonden.</div>`;
+}
+async function load(){
+ try{courses=await api("/courses");populate();render();$("apiStatus").textContent="● API online";$("sApi").textContent="ONLINE";$("sCourses").textContent=courses.length;const s=await api("/stats");$("sRegs").textContent=s.registrations;$("sWait").textContent=s.waitlist}
+ catch(e){$("apiStatus").textContent="Demo/offline";$("sApi").textContent="OFFLINE";$("courses").innerHTML="<div style='grid-column:1/-1;padding:30px;background:#fff;border-radius:18px'>De backend is nog niet geconfigureerd. Start Azure Functions lokaal of deploy de API.</div>"}
+}
+["loc","sty","age","day"].forEach(x=>$(x).onchange=render);
+function openReg(id){const c=courses.find(x=>x.id===id);$("modal").classList.add("open");$("modalBody").innerHTML=`<div class="eyebrow">Inschrijving</div><h2>${c.name}</h2><div class="summary"><strong>${c.location}</strong><br>${c.day} · ${c.time}<br><strong>€ ${c.price} / seizoen</strong></div><form onsubmit="submitReg(event,'${c.id}')"><div class="formgrid">
+<div><label>Voornaam leerling</label><input id="first" required></div><div><label>Naam leerling</label><input id="last" required></div>
+<div><label>Geboortedatum</label><input id="birth" type="date" required></div><div><label>Geslacht</label><select id="gender"><option>Meisje</option><option>Jongen</option><option>Anders</option></select></div>
+<div><label>Voornaam ouder</label><input id="pf" required></div><div><label>Naam ouder</label><input id="pl" required></div>
+<div><label>E-mail</label><input id="email" type="email" required></div><div><label>Telefoon</label><input id="phone" required></div>
+<div class="full"><label>Opmerking</label><input id="note"></div>
+<div class="full"><label style="text-transform:none"><input id="terms" type="checkbox" required style="width:auto;margin-right:7px">Ik ga akkoord met de algemene voorwaarden.</label></div></div>
+<div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">Annuleren</button><button class="btn primary">INSCHRIJVING AFRONDEN</button></div></form>`}
+async function submitReg(e,id){e.preventDefault();const payload={courseId:id,student:{first:$("first").value,last:$("last").value,birthDate:$("birth").value,gender:$("gender").value},parent:{first:$("pf").value,last:$("pl").value,email:$("email").value,phone:$("phone").value},note:$("note").value};try{const r=await api("/registrations",{method:"POST",body:JSON.stringify(payload)});$("modalBody").innerHTML=`<div class="success"><div class="check">✓</div><div class="eyebrow">Inschrijving ontvangen</div><h2>Welkom bij Ntertainment!</h2><p>Referentie <strong>${r.reference}</strong></p><div class="summary">${r.courseName}<br>${r.day} · ${r.time}<br>${r.location}</div><p style="color:#777">Betaling is nog niet gekoppeld. Dat kan in de volgende stap via Mollie.</p><button class="btn primary" onclick="closeModal()">KLAAR</button></div>`;load()}catch(err){alert("Inschrijving kon niet worden opgeslagen: "+err.message)}}
+function closeModal(){$("modal").classList.remove("open")}
+load();
+</script>
+</body>
+</html>
