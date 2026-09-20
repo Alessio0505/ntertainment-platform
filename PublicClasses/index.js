@@ -19,6 +19,16 @@ module.exports = async function (context, req) {
 
     try {
 
+        // Check environment variables
+        if (
+            !process.env.SQL_SERVER ||
+            !process.env.SQL_DATABASE ||
+            !process.env.SQL_USER ||
+            !process.env.SQL_PASSWORD
+        ) {
+            throw new Error("SQL environment variables ontbreken.");
+        }
+
         const config = {
             server: process.env.SQL_SERVER,
             database: process.env.SQL_DATABASE,
@@ -30,7 +40,11 @@ module.exports = async function (context, req) {
             }
         };
 
+        context.log("Connecting to SQL...");
+
         const pool = await sql.connect(config);
+
+        context.log("Connected to SQL.");
 
         const result = await pool.request().query(`
             SELECT
@@ -40,8 +54,8 @@ module.exports = async function (context, req) {
                 AgeGroup,
                 Level,
                 DayOfWeek,
-                StartTime,
-                EndTime,
+                CONVERT(varchar(8), StartTime, 108) AS StartTime,
+                CONVERT(varchar(8), EndTime, 108) AS EndTime,
                 Capacity,
                 Price,
                 TrialAvailable,
@@ -53,6 +67,8 @@ module.exports = async function (context, req) {
                 DayOfWeek,
                 StartTime
         `);
+
+        context.log(`Found ${result.recordset.length} active classes.`);
 
         context.res = {
             status: 200,
@@ -74,8 +90,8 @@ module.exports = async function (context, req) {
                 "Content-Type": "application/json"
             },
             body: {
-                error: "Er ging iets mis bij het ophalen van de lessen.",
-                details: error.message
+                success: false,
+                error: error.message
             }
         };
     }
