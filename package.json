@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {},
   "dependencies": {
+    "@azure/functions": "^4.8.0",
     "mssql": "^11.0.1"
   }
 }
