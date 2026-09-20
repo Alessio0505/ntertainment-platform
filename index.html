@@ -1044,140 +1044,134 @@ a{
    DATA
 ========================================================= */
 
-const API_URL = "JOUW_GETCLASSES_URL";
-  
-  const lessons = [
+const API_URL = "const API_URL = "https://ntertainment-api-cpbeczgvg5cacjf0.belgiumcentral-01.azurewebsites.net/api/PublicClasses";
 
-  {
-    id:1,
-    title:"Hip Hop Kids 6+",
-    category:"Kids",
-    age:"kids",
-    style:"Hip Hop",
-    day:"Dinsdag",
-    time:"18:00 – 19:00",
-    location:"Kattevennen",
-    teacher:"Chayenne",
-    capacity:20,
-    enrolled:17,
-    trial:true,
-    price:320
-  },
+let lessons = [];
 
-  {
-    id:2,
-    title:"Hip Hop Kids 8+",
-    category:"Kids",
-    age:"kids",
-    style:"Hip Hop",
-    day:"Woensdag",
-    time:"18:00 – 19:00",
-    location:"Kattevennen",
-    teacher:"Jennifer",
-    capacity:20,
-    enrolled:20,
-    trial:true,
-    price:320
-  },
 
-  {
-    id:3,
-    title:"Hip Hop 11+",
-    category:"Teens",
-    age:"teens",
-    style:"Hip Hop",
-    day:"Woensdag",
-    time:"19:00 – 20:00",
-    location:"Kattevennen",
-    teacher:"Chayenne",
-    capacity:20,
-    enrolled:18,
-    trial:true,
-    price:320
-  },
+/* =========================================================
+   API DATA
+========================================================= */
 
-  {
-    id:4,
-    title:"Dancehall / Ragga 10+",
-    category:"Teens",
-    age:"teens",
-    style:"Dancehall / Ragga",
-    day:"Maandag",
-    time:"18:00 – 19:00",
-    location:"Kattevennen",
-    teacher:"Daimy",
-    capacity:20,
-    enrolled:15,
-    trial:true,
-    price:320
-  },
+function formatApiTime(value) {
 
-  {
-    id:5,
-    title:"Dancehall / Ragga 18+",
-    category:"Adults",
-    age:"adults",
-    style:"Dancehall / Ragga",
-    day:"Maandag",
-    time:"19:00 – 20:00",
-    location:"Kattevennen",
-    teacher:"Daimy",
-    capacity:20,
-    enrolled:20,
-    trial:true,
-    price:320
-  },
+  const match = String(value).match(/T(\d{2}:\d{2})/);
 
-  {
-    id:6,
-    title:"Heels",
-    category:"Adults",
-    age:"adults",
-    style:"Heels",
-    day:"Maandag",
-    time:"20:00 – 21:00",
-    location:"Opglabbeek",
-    teacher:"Maite",
-    capacity:15,
-    enrolled:11,
-    trial:true,
-    price:320
-  },
+  return match
+    ? match[1]
+    : String(value).slice(0, 5);
 
-  {
-    id:7,
-    title:"Jazz / Modern Kids",
-    category:"Kids",
-    age:"kids",
-    style:"Jazz / Modern",
-    day:"Donderdag",
-    time:"18:00 – 19:00",
-    location:"Genk",
-    teacher:"Birte",
-    capacity:20,
-    enrolled:13,
-    trial:true,
-    price:320
-  },
+}
 
-  {
-    id:8,
-    title:"Hip Hop Fusion",
-    category:"Adults",
-    age:"adults",
-    style:"Hip Hop Fusion",
-    day:"Donderdag",
-    time:"20:00 – 21:00",
-    location:"Genk",
-    teacher:"Chiara",
-    capacity:20,
-    enrolled:16,
-    trial:true,
-    price:320
+
+function getDayName(dayNumber) {
+
+  const days = {
+    1: "Maandag",
+    2: "Dinsdag",
+    3: "Woensdag",
+    4: "Donderdag",
+    5: "Vrijdag",
+    6: "Zaterdag",
+    7: "Zondag"
+  };
+
+  return days[dayNumber] || "";
+
+}
+
+
+function mapApiLesson(item) {
+
+  return {
+
+    id: item.ClassId,
+
+    title: item.Name,
+
+    category: item.Level,
+
+    age: item.AgeGroup,
+
+    style: item.Style,
+
+    day: getDayName(item.DayOfWeek),
+
+    time:
+      formatApiTime(item.StartTime) +
+      " – " +
+      formatApiTime(item.EndTime),
+
+    location: item.Location,
+
+    teacher: "",
+
+    capacity: Number(item.Capacity),
+
+    enrolled: 0,
+
+    trial: Boolean(item.TrialAvailable),
+
+    price: Number(item.Price)
+
+  };
+
+}
+
+
+/* =========================================================
+   LOAD LESSONS FROM AZURE
+========================================================= */
+
+async function loadLessons() {
+
+  try {
+
+    const response = await fetch(API_URL);
+
+    if (!response.ok) {
+
+      throw new Error(
+        "API gaf status " + response.status
+      );
+
+    }
+
+    const data = await response.json();
+
+    lessons = data.map(mapApiLesson);
+
+    loadLessons();
+
+  } catch (error) {
+
+    console.error(
+      "Fout bij ophalen lessen:",
+      error
+    );
+
+    const grid =
+      document.getElementById("lessonGrid");
+
+    grid.innerHTML = `
+
+      <div class="empty-state">
+
+        <strong>
+          De lessen konden niet worden geladen.
+        </strong>
+
+        <br>
+
+        Controleer de verbinding met de Ntertainment API.
+
+      </div>
+
+    `;
+
   }
 
-];
-
+}
 
 /* =========================================================
    STATE
