@@ -34,18 +34,19 @@ module.exports = async function (context, req) {
 
         const result = await pool.request().query(`
             SELECT
-                LessonId,
+                ClassId,
                 Name,
-                Category,
+                Style,
+                AgeGroup,
+                Level,
                 DayOfWeek,
                 StartTime,
                 EndTime,
-                AgeMin,
-                AgeMax,
-                Location,
-                Teacher,
                 Capacity,
-                Enrolled
+                Price,
+                TrialAvailable,
+                RegistrationOpen,
+                IsActive
             FROM dbo.Classes
             WHERE IsActive = 1
             ORDER BY
@@ -69,10 +70,12 @@ module.exports = async function (context, req) {
         context.res = {
             status: 500,
             headers: {
-                "Access-Control-Allow-Origin": "*"
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json"
             },
             body: {
-                error: "Er ging iets mis bij het ophalen van de lessen."
+                error: "Er ging iets mis bij het ophalen van de lessen.",
+                details: error.message
             }
         };
     }
