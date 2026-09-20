@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -767,284 +768,326 @@ a{
   }
 }
 </style>
+
 </head>
 
 <body>
 
 <!-- HEADER -->
+
 <header class="header">
   <div class="header-inner">
 
-    <a class="logo" href="#">
-      <div class="logo-mark">N</div>
-      <div class="logo-text">
-        NTERTAINMENT
-        <span>DANCE SCHOOL</span>
-      </div>
-    </a>
+```
+<a class="logo" href="#">
+  <div class="logo-mark">N</div>
+  <div class="logo-text">
+    NTERTAINMENT
+    <span>DANCE SCHOOL</span>
+  </div>
+</a>
 
-    <nav class="nav">
-      <a href="#lessons">Dansaanbod</a>
-      <a href="#calendar" onclick="showCalendar()">Mijn kalender</a>
-      <a href="#dashboard" onclick="showDashboard()">Mijn account</a>
-    </nav>
+<nav class="nav">
+  <a href="#lessons">Dansaanbod</a>
+  <a href="#calendar" onclick="showCalendar()">Mijn kalender</a>
+  <a href="#dashboard" onclick="showDashboard()">Mijn account</a>
+</nav>
 
-    <div class="header-actions">
-      <button class="btn btn-outline btn-small" onclick="openLogin()">
-        Aanmelden
-      </button>
-      <button class="btn btn-primary btn-small" onclick="openRegister()">
-        Registreren
-      </button>
-    </div>
+<div class="header-actions">
+  <button class="btn btn-outline btn-small" onclick="openLogin()">
+    Aanmelden
+  </button>
+
+  <button class="btn btn-primary btn-small" onclick="openRegister()">
+    Registreren
+  </button>
+</div>
+```
 
   </div>
 </header>
 
-
 <!-- HERO -->
+
 <section class="hero">
   <div class="hero-inner">
 
-    <div class="eyebrow">
-      Dansseizoen 2026 — 2027
-    </div>
+```
+<div class="eyebrow">
+  Dansseizoen 2026 — 2027
+</div>
 
-    <h1>
-      Dans.<br>
-      Beleef.<br>
-      Groei.
-    </h1>
+<h1>
+  Dans.<br>
+  Beleef.<br>
+  Groei.
+</h1>
 
-    <p>
-      Welkom bij Ntertainment Dance School.
-      Bekijk ons dansaanbod, vraag een gratis proefles aan
-      of schrijf je definitief in voor het nieuwe dansseizoen.
-    </p>
+<p>
+  Welkom bij Ntertainment Dance School.
+  Bekijk ons dansaanbod, vraag een gratis proefles aan
+  of schrijf je definitief in voor het nieuwe dansseizoen.
+</p>
+```
 
   </div>
 </section>
 
-
 <!-- MAIN APP -->
+
 <main class="app">
 
   <!-- DASHBOARD -->
+
   <section id="dashboard" class="dashboard">
 
-    <div class="section-title">
-      <h2>Mijn Ntertainment</h2>
-      <p id="welcomeText">
-        Beheer hier je gezin, lessen en inschrijvingen.
-      </p>
-    </div>
+```
+<div class="section-title">
+  <h2>Mijn Ntertainment</h2>
 
-    <div class="stats">
+  <p id="welcomeText">
+    Beheer hier je gezin, lessen en inschrijvingen.
+  </p>
+</div>
 
-      <div class="stat">
-        <div class="stat-label">Gezinsleden</div>
-        <div class="stat-value" id="statChildren">1</div>
-      </div>
+<div class="stats">
 
-      <div class="stat">
-        <div class="stat-label">Actieve lessen</div>
-        <div class="stat-value" id="statLessons">0</div>
-      </div>
+  <div class="stat">
+    <div class="stat-label">Gezinsleden</div>
+    <div class="stat-value" id="statChildren">1</div>
+  </div>
 
-      <div class="stat">
-        <div class="stat-label">Aanwezigheid</div>
-        <div class="stat-value">—</div>
-      </div>
+  <div class="stat">
+    <div class="stat-label">Actieve lessen</div>
+    <div class="stat-value" id="statLessons">0</div>
+  </div>
 
-      <div class="stat">
-        <div class="stat-label">Betaling</div>
-        <div class="stat-value">—</div>
-      </div>
+  <div class="stat">
+    <div class="stat-label">Aanwezigheid</div>
+    <div class="stat-value">—</div>
+  </div>
 
-    </div>
+  <div class="stat">
+    <div class="stat-label">Betaling</div>
+    <div class="stat-value">—</div>
+  </div>
 
-    <div class="dashboard-grid">
+</div>
 
-      <div class="card">
+<div class="dashboard-grid">
 
-        <h3>Mijn gezin</h3>
+  <div class="card">
 
-        <div id="familyList"></div>
+    <h3>Mijn gezin</h3>
 
-        <button class="btn btn-secondary btn-small"
-                onclick="openAddChild()">
-          + Kind toevoegen
-        </button>
+    <div id="familyList"></div>
 
-      </div>
+    <button class="btn btn-secondary btn-small"
+            onclick="openAddChild()">
+      + Kind toevoegen
+    </button>
 
-      <div class="card">
+  </div>
 
-        <h3>Mijn account</h3>
+  <div class="card">
 
-        <p id="accountInfo" style="font-size:13px;line-height:1.7;"></p>
+    <h3>Mijn account</h3>
 
-        <button class="btn btn-outline btn-small"
-                onclick="logout()">
-          Afmelden
-        </button>
+    <p id="accountInfo" style="font-size:13px;line-height:1.7;"></p>
 
-      </div>
+    <button class="btn btn-outline btn-small"
+            onclick="logout()">
+      Afmelden
+    </button>
 
-    </div>
+  </div>
+
+</div>
+```
 
   </section>
-
 
   <!-- LESAANBOD -->
+
   <section id="lessons">
 
-    <div class="section-title">
-      <h2>Dansaanbod 2026–2027</h2>
-      <p>
-        Het dansseizoen start vanaf 7 september 2026.
-      </p>
-    </div>
+```
+<div class="section-title">
+  <h2>Dansaanbod 2026–2027</h2>
 
-    <div class="filters">
+  <p>
+    Het dansseizoen start vanaf 7 september 2026.
+  </p>
+</div>
 
-      <div class="field">
-        <label>Leeftijd</label>
-        <select id="ageFilter" onchange="renderLessons()">
-          <option value="">Alle leeftijden</option>
-          <option value="kleuters">Kleuters</option>
-          <option value="kids">Kids</option>
-          <option value="teens">Teens</option>
-          <option value="adults">Adults</option>
-        </select>
-      </div>
+<div class="filters">
 
-      <div class="field">
-        <label>Stijl</label>
-        <select id="styleFilter" onchange="renderLessons()">
-          <option value="">Alle stijlen</option>
-          <option value="Hip Hop">Hip Hop</option>
-          <option value="Dancehall / Ragga">Dancehall / Ragga</option>
-          <option value="Jazz / Modern">Jazz / Modern</option>
-          <option value="Heels">Heels</option>
-          <option value="Hip Hop Fusion">Hip Hop Fusion</option>
-        </select>
-      </div>
+  <div class="field">
+    <label>Leeftijd</label>
 
-      <div class="field">
-        <label>Locatie</label>
-        <select id="locationFilter" onchange="renderLessons()">
-          <option value="">Alle locaties</option>
-          <option value="Kattevennen">Kattevennen</option>
-          <option value="Opglabbeek">Opglabbeek</option>
-          <option value="Genk">Genk</option>
-        </select>
-      </div>
+    <select id="ageFilter" onchange="renderLessons()">
+      <option value="">Alle leeftijden</option>
+      <option value="kleuters">Kleuters</option>
+      <option value="kids">Kids</option>
+      <option value="teens">Teens</option>
+      <option value="adults">Adults</option>
+    </select>
+  </div>
 
-      <div class="field">
-        <label>Type</label>
-        <select id="typeFilter" onchange="renderLessons()">
-          <option value="">Alle lessen</option>
-          <option value="open">Open inschrijving</option>
-          <option value="trial">Proefles mogelijk</option>
-          <option value="wait">Wachtlijst</option>
-        </select>
-      </div>
+  <div class="field">
+    <label>Stijl</label>
 
-    </div>
+    <select id="styleFilter" onchange="renderLessons()">
+      <option value="">Alle stijlen</option>
+      <option value="Hip Hop">Hip Hop</option>
+      <option value="Dancehall / Ragga">Dancehall / Ragga</option>
+      <option value="Jazz / Modern">Jazz / Modern</option>
+      <option value="Heels">Heels</option>
+      <option value="Hip Hop Fusion">Hip Hop Fusion</option>
+    </select>
+  </div>
 
-    <div id="lessonGrid" class="lesson-grid"></div>
+  <div class="field">
+    <label>Locatie</label>
+
+    <select id="locationFilter" onchange="renderLessons()">
+      <option value="">Alle locaties</option>
+      <option value="Kattevennen">Kattevennen</option>
+      <option value="Opglabbeek">Opglabbeek</option>
+      <option value="Genk">Genk</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>Type</label>
+
+    <select id="typeFilter" onchange="renderLessons()">
+      <option value="">Alle lessen</option>
+      <option value="open">Open inschrijving</option>
+      <option value="trial">Proefles mogelijk</option>
+      <option value="wait">Wachtlijst</option>
+    </select>
+  </div>
+
+</div>
+
+<div id="lessonGrid" class="lesson-grid"></div>
+```
 
   </section>
 
-
   <!-- KALENDER -->
+
   <section id="calendar" class="calendar" style="margin-top:50px;">
 
-    <div class="calendar-header">
+```
+<div class="calendar-header">
 
-      <div class="section-title" style="margin:0;">
-        <h2>Mijn dansjaar</h2>
-        <p>Dansseizoen 2026–2027</p>
-      </div>
+  <div class="section-title" style="margin:0;">
+    <h2>Mijn dansjaar</h2>
+    <p>Dansseizoen 2026–2027</p>
+  </div>
 
-      <button class="btn btn-secondary btn-small"
-              onclick="showDashboard()">
-        ← Mijn account
-      </button>
+  <button class="btn btn-secondary btn-small"
+          onclick="showDashboard()">
+    ← Mijn account
+  </button>
 
-    </div>
+</div>
 
-    <div class="card">
+<div class="card">
 
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-        <strong>September 2026</strong>
-        <span style="font-size:12px;color:#777;">
-          Week 1–4
-        </span>
-      </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <strong>September 2026</strong>
 
-      <div id="calendarGrid" class="calendar-grid"></div>
+    <span style="font-size:12px;color:#777;">
+      Week 1–4
+    </span>
+  </div>
 
-    </div>
+  <div id="calendarGrid" class="calendar-grid"></div>
+
+</div>
+```
 
   </section>
 
 </main>
 
-
 <!-- FOOTER -->
+
 <footer class="footer">
+
   <div class="footer-inner">
 
-    <div>
-      <strong>NTERTAINMENT DANCE SCHOOL</strong>
-      <br><br>
-      <small>
-        Dance • Entertainment • Growth
-      </small>
-    </div>
+```
+<div>
+  <strong>NTERTAINMENT DANCE SCHOOL</strong>
 
-    <div>
-      <small>
-        Dansseizoen 2026–2027<br>
-        Oudsbergen • Genk
-      </small>
-    </div>
+  <br><br>
+
+  <small>
+    Dance • Entertainment • Growth
+  </small>
+</div>
+
+<div>
+
+  <small>
+    Dansseizoen 2026–2027<br>
+    Oudsbergen • Genk
+  </small>
+
+</div>
+```
 
   </div>
+
 </footer>
 
-
 <!-- MODAL -->
+
 <div id="modalBackdrop" class="modal-backdrop">
 
   <div class="modal">
 
-    <div class="modal-header">
-      <h3 id="modalTitle"></h3>
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
+```
+<div class="modal-header">
 
-    <div id="modalBody" class="modal-body"></div>
+  <h3 id="modalTitle"></h3>
 
-    <div id="modalFooter" class="modal-footer"></div>
+  <button class="close"
+          onclick="closeModal()">
+    ×
+  </button>
+
+</div>
+
+<div id="modalBody"
+     class="modal-body">
+</div>
+
+<div id="modalFooter"
+     class="modal-footer">
+</div>
+```
 
   </div>
 
 </div>
 
-
-<div id="toast" class="toast"></div>
-
+<div id="toast"
+     class="toast">
+</div>
 
 <script>
 
 /* =========================================================
-   DATA
+   AZURE API
 ========================================================= */
 
-const API_URL = "const API_URL = https://ntertainment-api-cpbeczgvg5cacjf0.belgiumcentral-01.azurewebsites.net/api/PublicClasses;
+const API_URL =
+  "https://ntertainment-api-cpbeczgvg5cacjf0.belgiumcentral-01.azurewebsites.net/api/PublicClasses";
 
 let lessons = [];
 
@@ -1055,11 +1098,16 @@ let lessons = [];
 
 function formatApiTime(value) {
 
-  const match = String(value).match(/T(\d{2}:\d{2})/);
+  if (!value) {
+    return "";
+  }
+
+  const match =
+    String(value).match(/T(\d{2}:\d{2})/);
 
   return match
     ? match[1]
-    : String(value).slice(0, 5);
+    : String(value).slice(0,5);
 
 }
 
@@ -1067,13 +1115,15 @@ function formatApiTime(value) {
 function getDayName(dayNumber) {
 
   const days = {
-    1: "Maandag",
-    2: "Dinsdag",
-    3: "Woensdag",
-    4: "Donderdag",
-    5: "Vrijdag",
-    6: "Zaterdag",
-    7: "Zondag"
+
+    1:"Maandag",
+    2:"Dinsdag",
+    3:"Woensdag",
+    4:"Donderdag",
+    5:"Vrijdag",
+    6:"Zaterdag",
+    7:"Zondag"
+
   };
 
   return days[dayNumber] || "";
@@ -1085,34 +1135,36 @@ function mapApiLesson(item) {
 
   return {
 
-    id: item.ClassId,
+    id:item.ClassId,
 
-    title: item.Name,
+    title:item.Name,
 
-    category: item.Level,
+    category:item.Level,
 
-    age: item.AgeGroup,
+    age:item.AgeGroup,
 
-    style: item.Style,
+    style:item.Style,
 
-    day: getDayName(item.DayOfWeek),
+    day:getDayName(item.DayOfWeek),
 
     time:
-      formatApiTime(item.StartTime) +
-      " – " +
+      formatApiTime(item.StartTime)
+      +
+      " – "
+      +
       formatApiTime(item.EndTime),
 
-    location: item.Location,
+    location:item.Location,
 
-    teacher: "",
+    teacher:item.Teacher || "",
 
-    capacity: Number(item.Capacity),
+    capacity:Number(item.Capacity || 0),
 
-    enrolled: 0,
+    enrolled:Number(item.Enrolled || 0),
 
-    trial: Boolean(item.TrialAvailable),
+    trial:Boolean(item.TrialAvailable),
 
-    price: Number(item.Price)
+    price:Number(item.Price || 0)
 
   };
 
@@ -1127,23 +1179,54 @@ async function loadLessons() {
 
   try {
 
-    const response = await fetch(API_URL);
+    console.log(
+      "Lessen ophalen uit Azure..."
+    );
+
+    const response =
+      await fetch(API_URL);
+
+    console.log(
+      "API status:",
+      response.status
+    );
 
     if (!response.ok) {
 
       throw new Error(
-        "API gaf status " + response.status
+        "API gaf status " +
+        response.status
       );
 
     }
 
-    const data = await response.json();
+    const data =
+      await response.json();
 
-    lessons = data.map(mapApiLesson);
+    console.log(
+      "API data:",
+      data
+    );
 
-    loadLessons();
+    if (!Array.isArray(data)) {
 
-  } catch (error) {
+      throw new Error(
+        "API gaf geen array terug."
+      );
+
+    }
+
+    lessons =
+      data.map(mapApiLesson);
+
+    console.log(
+      "Gemapte lessen:",
+      lessons
+    );
+
+    renderLessons();
+
+  } catch(error) {
 
     console.error(
       "Fout bij ophalen lessen:",
@@ -1151,19 +1234,30 @@ async function loadLessons() {
     );
 
     const grid =
-      document.getElementById("lessonGrid");
+      document.getElementById(
+        "lessonGrid"
+      );
 
     grid.innerHTML = `
 
-      <div class="empty-state">
+      <div class="card"
+           style="grid-column:1/-1;">
 
         <strong>
           De lessen konden niet worden geladen.
         </strong>
 
-        <br>
+        <br><br>
 
-        Controleer de verbinding met de Ntertainment API.
+        <span style="
+          font-size:12px;
+          color:#777;
+        ">
+
+          API fout:
+          ${error.message}
+
+        </span>
 
       </div>
 
@@ -1173,17 +1267,24 @@ async function loadLessons() {
 
 }
 
+
 /* =========================================================
    STATE
 ========================================================= */
 
-let users = JSON.parse(
-  localStorage.getItem("ntertainment_users") || "[]"
-);
+let users =
+  JSON.parse(
+    localStorage.getItem(
+      "ntertainment_users"
+    ) || "[]"
+  );
 
-let currentUser = JSON.parse(
-  localStorage.getItem("ntertainment_current_user") || "null"
-);
+let currentUser =
+  JSON.parse(
+    localStorage.getItem(
+      "ntertainment_current_user"
+    ) || "null"
+  );
 
 let selectedLesson = null;
 
@@ -1192,16 +1293,22 @@ let selectedLesson = null;
    INIT
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
 
-  renderLessons();
-  renderCalendar();
+    loadLessons();
 
-  if(currentUser){
-    showDashboard();
+    renderCalendar();
+
+    if(currentUser){
+
+      showDashboard();
+
+    }
+
   }
-
-});
+);
 
 
 /* =========================================================
@@ -1210,147 +1317,321 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function renderLessons(){
 
-  const grid = document.getElementById("lessonGrid");
+  const grid =
+    document.getElementById(
+      "lessonGrid"
+    );
 
-  const age = document.getElementById("ageFilter").value;
-  const style = document.getElementById("styleFilter").value;
-  const location = document.getElementById("locationFilter").value;
-  const type = document.getElementById("typeFilter").value;
+  if (!grid) {
+    return;
+  }
 
-  let filtered = lessons.filter(l => {
+  const age =
+    document.getElementById(
+      "ageFilter"
+    ).value;
 
-    if(age && l.age !== age) return false;
-    if(style && l.style !== style) return false;
-    if(location && l.location !== location) return false;
+  const style =
+    document.getElementById(
+      "styleFilter"
+    ).value;
 
-    if(type === "open" && l.enrolled >= l.capacity) return false;
-    if(type === "trial" && !l.trial) return false;
-    if(type === "wait" && l.enrolled < l.capacity) return false;
+  const location =
+    document.getElementById(
+      "locationFilter"
+    ).value;
 
-    return true;
+  const type =
+    document.getElementById(
+      "typeFilter"
+    ).value;
 
-  });
 
-  grid.innerHTML = filtered.map(l => {
+  let filtered =
+    lessons.filter(l => {
 
-    const percentage =
-      Math.min(100,(l.enrolled/l.capacity)*100);
+      if(age &&
+         l.age !== age){
 
-    const full =
-      l.enrolled >= l.capacity;
+        return false;
 
-    return `
+      }
 
-      <article class="lesson">
+      if(style &&
+         l.style !== style){
 
-        <div class="lesson-top">
+        return false;
 
-          <div class="lesson-category">
-            ${l.category}
-          </div>
+      }
 
-          <div class="lesson-title">
-            ${l.title}
-          </div>
+      if(location &&
+         l.location !== location){
 
-        </div>
+        return false;
 
-        <div class="lesson-body">
+      }
 
-          <div class="lesson-info">
+      if(type === "open" &&
+         l.enrolled >= l.capacity){
 
-            <div class="info-row">
-              <span>Dag</span>
-              <strong>${l.day}</strong>
-            </div>
+        return false;
 
-            <div class="info-row">
-              <span>Uur</span>
-              <strong>${l.time}</strong>
-            </div>
+      }
 
-            <div class="info-row">
-              <span>Locatie</span>
-              <strong>${l.location}</strong>
-            </div>
+      if(type === "trial" &&
+         !l.trial){
 
-            <div class="info-row">
-              <span>Docent</span>
-              <strong>${l.teacher}</strong>
-            </div>
+        return false;
 
-          </div>
+      }
 
-          <div class="capacity">
+      if(type === "wait" &&
+         l.enrolled < l.capacity){
 
-            <div class="capacity-head">
+        return false;
 
-              <span>Capaciteit</span>
+      }
 
-              <span>
-                ${l.enrolled} / ${l.capacity}
-              </span>
+      return true;
 
-            </div>
+    });
 
-            <div class="capacity-bar">
-              <div
-                class="capacity-fill"
-                style="width:${percentage}%">
-              </div>
-            </div>
 
-          </div>
+  if(filtered.length === 0){
 
-          <div style="margin-bottom:14px;">
+    grid.innerHTML = `
 
-            ${
-              full
+      <div class="card"
+           style="grid-column:1/-1;">
 
-              ? `<span class="status status-full">
-                   Vol
-                 </span>`
+        <strong>
+          Geen lessen gevonden.
+        </strong>
 
-              : `<span class="status status-open">
-                   ${l.capacity-l.enrolled} plaatsen vrij
-                 </span>`
-            }
+        <br><br>
 
-          </div>
+        <span style="
+          font-size:12px;
+          color:#777;
+        ">
 
-          <div class="lesson-actions">
+          Pas de filters aan
+          om andere lessen te bekijken.
 
-            ${
-              full
+        </span>
 
-              ? `<button
-                    class="btn btn-secondary btn-small"
-                    onclick="openWaitlist(${l.id})">
-                    Wachtlijst
-                 </button>`
-
-              : `<button
-                    class="btn btn-primary btn-small"
-                    onclick="openTrial(${l.id})">
-                    Gratis proefles
-                 </button>
-
-                 <button
-                    class="btn btn-secondary btn-small"
-                    onclick="openEnroll(${l.id})">
-                    Definitief inschrijven
-                 </button>`
-            }
-
-          </div>
-
-        </div>
-
-      </article>
+      </div>
 
     `;
 
-  }).join("");
+    return;
+
+  }
+
+
+  grid.innerHTML =
+
+    filtered.map(l => {
+
+      const percentage =
+        l.capacity > 0
+          ? Math.min(
+              100,
+              (l.enrolled /
+                l.capacity) * 100
+            )
+          : 0;
+
+      const full =
+        l.capacity > 0 &&
+        l.enrolled >= l.capacity;
+
+
+      return `
+
+        <article class="lesson">
+
+          <div class="lesson-top">
+
+            <div class="lesson-category">
+              ${l.category || ""}
+            </div>
+
+            <div class="lesson-title">
+              ${l.title || "Les"}
+            </div>
+
+          </div>
+
+
+          <div class="lesson-body">
+
+            <div class="lesson-info">
+
+              <div class="info-row">
+
+                <span>Dag</span>
+
+                <strong>
+                  ${l.day}
+                </strong>
+
+              </div>
+
+
+              <div class="info-row">
+
+                <span>Uur</span>
+
+                <strong>
+                  ${l.time}
+                </strong>
+
+              </div>
+
+
+              <div class="info-row">
+
+                <span>Locatie</span>
+
+                <strong>
+                  ${l.location || "-"}
+                </strong>
+
+              </div>
+
+
+              <div class="info-row">
+
+                <span>Docent</span>
+
+                <strong>
+                  ${l.teacher || "-"}
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="capacity">
+
+              <div class="capacity-head">
+
+                <span>
+                  Capaciteit
+                </span>
+
+                <span>
+                  ${l.enrolled} / ${l.capacity}
+                </span>
+
+              </div>
+
+
+              <div class="capacity-bar">
+
+                <div
+                  class="capacity-fill"
+                  style="
+                    width:${percentage}%;
+                  ">
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div style="margin-bottom:14px;">
+
+              ${
+                full
+
+                  ? `
+
+                    <span
+                      class="status status-full">
+
+                      Vol
+
+                    </span>
+
+                  `
+
+                  : `
+
+                    <span
+                      class="status status-open">
+
+                      ${
+                        l.capacity -
+                        l.enrolled
+                      }
+                      plaatsen vrij
+
+                    </span>
+
+                  `
+              }
+
+            </div>
+
+
+            <div class="lesson-actions">
+
+              ${
+                full
+
+                  ? `
+
+                    <button
+                      class="btn btn-secondary btn-small"
+                      onclick="
+                        openWaitlist(${l.id})
+                      ">
+
+                      Wachtlijst
+
+                    </button>
+
+                  `
+
+                  : `
+
+                    <button
+                      class="btn btn-primary btn-small"
+                      onclick="
+                        openTrial(${l.id})
+                      ">
+
+                      Gratis proefles
+
+                    </button>
+
+
+                    <button
+                      class="btn btn-secondary btn-small"
+                      onclick="
+                        openEnroll(${l.id})
+                      ">
+
+                      Definitief inschrijven
+
+                    </button>
+
+                  `
+              }
+
+            </div>
+
+          </div>
+
+        </article>
+
+      `;
+
+    }).join("");
 
 }
 
@@ -1362,32 +1643,45 @@ function renderLessons(){
 function openRegister(){
 
   openModal(
+
     "Account aanmaken",
 
     `
 
       <div class="choice-grid">
 
-        <div class="choice"
-             onclick="registerParent()">
+        <div
+          class="choice"
+          onclick="registerParent()">
 
-          <strong>👨‍👩‍👧 Ouder / gezin</strong>
+          <strong>
+            👨‍👩‍👧 Ouder / gezin
+          </strong>
 
           <span>
-            Maak een account aan voor jezelf
-            en beheer één of meerdere kinderen.
+
+            Maak een account aan
+            voor jezelf en beheer
+            één of meerdere kinderen.
+
           </span>
 
         </div>
 
-        <div class="choice"
-             onclick="registerDancer()">
 
-          <strong>🧑‍🎤 Danser 18+</strong>
+        <div
+          class="choice"
+          onclick="registerDancer()">
+
+          <strong>
+            🧑‍🎤 Danser 18+
+          </strong>
 
           <span>
-            Maak een persoonlijk account
-            voor jezelf.
+
+            Maak een persoonlijk
+            account voor jezelf.
+
           </span>
 
         </div>
@@ -1395,7 +1689,9 @@ function openRegister(){
       </div>
 
     `,
+
     ""
+
   );
 
 }
@@ -1428,41 +1724,76 @@ function registrationForm(role){
       <div class="form-grid">
 
         <div class="form-group">
-          <label>Voornaam</label>
+
+          <label>
+            Voornaam
+          </label>
+
           <input id="regFirst">
+
         </div>
+
 
         <div class="form-group">
-          <label>Achternaam</label>
+
+          <label>
+            Achternaam
+          </label>
+
           <input id="regLast">
+
         </div>
 
-        <div class="form-group full">
-          <label>E-mailadres</label>
-          <input id="regEmail" type="email">
-        </div>
 
         <div class="form-group full">
-          <label>Wachtwoord</label>
-          <input id="regPassword" type="password">
+
+          <label>
+            E-mailadres
+          </label>
+
+          <input
+            id="regEmail"
+            type="email">
+
+        </div>
+
+
+        <div class="form-group full">
+
+          <label>
+            Wachtwoord
+          </label>
+
+          <input
+            id="regPassword"
+            type="password">
+
         </div>
 
       </div>
 
     `,
 
+
     `
 
       <button
         class="btn btn-secondary"
         onclick="closeModal()">
+
         Annuleren
+
       </button>
+
 
       <button
         class="btn btn-primary"
-        onclick="createAccount('${role}')">
+        onclick="
+          createAccount('${role}')
+        ">
+
         Account aanmaken
+
       </button>
 
     `
@@ -1475,37 +1806,69 @@ function registrationForm(role){
 function createAccount(role){
 
   const first =
-    document.getElementById("regFirst").value.trim();
+    document
+      .getElementById("regFirst")
+      .value
+      .trim();
 
   const last =
-    document.getElementById("regLast").value.trim();
+    document
+      .getElementById("regLast")
+      .value
+      .trim();
 
   const email =
-    document.getElementById("regEmail").value.trim();
+    document
+      .getElementById("regEmail")
+      .value
+      .trim()
+      .toLowerCase();
 
   const password =
-    document.getElementById("regPassword").value;
+    document
+      .getElementById("regPassword")
+      .value;
 
-  if(!first || !last || !email || !password){
 
-    alert("Vul alle velden in.");
+  if(
+    !first ||
+    !last ||
+    !email ||
+    !password
+  ){
+
+    alert(
+      "Vul alle velden in."
+    );
+
     return;
 
   }
 
-  if(users.some(u => u.email === email)){
 
-    alert("Er bestaat al een account met dit e-mailadres.");
+  if(
+    users.some(
+      u => u.email === email
+    )
+  ){
+
+    alert(
+      "Er bestaat al een account met dit e-mailadres."
+    );
+
     return;
 
   }
+
 
   const user = {
 
     id:Date.now(),
 
     first,
+
     last,
+
     email,
 
     /*
@@ -1513,44 +1876,60 @@ function createAccount(role){
       In productie nooit wachtwoorden
       in localStorage bewaren.
     */
+
     password,
 
     role,
 
     children:
       role === "parent"
-      ? [{
-          id:Date.now()+1,
-          first:"Mijn kind",
-          last:"",
-          birthYear:"",
-          enrollments:[]
-        }]
-      : [],
+
+        ? [{
+
+            id:Date.now()+1,
+
+            first:"Mijn kind",
+
+            last:"",
+
+            birthYear:"",
+
+            enrollments:[]
+
+          }]
+
+        : [],
 
     enrollments:[]
 
   };
 
+
   users.push(user);
+
 
   localStorage.setItem(
     "ntertainment_users",
     JSON.stringify(users)
   );
 
+
   currentUser = user;
+
 
   localStorage.setItem(
     "ntertainment_current_user",
     JSON.stringify(currentUser)
   );
 
+
   closeModal();
 
   showDashboard();
 
-  showToast("Account succesvol aangemaakt.");
+  showToast(
+    "Account succesvol aangemaakt."
+  );
 
 }
 
@@ -1565,30 +1944,55 @@ function openLogin(){
 
     "Aanmelden",
 
+
     `
 
       <div class="form-group">
-        <label>E-mailadres</label>
-        <input id="loginEmail" type="email">
+
+        <label>
+          E-mailadres
+        </label>
+
+        <input
+          id="loginEmail"
+          type="email">
+
       </div>
+
 
       <div class="form-group">
-        <label>Wachtwoord</label>
-        <input id="loginPassword" type="password">
+
+        <label>
+          Wachtwoord
+        </label>
+
+        <input
+          id="loginPassword"
+          type="password">
+
       </div>
 
-      <p style="font-size:12px;color:#777;">
+
+      <p style="
+        font-size:12px;
+        color:#777;
+      ">
+
         Wachtwoord vergeten?
+
       </p>
 
     `,
+
 
     `
 
       <button
         class="btn btn-primary"
         onclick="login()">
+
         Aanmelden
+
       </button>
 
     `
@@ -1601,36 +2005,53 @@ function openLogin(){
 function login(){
 
   const email =
-    document.getElementById("loginEmail").value;
+    document
+      .getElementById("loginEmail")
+      .value
+      .trim()
+      .toLowerCase();
 
   const password =
-    document.getElementById("loginPassword").value;
+    document
+      .getElementById("loginPassword")
+      .value;
+
 
   const user =
     users.find(
-      u => u.email === email &&
-           u.password === password
+      u =>
+        u.email === email &&
+        u.password === password
     );
+
 
   if(!user){
 
-    alert("E-mailadres of wachtwoord is niet correct.");
+    alert(
+      "E-mailadres of wachtwoord is niet correct."
+    );
+
     return;
 
   }
 
+
   currentUser = user;
+
 
   localStorage.setItem(
     "ntertainment_current_user",
     JSON.stringify(user)
   );
 
+
   closeModal();
 
   showDashboard();
 
-  showToast("Welkom bij Ntertainment.");
+  showToast(
+    "Welkom bij Ntertainment."
+  );
 
 }
 
@@ -1639,15 +2060,20 @@ function logout(){
 
   currentUser = null;
 
+
   localStorage.removeItem(
     "ntertainment_current_user"
   );
+
 
   document
     .getElementById("dashboard")
     .classList.remove("active");
 
-  showToast("Je bent afgemeld.");
+
+  showToast(
+    "Je bent afgemeld."
+  );
 
 }
 
@@ -1661,13 +2087,16 @@ function showDashboard(){
   if(!currentUser){
 
     openLogin();
+
     return;
 
   }
 
+
   document
     .getElementById("dashboard")
     .classList.add("active");
+
 
   document
     .getElementById("dashboard")
@@ -1675,22 +2104,40 @@ function showDashboard(){
       behavior:"smooth"
     });
 
-  document.getElementById("welcomeText").innerText =
-    `Welkom ${currentUser.first}. Hier beheer je je Ntertainment-account.`;
 
-  document.getElementById("accountInfo").innerHTML =
+  document
+    .getElementById("welcomeText")
+    .innerText =
 
-    `<strong>${currentUser.first} ${currentUser.last}</strong><br>
-     ${currentUser.email}<br><br>
-     Accounttype:
-     ${currentUser.role === "parent"
-       ? "Ouder / gezin"
-       : "Danser 18+"}`;
+      `Welkom ${currentUser.first}. Hier beheer je je Ntertainment-account.`;
+
+
+  document
+    .getElementById("accountInfo")
+    .innerHTML =
+
+      `<strong>
+        ${currentUser.first}
+        ${currentUser.last}
+      </strong>
+      <br>
+      ${currentUser.email}
+      <br><br>
+      Accounttype:
+      ${
+        currentUser.role === "parent"
+          ? "Ouder / gezin"
+          : "Danser 18+"
+      }`;
+
 
   renderFamily();
 
-  document.getElementById("statLessons").innerText =
-    currentUser.enrollments.length;
+
+  document
+    .getElementById("statLessons")
+    .innerText =
+      currentUser.enrollments.length;
 
 }
 
@@ -1698,7 +2145,10 @@ function showDashboard(){
 function renderFamily(){
 
   const list =
-    document.getElementById("familyList");
+    document.getElementById(
+      "familyList"
+    );
+
 
   if(currentUser.role === "dancer"){
 
@@ -1707,62 +2157,95 @@ function renderFamily(){
       <div class="family-member">
 
         <div>
+
           <div class="family-name">
-            ${currentUser.first} ${currentUser.last}
+
+            ${currentUser.first}
+            ${currentUser.last}
+
           </div>
 
           <div class="family-meta">
+
             Eigen account • 18+
+
           </div>
+
         </div>
 
+
         <span class="status status-open">
+
           Danser
+
         </span>
 
       </div>
 
     `;
 
-    document.getElementById("statChildren").innerText = "—";
+
+    document
+      .getElementById("statChildren")
+      .innerText = "—";
+
 
     return;
 
   }
 
+
   list.innerHTML =
-    currentUser.children.map(child => `
 
-      <div class="family-member">
+    currentUser.children
+      .map(
+        child => `
 
-        <div>
+          <div class="family-member">
 
-          <div class="family-name">
-            ${child.first} ${child.last}
+            <div>
+
+              <div class="family-name">
+
+                ${child.first}
+                ${child.last}
+
+              </div>
+
+
+              <div class="family-meta">
+
+                ${
+                  child.birthYear
+
+                    ? "Geboortejaar " +
+                      child.birthYear
+
+                    : "Gegevens nog aanvullen"
+                }
+
+              </div>
+
+            </div>
+
+
+            <span class="status status-open">
+
+              Lid
+
+            </span>
+
           </div>
 
-          <div class="family-meta">
+        `
+      )
+      .join("");
 
-            ${
-              child.birthYear
-              ? "Geboortejaar " + child.birthYear
-              : "Gegevens nog aanvullen"
-            }
 
-          </div>
-
-        </div>
-
-        <span class="status status-open">
-          Lid
-        </span>
-
-      </div>
-
-    `).join("");
-
-  document.getElementById("statChildren").innerText =
-    currentUser.children.length;
+  document
+    .getElementById("statChildren")
+    .innerText =
+      currentUser.children.length;
 
 }
 
@@ -1777,35 +2260,58 @@ function openAddChild(){
 
     "Kind toevoegen",
 
+
     `
 
       <div class="form-grid">
 
         <div class="form-group">
-          <label>Voornaam</label>
+
+          <label>
+            Voornaam
+          </label>
+
           <input id="childFirst">
+
         </div>
+
 
         <div class="form-group">
-          <label>Achternaam</label>
+
+          <label>
+            Achternaam
+          </label>
+
           <input id="childLast">
+
         </div>
 
+
         <div class="form-group full">
-          <label>Geboortejaar</label>
-          <input id="childYear" type="number">
+
+          <label>
+            Geboortejaar
+          </label>
+
+          <input
+            id="childYear"
+            type="number">
+
         </div>
 
       </div>
 
     `,
 
+
     `
 
       <button
         class="btn btn-primary"
         onclick="addChild()">
+
         Kind toevoegen
+
       </button>
 
     `
@@ -1818,30 +2324,49 @@ function openAddChild(){
 function addChild(){
 
   const first =
-    document.getElementById("childFirst").value;
+    document
+      .getElementById("childFirst")
+      .value
+      .trim();
 
   const last =
-    document.getElementById("childLast").value;
+    document
+      .getElementById("childLast")
+      .value
+      .trim();
 
   const birthYear =
-    document.getElementById("childYear").value;
+    document
+      .getElementById("childYear")
+      .value
+      .trim();
+
 
   if(!first || !last){
 
-    alert("Vul voornaam en achternaam in.");
+    alert(
+      "Vul voornaam en achternaam in."
+    );
+
     return;
 
   }
 
+
   currentUser.children.push({
 
     id:Date.now(),
+
     first,
+
     last,
+
     birthYear,
+
     enrollments:[]
 
   });
+
 
   saveCurrentUser();
 
@@ -1849,7 +2374,9 @@ function addChild(){
 
   renderFamily();
 
-  showToast("Kind toegevoegd.");
+  showToast(
+    "Kind toegevoegd."
+  );
 
 }
 
@@ -1861,50 +2388,108 @@ function addChild(){
 function openTrial(id){
 
   const lesson =
-    lessons.find(l => l.id === id);
+    lessons.find(
+      l => l.id === id
+    );
+
+
+  if(!lesson){
+
+    alert(
+      "Les niet gevonden."
+    );
+
+    return;
+
+  }
+
 
   selectedLesson = lesson;
+
 
   openModal(
 
     "Gratis proefles",
 
+
     `
 
       <p>
+
         Je vraagt een gratis proefles aan voor:
+
       </p>
 
-      <div class="card" style="padding:15px;margin-bottom:15px;">
 
-        <strong>${lesson.title}</strong><br>
+      <div
+        class="card"
+        style="
+          padding:15px;
+          margin-bottom:15px;
+        ">
 
-        <span style="font-size:12px;color:#777;">
-          ${lesson.day} • ${lesson.time}<br>
-          ${lesson.location} • ${lesson.teacher}
+        <strong>
+          ${lesson.title}
+        </strong>
+
+        <br>
+
+        <span style="
+          font-size:12px;
+          color:#777;
+        ">
+
+          ${lesson.day}
+          •
+          ${lesson.time}
+
+          <br>
+
+          ${lesson.location}
+          •
+          ${lesson.teacher || "-"}
+
         </span>
 
       </div>
 
+
       <div class="form-group">
-        <label>Naam deelnemer</label>
-        <input id="trialName"
-               placeholder="Voornaam + achternaam">
+
+        <label>
+          Naam deelnemer
+        </label>
+
+        <input
+          id="trialName"
+          placeholder="Voornaam + achternaam">
+
       </div>
 
-      <p style="font-size:12px;color:#777;line-height:1.6;">
-        De proefles is gratis. Na de proefles kan je
-        beslissen of je definitief wil inschrijven.
+
+      <p style="
+        font-size:12px;
+        color:#777;
+        line-height:1.6;
+      ">
+
+        De proefles is gratis.
+        Na de proefles kan je beslissen
+        of je definitief wil inschrijven.
+
       </p>
 
     `,
+
 
     `
 
       <button
         class="btn btn-primary"
         onclick="confirmTrial()">
+
         Proefles aanvragen
+
       </button>
 
     `
@@ -1917,16 +2502,25 @@ function openTrial(id){
 function confirmTrial(){
 
   const name =
-    document.getElementById("trialName").value;
+    document
+      .getElementById("trialName")
+      .value
+      .trim();
+
 
   if(!name){
 
-    alert("Vul de naam van de deelnemer in.");
+    alert(
+      "Vul de naam van de deelnemer in."
+    );
+
     return;
 
   }
 
+
   closeModal();
+
 
   showToast(
     `Proefles aangevraagd voor ${name}.`
@@ -1944,77 +2538,155 @@ function openEnroll(id){
   if(!currentUser){
 
     openLogin();
+
     return;
 
   }
 
+
   const lesson =
-    lessons.find(l => l.id === id);
+    lessons.find(
+      l => l.id === id
+    );
+
+
+  if(!lesson){
+
+    alert(
+      "Les niet gevonden."
+    );
+
+    return;
+
+  }
+
 
   selectedLesson = lesson;
+
 
   openModal(
 
     "Definitief inschrijven",
 
+
     `
 
-      <div class="card"
-           style="padding:16px;margin-bottom:18px;">
+      <div
+        class="card"
+        style="
+          padding:16px;
+          margin-bottom:18px;
+        ">
 
-        <strong>${lesson.title}</strong>
+        <strong>
+          ${lesson.title}
+        </strong>
 
-        <div style="font-size:12px;color:#777;margin-top:5px;">
-          ${lesson.day} • ${lesson.time}<br>
-          ${lesson.location}<br>
-          Docent: ${lesson.teacher}
+
+        <div style="
+          font-size:12px;
+          color:#777;
+          margin-top:5px;
+        ">
+
+          ${lesson.day}
+          •
+          ${lesson.time}
+
+          <br>
+
+          ${lesson.location}
+
+          <br>
+
+          Docent:
+          ${lesson.teacher || "-"}
+
         </div>
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Wie wil je inschrijven?</label>
+        <label>
+          Wie wil je inschrijven?
+        </label>
+
 
         <select id="enrollPerson">
 
           ${
             currentUser.role === "parent"
 
-            ? currentUser.children.map(
-                child =>
-                `<option value="${child.id}">
-                   ${child.first} ${child.last}
-                 </option>`
-              ).join("")
+              ? currentUser.children
+                  .map(
+                    child => `
 
-            : `<option value="${currentUser.id}">
-                 ${currentUser.first} ${currentUser.last}
-               </option>`
+                      <option
+                        value="${child.id}">
+
+                        ${child.first}
+                        ${child.last}
+
+                      </option>
+
+                    `
+                  )
+                  .join("")
+
+              : `
+
+                <option
+                  value="${currentUser.id}">
+
+                  ${currentUser.first}
+                  ${currentUser.last}
+
+                </option>
+
+              `
           }
 
         </select>
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Betalingswijze</label>
+        <label>
+          Betalingswijze
+        </label>
+
 
         <select id="paymentPlan">
 
           <option value="year">
-            1x betalen — €${lesson.price}
+
+            1x betalen —
+            €${lesson.price}
+
           </option>
 
+
           <option value="semester">
-            2 semesters — €${Math.round(lesson.price/2)}
-            + €${Math.round(lesson.price/2)}
+
+            2 semesters —
+            €${Math.round(
+              lesson.price / 2
+            )}
+            +
+            €${Math.round(
+              lesson.price / 2
+            )}
+
           </option>
 
         </select>
 
       </div>
+
 
       <div style="
         background:#f7f4ef;
@@ -2024,22 +2696,29 @@ function openEnroll(id){
         line-height:1.7;
       ">
 
-        <strong>Let op</strong><br>
+        <strong>
+          Let op
+        </strong>
 
-        De definitieve inschrijving geldt voor het
-        dansseizoen 2026–2027.
+        <br>
+
+        De definitieve inschrijving geldt
+        voor het dansseizoen 2026–2027.
         Betaling kan eenmalig of in twee semesters.
 
       </div>
 
     `,
 
+
     `
 
       <button
         class="btn btn-primary"
         onclick="confirmEnrollment()">
+
         Inschrijving bevestigen
+
       </button>
 
     `
@@ -2051,11 +2730,24 @@ function openEnroll(id){
 
 function confirmEnrollment(){
 
+  if(!selectedLesson){
+
+    return;
+
+  }
+
+
   const person =
-    document.getElementById("enrollPerson").value;
+    document
+      .getElementById("enrollPerson")
+      .value;
+
 
   const plan =
-    document.getElementById("paymentPlan").value;
+    document
+      .getElementById("paymentPlan")
+      .value;
+
 
   currentUser.enrollments.push({
 
@@ -2071,13 +2763,17 @@ function confirmEnrollment(){
 
   });
 
+
   saveCurrentUser();
 
+
   selectedLesson.enrolled++;
+
 
   closeModal();
 
   showDashboard();
+
 
   showToast(
     "Definitieve inschrijving geregistreerd."
@@ -2093,29 +2789,61 @@ function confirmEnrollment(){
 function openWaitlist(id){
 
   const lesson =
-    lessons.find(l => l.id === id);
+    lessons.find(
+      l => l.id === id
+    );
+
+
+  if(!lesson){
+
+    alert(
+      "Les niet gevonden."
+    );
+
+    return;
+
+  }
+
 
   selectedLesson = lesson;
+
 
   openModal(
 
     "Wachtlijst",
 
+
     `
 
       <p>
-        <strong>${lesson.title}</strong> is momenteel vol.
+
+        <strong>
+          ${lesson.title}
+        </strong>
+
+        is momenteel vol.
+
       </p>
 
-      <p style="font-size:13px;line-height:1.7;color:#777;">
+
+      <p style="
+        font-size:13px;
+        line-height:1.7;
+        color:#777;
+      ">
+
         Je kan je op de wachtlijst plaatsen.
-        Wanneer er een plaats vrijkomt, kan Ntertainment
-        je contacteren.
+        Wanneer er een plaats vrijkomt,
+        kan Ntertainment je contacteren.
+
       </p>
+
 
       <div class="form-group">
 
-        <label>Naam deelnemer</label>
+        <label>
+          Naam deelnemer
+        </label>
 
         <input
           id="waitName"
@@ -2125,12 +2853,15 @@ function openWaitlist(id){
 
     `,
 
+
     `
 
       <button
         class="btn btn-primary"
         onclick="confirmWaitlist()">
+
         Op wachtlijst plaatsen
+
       </button>
 
     `
@@ -2143,16 +2874,25 @@ function openWaitlist(id){
 function confirmWaitlist(){
 
   const name =
-    document.getElementById("waitName").value;
+    document
+      .getElementById("waitName")
+      .value
+      .trim();
+
 
   if(!name){
 
-    alert("Vul de naam van de deelnemer in.");
+    alert(
+      "Vul de naam van de deelnemer in."
+    );
+
     return;
 
   }
 
+
   closeModal();
+
 
   showToast(
     `${name} staat op de wachtlijst voor ${selectedLesson.title}.`
@@ -2171,6 +2911,7 @@ function showCalendar(){
     .getElementById("calendar")
     .classList.add("active");
 
+
   document
     .getElementById("calendar")
     .scrollIntoView({
@@ -2183,9 +2924,13 @@ function showCalendar(){
 function renderCalendar(){
 
   const grid =
-    document.getElementById("calendarGrid");
+    document.getElementById(
+      "calendarGrid"
+    );
+
 
   const days = [
+
     ["MA","7"],
     ["DI","8"],
     ["WO","9"],
@@ -2193,45 +2938,74 @@ function renderCalendar(){
     ["VR","11"],
     ["ZA","12"],
     ["ZO","13"]
+
   ];
 
-  grid.innerHTML = days.map(day => `
 
-    <div class="day">
+  grid.innerHTML =
 
-      <div class="day-name">
-        ${day[0]}
-      </div>
+    days
+      .map(
+        day => `
 
-      <div class="day-date">
-        ${day[1]}
-      </div>
+          <div class="day">
 
-      ${
-        day[0] === "DI"
-        ? `
-          <div class="event">
-            <strong>Hip Hop Kids</strong>
-            18:00–19:00
+            <div class="day-name">
+              ${day[0]}
+            </div>
+
+
+            <div class="day-date">
+              ${day[1]}
+            </div>
+
+
+            ${
+              day[0] === "DI"
+
+                ? `
+
+                  <div class="event">
+
+                    <strong>
+                      Hip Hop Kids
+                    </strong>
+
+                    18:00–19:00
+
+                  </div>
+
+                `
+
+                : ""
+            }
+
+
+            ${
+              day[0] === "WO"
+
+                ? `
+
+                  <div class="event">
+
+                    <strong>
+                      Hip Hop 11+
+                    </strong>
+
+                    19:00–20:00
+
+                  </div>
+
+                `
+
+                : ""
+            }
+
           </div>
+
         `
-        : ""
-      }
-
-      ${
-        day[0] === "WO"
-        ? `
-          <div class="event">
-            <strong>Hip Hop 11+</strong>
-            19:00–20:00
-          </div>
-        `
-        : ""
-      }
-
-    </div>
-
-  `).join("");
+      )
+      .join("");
 
 }
 
@@ -2240,16 +3014,26 @@ function renderCalendar(){
    MODAL
 ========================================================= */
 
-function openModal(title,body,footer){
+function openModal(
+  title,
+  body,
+  footer
+){
 
-  document.getElementById("modalTitle").innerText =
-    title;
+  document
+    .getElementById("modalTitle")
+    .innerText = title;
 
-  document.getElementById("modalBody").innerHTML =
-    body;
 
-  document.getElementById("modalFooter").innerHTML =
-    footer;
+  document
+    .getElementById("modalBody")
+    .innerHTML = body;
+
+
+  document
+    .getElementById("modalFooter")
+    .innerHTML = footer;
+
 
   document
     .getElementById("modalBackdrop")
@@ -2262,7 +3046,8 @@ function closeModal(){
 
   document
     .getElementById("modalBackdrop")
-    .classList.remove("active");
+    .classList
+    .remove("active");
 
 }
 
@@ -2278,16 +3063,20 @@ function saveCurrentUser(){
       u => u.id === currentUser.id
     );
 
+
   if(index >= 0){
 
-    users[index] = currentUser;
+    users[index] =
+      currentUser;
 
   }
+
 
   localStorage.setItem(
     "ntertainment_users",
     JSON.stringify(users)
   );
+
 
   localStorage.setItem(
     "ntertainment_current_user",
@@ -2304,17 +3093,30 @@ function saveCurrentUser(){
 function showToast(message){
 
   const toast =
-    document.getElementById("toast");
+    document.getElementById(
+      "toast"
+    );
 
-  toast.innerText = message;
 
-  toast.classList.add("show");
+  toast.innerText =
+    message;
 
-  setTimeout(() => {
 
-    toast.classList.remove("show");
+  toast.classList.add(
+    "show"
+  );
 
-  },3500);
+
+  setTimeout(
+    () => {
+
+      toast.classList.remove(
+        "show"
+      );
+
+    },
+    3500
+  );
 
 }
 
