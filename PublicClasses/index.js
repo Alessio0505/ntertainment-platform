@@ -1,4 +1,5 @@
 const { app } = require("@azure/functions");
+const sql = require("mssql");
 
 app.http("PublicClasses", {
     methods: ["GET", "OPTIONS"],
@@ -8,7 +9,7 @@ app.http("PublicClasses", {
 
         context.log("Ntertainment API - GetClasses");
 
-        // OPTIONS / CORS
+        // CORS
         if (request.method === "OPTIONS") {
             return {
                 status: 204,
@@ -22,8 +23,6 @@ app.http("PublicClasses", {
 
         try {
 
-            const sql = require("mssql");
-
             const config = {
                 server: process.env.SQL_SERVER,
                 database: process.env.SQL_DATABASE,
@@ -35,7 +34,11 @@ app.http("PublicClasses", {
                 }
             };
 
+            context.log("Connecting to SQL...");
+
             const pool = await sql.connect(config);
+
+            context.log("SQL connected");
 
             const result = await pool.request().query(`
                 SELECT
@@ -54,10 +57,10 @@ app.http("PublicClasses", {
                     IsActive
                 FROM dbo.Classes
                 WHERE IsActive = 1
-                ORDER BY
-                    DayOfWeek,
-                    StartTime
+                ORDER BY DayOfWeek, StartTime
             `);
+
+            context.log(`Found ${result.recordset.length} classes`);
 
             return {
                 status: 200,
