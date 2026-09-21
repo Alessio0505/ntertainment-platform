@@ -1,0 +1,69 @@
+name: Deploy Ntertainment API
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '22.x'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build --if-present
+
+      - name: Create deployment package
+        run: |
+          zip -r ntertainment-api.zip . \
+            -x ".git/*" \
+            -x ".github/*"
+
+      - name: Upload deployment package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ntertainment-api
+          path: ntertainment-api.zip
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Download deployment package
+        uses: actions/download-artifact@v4
+        with:
+          name: ntertainment-api
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_408A8C5037BA4621BEB1683A2D51EB55 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_954B1622263140DFA99D21D5EE1940C3 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_7B65C45295FE4689A770350F05CDF7A7 }}
+
+      - name: Deploy to Azure Functions
+        uses: Azure/functions-action@v1
+        with:
+          app-name: ntertainment-api
+          slot-name: Production
+          package: ntertainment-api.zip
