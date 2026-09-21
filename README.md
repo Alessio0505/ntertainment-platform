@@ -15,3 +15,15 @@
 - Direct report/evaluation API access is also protected by team membership.
 - Evolution graphs use only actually stored TNT data from the same school year; missing TNT moments remain empty.
 - Existing V2.2 evaluation validation, overwrite confirmation, individual/team split and PDF design retained.
+
+## TNT V2.4
+- Mobile-first responsive layout for dashboard, evaluation, user management and reports.
+- TNT branding uses **Van talent naar topniveau**; “More than dance” removed from TNT UI/report.
+- Successful evaluation save redirects to Dashboard with a visible confirmation.
+- Hard database uniqueness: one evaluator + one dancer + one TNT period = one evaluation.
+- Existing evaluations are edited/overwritten only after confirmation.
+- Evolution charts render only real stored TNT measurements; no synthetic TNT 2 point.
+- TNT Evaluators can open/generate reports only for teams assigned to them; Admin can access all teams.
+- PDF/report styling aligned more closely with the beige/black/gold web application.
+
+Run `sql/tnt-v2.4-migration.sql` once before deploying V2.4.
