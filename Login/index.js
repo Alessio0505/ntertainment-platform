@@ -1,6 +1,7 @@
 const { app } = require("@azure/functions");
 const sql = require("mssql");
 const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
 
 app.http("Login", {
     methods: ["POST", "OPTIONS"],
@@ -187,6 +188,12 @@ app.http("Login", {
              * naar de frontend.
              */
 
+            const token = jwt.sign(
+                { userId: user.UserId, email: user.Email, role: user.Role, firstName: user.FirstName, lastName: user.LastName },
+                process.env.JWT_SECRET,
+                { expiresIn: "12h" }
+            );
+
             return {
                 status: 200,
                 headers: {
@@ -195,6 +202,7 @@ app.http("Login", {
                 },
                 jsonBody: {
                     success: true,
+                    token: token,
 
                     user: {
                         UserId: user.UserId,

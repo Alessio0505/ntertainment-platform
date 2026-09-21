@@ -2450,6 +2450,8 @@ async function createAccount(role){
       data.user
     ){
 
+      if(data.token){ localStorage.setItem("ntertainmentAuthToken", data.token); }
+
       currentUser = {
 
         id:data.user.UserId,
