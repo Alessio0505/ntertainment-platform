@@ -1,18 +1,17 @@
-# Ntertainment TNT V2.2
+# Ntertainment TNT V2.3
 
-## Deploy
-1. Run `sql/tnt-v2.2-migration.sql` once in Azure SQL.
-2. Copy the full contents of this package over the local GitHub repository.
-3. Commit and push; wait until both Azure deployments are green.
-4. Hard refresh `tnt.html` (Ctrl+F5).
+## Deploy order
+1. Run `sql/tnt-v2.3-migration.sql` once in Azure SQL.
+2. Copy the full V2.3 project over the local repository.
+3. Commit and push to GitHub.
+4. Wait until Azure deployments are green and hard-refresh `tnt.html`.
 
-## V2.2
-- Team access per TNT Evaluator; Admin always sees all teams.
-- User management saves role + team assignments.
-- All 11 scores, General evaluation and Growth plan are required.
-- Existing evaluation warning before opening and confirmation before overwrite.
-- Duplicate evaluator/dancer/period protection in API/database.
-- PDF/report Performance & Development split into Individual and Group-oriented parameters.
-- Dancer and team average are shown as two bars underneath each other.
-- New PDF page with TNT 1 -> TNT 2 line chart for each individual parameter.
-- Red/green scale legend remains below the 1-10 buttons; buttons themselves stay neutral/gold.
+## V2.3
+- Admin can create TNT Evaluators with one-time activation code.
+- Evaluator uses **Eerste keer aanmelden** to choose their own password.
+- Admin can generate a new activation/reset code.
+- Team access remains managed per evaluator.
+- TNT Evaluators can open/generate reports only for assigned teams; Admin can do all teams.
+- Direct report/evaluation API access is also protected by team membership.
+- Evolution graphs use only actually stored TNT data from the same school year; missing TNT moments remain empty.
+- Existing V2.2 evaluation validation, overwrite confirmation, individual/team split and PDF design retained.

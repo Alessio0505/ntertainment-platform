@@ -9,3 +9,4 @@ require("./TNTEvaluationDetail/index.js");
 
 require("./TNTMyEvaluation/index.js");
 require("./TNTUsers/index.js");
+require("./TNTActivate/index.js");
