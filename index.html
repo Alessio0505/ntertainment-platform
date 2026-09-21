@@ -1,16 +1,22 @@
-```html
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ntertainment Dance School — Mijn Ntertainment</title>
+
+<title>Mijn Ntertainment</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+>
 
 <style>
+
 :root{
   --black:#171717;
   --dark:#242424;
@@ -45,7 +51,9 @@ body{
   color:var(--text);
 }
 
-button,input,select{
+button,
+input,
+select{
   font:inherit;
 }
 
@@ -53,10 +61,16 @@ button{
   cursor:pointer;
 }
 
+button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
 a{
   color:inherit;
   text-decoration:none;
 }
+
 
 /* =========================
    HEADER
@@ -168,6 +182,7 @@ a{
   font-size:12px;
 }
 
+
 /* =========================
    HERO
 ========================= */
@@ -175,9 +190,12 @@ a{
 .hero{
   min-height:390px;
   background:
-    linear-gradient(90deg,rgba(20,20,20,.72),rgba(20,20,20,.22)),
-    url("https://static.wixstatic.com/media/") center/cover;
-  background-color:#555;
+    linear-gradient(
+      90deg,
+      rgba(20,20,20,.72),
+      rgba(20,20,20,.22)
+    ),
+    #555;
   color:white;
   display:flex;
   align-items:center;
@@ -214,6 +232,7 @@ a{
   opacity:.94;
 }
 
+
 /* =========================
    APP
 ========================= */
@@ -231,7 +250,6 @@ a{
 .section-title h2{
   margin:0 0 8px;
   font-size:28px;
-  letter-spacing:-.02em;
 }
 
 .section-title p{
@@ -240,12 +258,14 @@ a{
   font-size:14px;
 }
 
+
 /* =========================
    DASHBOARD
 ========================= */
 
 .dashboard{
   display:none;
+  margin-bottom:55px;
 }
 
 .dashboard.active{
@@ -291,7 +311,6 @@ a{
   border:1px solid var(--border);
   border-radius:var(--radius);
   padding:24px;
-  box-shadow:0 5px 20px rgba(0,0,0,.025);
 }
 
 .card h3{
@@ -318,6 +337,7 @@ a{
   font-size:12px;
   margin-top:5px;
 }
+
 
 /* =========================
    LESSONS
@@ -458,10 +478,13 @@ a{
   color:#954d45;
 }
 
-.status-wait{
-  background:#eee8dc;
-  color:#806c4c;
+.loading{
+  grid-column:1/-1;
+  text-align:center;
+  padding:45px;
+  color:var(--muted);
 }
+
 
 /* =========================
    CALENDAR
@@ -520,8 +543,9 @@ a{
   display:block;
 }
 
+
 /* =========================
-   MODALS
+   MODAL
 ========================= */
 
 .modal-backdrop{
@@ -545,7 +569,6 @@ a{
   width:min(560px,100%);
   max-height:90vh;
   overflow:auto;
-  box-shadow:0 30px 80px rgba(0,0,0,.2);
 }
 
 .modal-header{
@@ -637,6 +660,7 @@ a{
   color:var(--muted);
 }
 
+
 /* =========================
    TOAST
 ========================= */
@@ -662,6 +686,7 @@ a{
   opacity:1;
 }
 
+
 /* =========================
    FOOTER
 ========================= */
@@ -683,6 +708,7 @@ a{
 .footer small{
   color:#aaa;
 }
+
 
 /* =========================
    RESPONSIVE
@@ -709,6 +735,7 @@ a{
   .filters{
     grid-template-columns:repeat(2,1fr);
   }
+
 }
 
 @media(max-width:650px){
@@ -720,10 +747,6 @@ a{
 
   .header-actions .btn-outline{
     display:none;
-  }
-
-  .logo-text{
-    font-size:13px;
   }
 
   .hero{
@@ -766,45 +789,96 @@ a{
   .footer-inner{
     flex-direction:column;
   }
+
 }
+
 </style>
 
 </head>
 
 <body>
 
+
+<!-- HEADER -->
+
 <header class="header">
+
   <div class="header-inner">
 
     <a class="logo" href="#">
-      <div class="logo-mark">N</div>
+
+      <div class="logo-mark">
+        N
+      </div>
 
       <div class="logo-text">
+
         NTERTAINMENT
-        <span>DANCE SCHOOL</span>
+
+        <span>
+          DANCE SCHOOL
+        </span>
+
       </div>
+
     </a>
 
+
     <nav class="nav">
-      <a href="#lessons">Dansaanbod</a>
-      <a href="#calendar" onclick="showCalendar()">Mijn kalender</a>
-      <a href="#dashboard" onclick="showDashboard()">Mijn account</a>
+
+      <a href="#lessons">
+        Dansaanbod
+      </a>
+
+      <a
+        href="#calendar"
+        onclick="showCalendar()">
+
+        Mijn kalender
+
+      </a>
+
+      <a
+        href="#dashboard"
+        onclick="showDashboard()">
+
+        Mijn account
+
+      </a>
+
     </nav>
 
+
     <div class="header-actions">
-      <button class="btn btn-outline btn-small" onclick="openLogin()">
+
+      <button
+        class="btn btn-outline btn-small"
+        onclick="openLogin()">
+
         Aanmelden
+
       </button>
 
-      <button class="btn btn-primary btn-small" onclick="openRegister()">
+
+      <button
+        class="btn btn-primary btn-small"
+        onclick="openRegister()">
+
         Registreren
+
       </button>
+
     </div>
 
   </div>
+
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero">
+
   <div class="hero-inner">
 
     <div class="eyebrow">
@@ -812,80 +886,160 @@ a{
     </div>
 
     <h1>
+
       Dans.<br>
       Beleef.<br>
       Groei.
+
     </h1>
 
     <p>
+
       Welkom bij Ntertainment Dance School.
+
       Bekijk ons dansaanbod, vraag een gratis proefles aan
       of schrijf je definitief in voor het nieuwe dansseizoen.
+
     </p>
 
   </div>
+
 </section>
+
+
+<!-- MAIN -->
 
 <main class="app">
 
-  <section id="dashboard" class="dashboard">
+
+  <!-- DASHBOARD -->
+
+  <section
+    id="dashboard"
+    class="dashboard">
 
     <div class="section-title">
-      <h2>Mijn Ntertainment</h2>
+
+      <h2>
+        Mijn Ntertainment
+      </h2>
 
       <p id="welcomeText">
+
         Beheer hier je gezin, lessen en inschrijvingen.
+
       </p>
+
     </div>
+
 
     <div class="stats">
 
       <div class="stat">
-        <div class="stat-label">Gezinsleden</div>
-        <div class="stat-value" id="statChildren">1</div>
+
+        <div class="stat-label">
+          Gezinsleden
+        </div>
+
+        <div
+          class="stat-value"
+          id="statChildren">
+
+          0
+
+        </div>
+
       </div>
 
-      <div class="stat">
-        <div class="stat-label">Actieve lessen</div>
-        <div class="stat-value" id="statLessons">0</div>
-      </div>
 
       <div class="stat">
-        <div class="stat-label">Aanwezigheid</div>
-        <div class="stat-value">—</div>
+
+        <div class="stat-label">
+          Actieve lessen
+        </div>
+
+        <div
+          class="stat-value"
+          id="statLessons">
+
+          0
+
+        </div>
+
       </div>
 
+
       <div class="stat">
-        <div class="stat-label">Betaling</div>
-        <div class="stat-value">—</div>
+
+        <div class="stat-label">
+          Aanwezigheid
+        </div>
+
+        <div class="stat-value">
+          —
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-label">
+          Betaling
+        </div>
+
+        <div class="stat-value">
+          —
+        </div>
+
       </div>
 
     </div>
 
+
     <div class="dashboard-grid">
+
 
       <div class="card">
 
-        <h3>Mijn gezin</h3>
+        <h3>
+          Mijn gezin
+        </h3>
 
         <div id="familyList"></div>
 
-        <button class="btn btn-secondary btn-small"
-                onclick="openAddChild()">
+        <button
+          class="btn btn-secondary btn-small"
+          onclick="openAddChild()">
+
           + Kind toevoegen
+
         </button>
 
       </div>
 
+
       <div class="card">
 
-        <h3>Mijn account</h3>
+        <h3>
+          Mijn account
+        </h3>
 
-        <p id="accountInfo" style="font-size:13px;line-height:1.7;"></p>
+        <p
+          id="accountInfo"
+          style="
+            font-size:13px;
+            line-height:1.7;
+          ">
 
-        <button class="btn btn-outline btn-small"
-                onclick="logout()">
+        </p>
+
+        <button
+          class="btn btn-outline btn-small"
+          onclick="logout()">
+
           Afmelden
+
         </button>
 
       </div>
@@ -893,122 +1047,260 @@ a{
     </div>
 
   </section>
+
+
+  <!-- LESSONS -->
 
   <section id="lessons">
 
     <div class="section-title">
-      <h2>Dansaanbod 2026–2027</h2>
+
+      <h2>
+        Dansaanbod 2026–2027
+      </h2>
 
       <p>
         Het dansseizoen start vanaf 7 september 2026.
       </p>
+
     </div>
+
 
     <div class="filters">
 
-      <div class="field">
-        <label>Leeftijd</label>
 
-        <select id="ageFilter" onchange="renderLessons()">
-          <option value="">Alle leeftijden</option>
-          <option value="Kids">Kids</option>
-          <option value="Teens">Teens</option>
-          <option value="Adults">Adults</option>
+      <div class="field">
+
+        <label>
+          Leeftijd
+        </label>
+
+        <select
+          id="ageFilter"
+          onchange="renderLessons()">
+
+          <option value="">
+            Alle leeftijden
+          </option>
+
+          <option value="Kids">
+            Kids
+          </option>
+
+          <option value="Teens">
+            Teens
+          </option>
+
+          <option value="Adults">
+            Adults
+          </option>
+
         </select>
+
       </div>
 
-      <div class="field">
-        <label>Stijl</label>
 
-        <select id="styleFilter" onchange="renderLessons()">
-          <option value="">Alle stijlen</option>
-          <option value="Hip Hop">Hip Hop</option>
-          <option value="Dancehall / Ragga">Dancehall / Ragga</option>
-          <option value="Jazz / Modern">Jazz / Modern</option>
-          <option value="High Heels">High Heels</option>
-          <option value="Hip Hop Fusion">Hip Hop Fusion</option>
+      <div class="field">
+
+        <label>
+          Stijl
+        </label>
+
+        <select
+          id="styleFilter"
+          onchange="renderLessons()">
+
+          <option value="">
+            Alle stijlen
+          </option>
+
+          <option value="Hip Hop">
+            Hip Hop
+          </option>
+
+          <option value="Dancehall / Ragga">
+            Dancehall / Ragga
+          </option>
+
+          <option value="Jazz / Modern">
+            Jazz / Modern
+          </option>
+
+          <option value="High Heels">
+            High Heels
+          </option>
+
+          <option value="Hip Hop Fusion">
+            Hip Hop Fusion
+          </option>
+
         </select>
+
       </div>
 
-      <div class="field">
-        <label>Locatie</label>
 
-        <select id="locationFilter" onchange="renderLessons()">
-          <option value="">Alle locaties</option>
-          <option value="Ntertainment">Ntertainment</option>
+      <div class="field">
+
+        <label>
+          Locatie
+        </label>
+
+        <select
+          id="locationFilter"
+          onchange="renderLessons()">
+
+          <option value="">
+            Alle locaties
+          </option>
+
+          <option value="Ntertainment">
+            Ntertainment
+          </option>
+
         </select>
+
       </div>
 
-      <div class="field">
-        <label>Type</label>
 
-        <select id="typeFilter" onchange="renderLessons()">
-          <option value="">Alle lessen</option>
-          <option value="open">Open inschrijving</option>
-          <option value="trial">Proefles mogelijk</option>
-          <option value="wait">Wachtlijst</option>
+      <div class="field">
+
+        <label>
+          Type
+        </label>
+
+        <select
+          id="typeFilter"
+          onchange="renderLessons()">
+
+          <option value="">
+            Alle lessen
+          </option>
+
+          <option value="open">
+            Open inschrijving
+          </option>
+
+          <option value="trial">
+            Proefles mogelijk
+          </option>
+
         </select>
+
       </div>
 
     </div>
 
-    <div id="lessonGrid" class="lesson-grid"></div>
+
+    <div
+      id="lessonGrid"
+      class="lesson-grid">
+
+      <div class="loading">
+
+        Lessen worden geladen...
+
+      </div>
+
+    </div>
 
   </section>
 
-  <section id="calendar" class="calendar" style="margin-top:50px;">
+
+  <!-- CALENDAR -->
+
+  <section
+    id="calendar"
+    class="calendar"
+    style="margin-top:50px;">
 
     <div class="calendar-header">
 
-      <div class="section-title" style="margin:0;">
-        <h2>Mijn dansjaar</h2>
-        <p>Dansseizoen 2026–2027</p>
+      <div
+        class="section-title"
+        style="margin:0;">
+
+        <h2>
+          Mijn dansjaar
+        </h2>
+
+        <p>
+          Dansseizoen 2026–2027
+        </p>
+
       </div>
 
-      <button class="btn btn-secondary btn-small"
-              onclick="showDashboard()">
+
+      <button
+        class="btn btn-secondary btn-small"
+        onclick="showDashboard()">
+
         ← Mijn account
+
       </button>
 
     </div>
 
+
     <div class="card">
 
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-        <strong>September 2026</strong>
+      <div
+        style="
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          margin-bottom:20px;
+        ">
 
-        <span style="font-size:12px;color:#777;">
-          Week 1–4
-        </span>
+        <strong>
+          September 2026
+        </strong>
+
       </div>
 
-      <div id="calendarGrid" class="calendar-grid"></div>
+
+      <div
+        id="calendarGrid"
+        class="calendar-grid">
+
+      </div>
 
     </div>
 
   </section>
 
+
 </main>
+
+
+<!-- FOOTER -->
 
 <footer class="footer">
 
   <div class="footer-inner">
 
     <div>
-      <strong>NTERTAINMENT DANCE SCHOOL</strong>
+
+      <strong>
+        NTERTAINMENT DANCE SCHOOL
+      </strong>
 
       <br><br>
 
       <small>
         Dance • Entertainment • Growth
       </small>
+
     </div>
+
 
     <div>
 
       <small>
+
         Dansseizoen 2026–2027<br>
+
         Oudsbergen • Genk
+
       </small>
 
     </div>
@@ -1017,7 +1309,12 @@ a{
 
 </footer>
 
-<div id="modalBackdrop" class="modal-backdrop">
+
+<!-- MODAL -->
+
+<div
+  id="modalBackdrop"
+  class="modal-backdrop">
 
   <div class="modal">
 
@@ -1025,58 +1322,91 @@ a{
 
       <h3 id="modalTitle"></h3>
 
-      <button class="close"
-              onclick="closeModal()">
+      <button
+        class="close"
+        onclick="closeModal()">
+
         ×
+
       </button>
 
     </div>
 
-    <div id="modalBody"
-         class="modal-body">
+
+    <div
+      id="modalBody"
+      class="modal-body">
+
     </div>
 
-    <div id="modalFooter"
-         class="modal-footer">
+
+    <div
+      id="modalFooter"
+      class="modal-footer">
+
     </div>
 
   </div>
 
 </div>
 
-<div id="toast"
-     class="toast">
+
+<!-- TOAST -->
+
+<div
+  id="toast"
+  class="toast">
+
 </div>
+
 
 <script>
 
+
 /* =========================================================
-   AZURE API
+   API
 ========================================================= */
 
-const API_URL =
-  "https://ntertainment-api-cpbeczgvg5cacjf0.belgiumcentral-01.azurewebsites.net/api/PublicClasses";
+const API_BASE =
+  "https://ntertainment-api-cpbeczgvg5cacjf0.belgiumcentral-01.azurewebsites.net/api";
+
+
+const CLASSES_API =
+  API_BASE + "/PublicClasses";
+
+
+const REGISTER_API =
+  API_BASE + "/Register";
+
+
+const LOGIN_API =
+  API_BASE + "/Login";
+
 
 let lessons = [];
 
+let selectedLesson = null;
+
 
 /* =========================================================
-   API DATA
+   API HELPERS
 ========================================================= */
 
-function formatApiTime(value) {
+function formatApiTime(value){
 
-  if (!value) {
+  if(!value){
     return "";
   }
 
   return String(value).slice(0,5);
+
 }
 
 
-function getDayName(dayNumber) {
+function getDayName(dayNumber){
 
   const days = {
+
     1:"Maandag",
     2:"Dinsdag",
     3:"Woensdag",
@@ -1084,46 +1414,98 @@ function getDayName(dayNumber) {
     5:"Vrijdag",
     6:"Zaterdag",
     7:"Zondag"
+
   };
 
   return days[dayNumber] || "";
+
 }
 
 
-function mapApiLesson(item) {
+function getAgeCategory(ageGroup){
+
+  const value =
+    String(ageGroup || "")
+      .toLowerCase()
+      .trim();
+
+
+  if(value.includes("18+")){
+    return "Adults";
+  }
+
+
+  if(
+    value.includes("10–17") ||
+    value.includes("11–17") ||
+    value.includes("10-17") ||
+    value.includes("11-17")
+  ){
+
+    return "Teens";
+
+  }
+
+
+  if(
+    value.includes("6–") ||
+    value.includes("8–") ||
+    value.includes("6-") ||
+    value.includes("8-")
+  ){
+
+    return "Kids";
+
+  }
+
+
+  return "";
+
+}
+
+
+/* =========================================================
+   MAP API LESSON
+========================================================= */
+
+function mapApiLesson(item){
 
   return {
 
-    id: item.ClassId,
+    id:item.ClassId,
 
-    title: item.Name,
+    title:item.Name,
 
-    category: item.Level,
+    category:item.Level || "",
 
-    age: item.AgeGroup,
+    age:item.AgeGroup || "",
 
-    style: item.Style,
+    ageCategory:getAgeCategory(item.AgeGroup),
 
-    day: getDayName(item.DayOfWeek),
+    style:item.Style || "",
+
+    day:getDayName(item.DayOfWeek),
 
     time:
       formatApiTime(item.StartTime)
       + " – "
       + formatApiTime(item.EndTime),
 
-    location: "Ntertainment",
+    location:"Ntertainment",
 
-    teacher: "",
+    teacher:"",
 
-    capacity: Number(item.Capacity || 0),
+    capacity:Number(item.Capacity || 0),
 
-    enrolled: 0,
+    enrolled:0,
 
-    trial: Boolean(item.TrialAvailable),
+    trial:Boolean(item.TrialAvailable),
 
-    registrationOpen: Boolean(item.RegistrationOpen),
+    registrationOpen:Boolean(item.RegistrationOpen),
 
-    price: Number(item.Price || 0)
+    price:Number(item.Price || 0),
+
+    isActive:Boolean(item.IsActive)
 
   };
 
@@ -1131,24 +1513,33 @@ function mapApiLesson(item) {
 
 
 /* =========================================================
-   LOAD LESSONS FROM AZURE
+   LOAD LESSONS
 ========================================================= */
 
-async function loadLessons() {
+async function loadLessons(){
 
-  try {
+  const grid =
+    document.getElementById("lessonGrid");
 
-    console.log("Lessen ophalen uit Azure...");
+
+  try{
+
+    grid.innerHTML = `
+
+      <div class="loading">
+
+        Lessen worden geladen...
+
+      </div>
+
+    `;
+
 
     const response =
-      await fetch(API_URL);
+      await fetch(CLASSES_API);
 
-    console.log(
-      "API status:",
-      response.status
-    );
 
-    if (!response.ok) {
+    if(!response.ok){
 
       throw new Error(
         "API gaf status " +
@@ -1157,48 +1548,46 @@ async function loadLessons() {
 
     }
 
+
     const data =
       await response.json();
 
-    console.log(
-      "API data:",
-      data
-    );
 
-    if (!Array.isArray(data)) {
+    if(!Array.isArray(data)){
 
       throw new Error(
-        "API gaf geen array terug."
+        "API gaf geen lijst met lessen terug."
       );
 
     }
 
+
     lessons =
       data.map(mapApiLesson);
 
+
     console.log(
-      "Gemapte lessen:",
+      "Ntertainment lessen:",
       lessons
     );
 
+
     renderLessons();
 
-  } catch(error) {
+
+  }catch(error){
 
     console.error(
       "Fout bij ophalen lessen:",
       error
     );
 
-    const grid =
-      document.getElementById(
-        "lessonGrid"
-      );
 
     grid.innerHTML = `
 
-      <div class="card"
-           style="grid-column:1/-1;">
+      <div
+        class="card"
+        style="grid-column:1/-1;">
 
         <strong>
           De lessen konden niet worden geladen.
@@ -1206,13 +1595,14 @@ async function loadLessons() {
 
         <br><br>
 
-        <span style="
-          font-size:12px;
-          color:#777;
-        ">
+        <span
+          style="
+            font-size:12px;
+            color:#777;
+          ">
 
-          API fout:
-          ${error.message}
+          Controleer de verbinding met
+          de Ntertainment API.
 
         </span>
 
@@ -1226,15 +1616,24 @@ async function loadLessons() {
 
 
 /* =========================================================
-   STATE
+   ESCAPE
 ========================================================= */
 
-let users =
-  JSON.parse(
-    localStorage.getItem(
-      "ntertainment_users"
-    ) || "[]"
-  );
+function escapeHtml(value){
+
+  return String(value || "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================================
+   CURRENT USER
+========================================================= */
 
 let currentUser =
   JSON.parse(
@@ -1242,8 +1641,6 @@ let currentUser =
       "ntertainment_current_user"
     ) || "null"
   );
-
-let selectedLesson = null;
 
 
 /* =========================================================
@@ -1258,7 +1655,10 @@ document.addEventListener(
 
     renderCalendar();
 
+
     if(currentUser){
+
+      normalizeCurrentUser();
 
       showDashboard();
 
@@ -1269,7 +1669,34 @@ document.addEventListener(
 
 
 /* =========================================================
-   LESSONS
+   NORMALIZE USER
+========================================================= */
+
+function normalizeCurrentUser(){
+
+  if(!currentUser){
+    return;
+  }
+
+
+  if(!Array.isArray(currentUser.children)){
+
+    currentUser.children = [];
+
+  }
+
+
+  if(!Array.isArray(currentUser.enrollments)){
+
+    currentUser.enrollments = [];
+
+  }
+
+}
+
+
+/* =========================================================
+   LESSON RENDER
 ========================================================= */
 
 function renderLessons(){
@@ -1279,24 +1706,24 @@ function renderLessons(){
       "lessonGrid"
     );
 
-  if (!grid) {
-    return;
-  }
 
   const age =
     document.getElementById(
       "ageFilter"
     ).value;
 
+
   const style =
     document.getElementById(
       "styleFilter"
     ).value;
 
+
   const location =
     document.getElementById(
       "locationFilter"
     ).value;
+
 
   const type =
     document.getElementById(
@@ -1304,81 +1731,78 @@ function renderLessons(){
     ).value;
 
 
-  let filtered =
-    lessons.filter(l => {
+  const filtered =
+    lessons.filter(
+      lesson => {
 
-      if(
-        age &&
-        l.category !== age
-      ){
-        return false;
+
+        if(
+          age &&
+          lesson.ageCategory !== age
+        ){
+
+          return false;
+
+        }
+
+
+        if(
+          style &&
+          lesson.style !== style
+        ){
+
+          return false;
+
+        }
+
+
+        if(
+          location &&
+          lesson.location !== location
+        ){
+
+          return false;
+
+        }
+
+
+        if(
+          type === "open" &&
+          !lesson.registrationOpen
+        ){
+
+          return false;
+
+        }
+
+
+        if(
+          type === "trial" &&
+          !lesson.trial
+        ){
+
+          return false;
+
+        }
+
+
+        return true;
+
       }
-
-      if(
-        style &&
-        l.style !== style
-      ){
-        return false;
-      }
-
-      if(
-        location &&
-        l.location !== location
-      ){
-        return false;
-      }
-
-      if(
-        type === "open" &&
-        (
-          !l.registrationOpen ||
-          l.enrolled >= l.capacity
-        )
-      ){
-        return false;
-      }
-
-      if(
-        type === "trial" &&
-        !l.trial
-      ){
-        return false;
-      }
-
-      if(
-        type === "wait" &&
-        l.enrolled < l.capacity
-      ){
-        return false;
-      }
-
-      return true;
-
-    });
+    );
 
 
   if(filtered.length === 0){
 
     grid.innerHTML = `
 
-      <div class="card"
-           style="grid-column:1/-1;">
+      <div
+        class="card"
+        style="grid-column:1/-1;">
 
         <strong>
           Geen lessen gevonden.
         </strong>
-
-        <br><br>
-
-        <span style="
-          font-size:12px;
-          color:#777;
-        ">
-
-          Pas de filters aan
-          om andere lessen te bekijken.
-
-        </span>
 
       </div>
 
@@ -1390,186 +1814,251 @@ function renderLessons(){
 
 
   grid.innerHTML =
-
-    filtered.map(l => {
-
-      const percentage =
-        l.capacity > 0
-          ? Math.min(
-              100,
-              (l.enrolled /
-                l.capacity) * 100
-            )
-          : 0;
-
-      const full =
-        l.capacity > 0 &&
-        l.enrolled >= l.capacity;
-
-
-      return `
-
-        <article class="lesson">
-
-          <div class="lesson-top">
-
-            <div class="lesson-category">
-              ${l.category || ""}
-            </div>
-
-            <div class="lesson-title">
-              ${l.title || "Les"}
-            </div>
-
-          </div>
-
-          <div class="lesson-body">
-
-            <div class="lesson-info">
-
-              <div class="info-row">
-                <span>Dag</span>
-                <strong>${l.day}</strong>
-              </div>
-
-              <div class="info-row">
-                <span>Uur</span>
-                <strong>${l.time}</strong>
-              </div>
-
-              <div class="info-row">
-                <span>Locatie</span>
-                <strong>${l.location}</strong>
-              </div>
-
-              <div class="info-row">
-                <span>Prijs</span>
-                <strong>€${l.price}</strong>
-              </div>
-
-            </div>
-
-            <div class="capacity">
-
-              <div class="capacity-head">
-
-                <span>
-                  Capaciteit
-                </span>
-
-                <span>
-                  ${l.enrolled} / ${l.capacity}
-                </span>
-
-              </div>
-
-              <div class="capacity-bar">
-
-                <div
-                  class="capacity-fill"
-                  style="width:${percentage}%;">
-                </div>
-
-              </div>
-
-            </div>
-
-            <div style="margin-bottom:14px;">
-
-              ${
-                full
-
-                ? `
-
-                  <span class="status status-full">
-                    Vol
-                  </span>
-
-                `
-
-                : `
-
-                  <span class="status status-open">
-                    ${l.capacity - l.enrolled}
-                    plaatsen vrij
-                  </span>
-
-                `
-              }
-
-            </div>
-
-            <div class="lesson-actions">
-
-              ${
-                full
-
-                ? `
-
-                  <button
-                    class="btn btn-secondary btn-small"
-                    onclick="openWaitlist(${l.id})">
-
-                    Wachtlijst
-
-                  </button>
-
-                `
-
-                : `
-
-                  ${
-                    l.trial
-
-                    ? `
-
-                      <button
-                        class="btn btn-primary btn-small"
-                        onclick="openTrial(${l.id})">
-
-                        Gratis proefles
-
-                      </button>
-
-                    `
-                    : ""
-                  }
-
-                  ${
-                    l.registrationOpen
-
-                    ? `
-
-                      <button
-                        class="btn btn-secondary btn-small"
-                        onclick="openEnroll(${l.id})">
-
-                        Definitief inschrijven
-
-                      </button>
-
-                    `
-                    : ""
-                  }
-
-                `
-              }
-
-            </div>
-
-          </div>
-
-        </article>
-
-      `;
-
-    }).join("");
+    filtered
+      .map(renderLessonCard)
+      .join("");
 
 }
 
 
 /* =========================================================
-   REGISTRATION
+   LESSON CARD
+========================================================= */
+
+function renderLessonCard(lesson){
+
+  const percentage =
+    lesson.capacity > 0
+      ? Math.min(
+          100,
+          (lesson.enrolled /
+            lesson.capacity) * 100
+        )
+      : 0;
+
+
+  return `
+
+    <article class="lesson">
+
+
+      <div class="lesson-top">
+
+        <div class="lesson-category">
+
+          ${escapeHtml(
+            lesson.category
+          )}
+
+        </div>
+
+
+        <div class="lesson-title">
+
+          ${escapeHtml(
+            lesson.title
+          )}
+
+        </div>
+
+      </div>
+
+
+      <div class="lesson-body">
+
+
+        <div class="lesson-info">
+
+
+          <div class="info-row">
+
+            <span>
+              Dag
+            </span>
+
+            <strong>
+              ${escapeHtml(
+                lesson.day
+              )}
+            </strong>
+
+          </div>
+
+
+          <div class="info-row">
+
+            <span>
+              Uur
+            </span>
+
+            <strong>
+              ${escapeHtml(
+                lesson.time
+              )}
+            </strong>
+
+          </div>
+
+
+          <div class="info-row">
+
+            <span>
+              Leeftijd
+            </span>
+
+            <strong>
+              ${escapeHtml(
+                lesson.age
+              )}
+            </strong>
+
+          </div>
+
+
+          <div class="info-row">
+
+            <span>
+              Locatie
+            </span>
+
+            <strong>
+              ${escapeHtml(
+                lesson.location
+              )}
+            </strong>
+
+          </div>
+
+
+          <div class="info-row">
+
+            <span>
+              Prijs
+            </span>
+
+            <strong>
+              €${lesson.price}
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="capacity">
+
+          <div class="capacity-head">
+
+            <span>
+              Capaciteit
+            </span>
+
+            <span>
+
+              ${lesson.enrolled}
+              /
+              ${lesson.capacity}
+
+            </span>
+
+          </div>
+
+
+          <div class="capacity-bar">
+
+            <div
+              class="capacity-fill"
+              style="width:${percentage}%;">
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          style="
+            margin-bottom:14px;
+          ">
+
+          <span
+            class="status status-open">
+
+            ${lesson.capacity}
+            plaatsen
+
+          </span>
+
+        </div>
+
+
+        <div class="lesson-actions">
+
+
+          ${
+            lesson.trial
+
+            ? `
+
+              <button
+                class="btn btn-primary btn-small"
+                onclick="openTrial(${lesson.id})">
+
+                Gratis proefles
+
+              </button>
+
+            `
+
+            : ""
+
+          }
+
+
+          ${
+            lesson.registrationOpen
+
+            ? `
+
+              <button
+                class="btn btn-secondary btn-small"
+                onclick="openEnroll(${lesson.id})">
+
+                Definitief inschrijven
+
+              </button>
+
+            `
+
+            : `
+
+              <span
+                class="status status-full">
+
+                Inschrijving gesloten
+
+              </span>
+
+            `
+
+          }
+
+
+        </div>
+
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* =========================================================
+   REGISTER
 ========================================================= */
 
 function openRegister(){
@@ -1582,6 +2071,7 @@ function openRegister(){
 
       <div class="choice-grid">
 
+
         <div
           class="choice"
           onclick="registerParent()">
@@ -1591,12 +2081,14 @@ function openRegister(){
           </strong>
 
           <span>
-            Maak een account aan
-            voor jezelf en beheer
-            één of meerdere kinderen.
+
+            Account voor jezelf
+            en je kinderen.
+
           </span>
 
         </div>
+
 
         <div
           class="choice"
@@ -1607,11 +2099,14 @@ function openRegister(){
           </strong>
 
           <span>
-            Maak een persoonlijk
-            account voor jezelf.
+
+            Persoonlijk account
+            voor jezelf.
+
           </span>
 
         </div>
+
 
       </div>
 
@@ -1625,14 +2120,22 @@ function openRegister(){
 
 
 function registerParent(){
+
   registrationForm("parent");
+
 }
 
 
 function registerDancer(){
+
   registrationForm("dancer");
+
 }
 
+
+/* =========================================================
+   REGISTRATION FORM
+========================================================= */
 
 function registrationForm(role){
 
@@ -1646,15 +2149,19 @@ function registrationForm(role){
 
       <div class="form-grid">
 
+
         <div class="form-group">
 
           <label>
             Voornaam
           </label>
 
-          <input id="regFirst">
+          <input
+            id="regFirst"
+            autocomplete="given-name">
 
         </div>
+
 
         <div class="form-group">
 
@@ -1662,9 +2169,12 @@ function registrationForm(role){
             Achternaam
           </label>
 
-          <input id="regLast">
+          <input
+            id="regLast"
+            autocomplete="family-name">
 
         </div>
+
 
         <div class="form-group full">
 
@@ -1674,9 +2184,11 @@ function registrationForm(role){
 
           <input
             id="regEmail"
-            type="email">
+            type="email"
+            autocomplete="email">
 
         </div>
+
 
         <div class="form-group full">
 
@@ -1686,9 +2198,23 @@ function registrationForm(role){
 
           <input
             id="regPassword"
-            type="password">
+            type="password"
+            minlength="8"
+            autocomplete="new-password">
+
+          <div
+            style="
+              font-size:11px;
+              color:#777;
+              margin-top:6px;
+            ">
+
+            Minimaal 8 tekens.
+
+          </div>
 
         </div>
+
 
       </div>
 
@@ -1704,7 +2230,9 @@ function registrationForm(role){
 
       </button>
 
+
       <button
+        id="registerSubmitButton"
         class="btn btn-primary"
         onclick="createAccount('${role}')">
 
@@ -1719,19 +2247,38 @@ function registrationForm(role){
 }
 
 
-function createAccount(role){
+/* =========================================================
+   CREATE ACCOUNT
+========================================================= */
+
+async function createAccount(role){
 
   const first =
-    document.getElementById("regFirst").value.trim();
+    document
+      .getElementById("regFirst")
+      .value
+      .trim();
+
 
   const last =
-    document.getElementById("regLast").value.trim();
+    document
+      .getElementById("regLast")
+      .value
+      .trim();
+
 
   const email =
-    document.getElementById("regEmail").value.trim().toLowerCase();
+    document
+      .getElementById("regEmail")
+      .value
+      .trim()
+      .toLowerCase();
+
 
   const password =
-    document.getElementById("regPassword").value;
+    document
+      .getElementById("regPassword")
+      .value;
 
 
   if(
@@ -1741,21 +2288,8 @@ function createAccount(role){
     !password
   ){
 
-    alert("Vul alle velden in.");
-
-    return;
-
-  }
-
-
-  if(
-    users.some(
-      u => u.email === email
-    )
-  ){
-
     alert(
-      "Er bestaat al een account met dit e-mailadres."
+      "Vul alle velden in."
     );
 
     return;
@@ -1763,69 +2297,183 @@ function createAccount(role){
   }
 
 
-  const user = {
+  if(password.length < 8){
 
-    id:Date.now(),
+    alert(
+      "Wachtwoord moet minimaal 8 tekens bevatten."
+    );
 
-    first,
+    return;
 
-    last,
-
-    email,
-
-    password,
-
-    role,
-
-    children:
-      role === "parent"
-
-      ? [{
-
-          id:Date.now()+1,
-
-          first:"Mijn kind",
-
-          last:"",
-
-          birthYear:"",
-
-          enrollments:[]
-
-        }]
-
-      : [],
-
-    enrollments:[]
-
-  };
+  }
 
 
-  users.push(user);
+  const apiRole =
+    role === "parent"
+      ? "Parent"
+      : "Dancer";
 
 
-  localStorage.setItem(
-    "ntertainment_users",
-    JSON.stringify(users)
-  );
+  const button =
+    document.getElementById(
+      "registerSubmitButton"
+    );
 
 
-  currentUser = user;
+  try{
+
+    if(button){
+
+      button.disabled = true;
+
+      button.innerText =
+        "Account wordt aangemaakt...";
+
+    }
 
 
-  localStorage.setItem(
-    "ntertainment_current_user",
-    JSON.stringify(currentUser)
-  );
+    const response =
+      await fetch(
+        REGISTER_API,
+        {
+
+          method:"POST",
+
+          headers:{
+            "Content-Type":"application/json"
+          },
+
+          body:JSON.stringify({
+
+            first:first,
+            last:last,
+            email:email,
+            password:password,
+            role:apiRole
+
+          })
+
+        }
+      );
 
 
-  closeModal();
+    const data =
+      await response.json();
 
-  showDashboard();
 
-  showToast(
-    "Account succesvol aangemaakt."
-  );
+    console.log(
+      "Register API:",
+      response.status,
+      data
+    );
+
+
+    if(response.status === 409){
+
+      alert(
+        data.error ||
+        "Dit e-mailadres bestaat al."
+      );
+
+      return;
+
+    }
+
+
+    if(response.status === 400){
+
+      alert(
+        data.error ||
+        "Controleer de ingevulde gegevens."
+      );
+
+      return;
+
+    }
+
+
+    if(!response.ok){
+
+      throw new Error(
+        data.error ||
+        "Registreren mislukt."
+      );
+
+    }
+
+
+    if(
+      data.success &&
+      data.user
+    ){
+
+      currentUser = {
+
+        id:data.user.UserId,
+
+        first:data.user.FirstName,
+
+        last:data.user.LastName,
+
+        email:data.user.Email,
+
+        role:
+          data.user.Role === "Parent"
+            ? "parent"
+            : "dancer",
+
+        children:[],
+
+        enrollments:[]
+
+      };
+
+
+      localStorage.setItem(
+        "ntertainment_current_user",
+        JSON.stringify(currentUser)
+      );
+
+
+      closeModal();
+
+
+      showDashboard();
+
+
+      showToast(
+        "Account succesvol aangemaakt."
+      );
+
+    }
+
+
+  }catch(error){
+
+    console.error(
+      "Register error:",
+      error
+    );
+
+
+    alert(
+      "Er ging iets mis bij het registreren.\n\n" +
+      error.message
+    );
+
+
+  }finally{
+
+    if(button){
+
+      button.disabled = false;
+
+      button.innerText =
+        "Account aanmaken";
+
+    }
+
+  }
 
 }
 
@@ -1850,9 +2498,11 @@ function openLogin(){
 
         <input
           id="loginEmail"
-          type="email">
+          type="email"
+          autocomplete="email">
 
       </div>
+
 
       <div class="form-group">
 
@@ -1862,18 +2512,10 @@ function openLogin(){
 
         <input
           id="loginPassword"
-          type="password">
+          type="password"
+          autocomplete="current-password">
 
       </div>
-
-      <p style="
-        font-size:12px;
-        color:#777;
-      ">
-
-        Wachtwoord vergeten?
-
-      </p>
 
     `,
 
@@ -1894,31 +2536,30 @@ function openLogin(){
 }
 
 
-function login(){
+/* =========================================================
+   REAL LOGIN
+========================================================= */
+
+async function login(){
 
   const email =
-    document.getElementById("loginEmail")
+    document
+      .getElementById("loginEmail")
       .value
       .trim()
       .toLowerCase();
 
+
   const password =
-    document.getElementById("loginPassword")
+    document
+      .getElementById("loginPassword")
       .value;
 
 
-  const user =
-    users.find(
-      u =>
-        u.email === email &&
-        u.password === password
-    );
-
-
-  if(!user){
+  if(!email || !password){
 
     alert(
-      "E-mailadres of wachtwoord is niet correct."
+      "Vul je e-mailadres en wachtwoord in."
     );
 
     return;
@@ -1926,25 +2567,180 @@ function login(){
   }
 
 
-  currentUser = user;
+  const buttons =
+    document.querySelectorAll(
+      "#modalFooter button"
+    );
 
 
-  localStorage.setItem(
-    "ntertainment_current_user",
-    JSON.stringify(user)
-  );
+  try{
+
+    buttons.forEach(
+      button => {
+        button.disabled = true;
+      }
+    );
 
 
-  closeModal();
+    const response =
+      await fetch(
+        LOGIN_API,
+        {
 
-  showDashboard();
+          method:"POST",
 
-  showToast(
-    "Welkom bij Ntertainment."
-  );
+          headers:{
+            "Content-Type":"application/json"
+          },
+
+          body:JSON.stringify({
+
+            email:email,
+
+            password:password
+
+          })
+
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    console.log(
+      "Login API:",
+      response.status,
+      data
+    );
+
+
+    if(response.status === 401){
+
+      alert(
+        data.error ||
+        "E-mailadres of wachtwoord is niet correct."
+      );
+
+      return;
+
+    }
+
+
+    if(response.status === 403){
+
+      alert(
+        data.error ||
+        "Dit account is niet actief."
+      );
+
+      return;
+
+    }
+
+
+    if(response.status === 400){
+
+      alert(
+        data.error ||
+        "Vul alle gegevens correct in."
+      );
+
+      return;
+
+    }
+
+
+    if(!response.ok){
+
+      throw new Error(
+        data.error ||
+        "Aanmelden mislukt."
+      );
+
+    }
+
+
+    if(
+      data.success &&
+      data.user
+    ){
+
+      currentUser = {
+
+        id:data.user.UserId,
+
+        first:data.user.FirstName,
+
+        last:data.user.LastName,
+
+        email:data.user.Email,
+
+        role:
+          data.user.Role === "Parent"
+            ? "parent"
+            : "dancer",
+
+        children:[],
+
+        enrollments:[]
+
+      };
+
+
+      localStorage.setItem(
+        "ntertainment_current_user",
+        JSON.stringify(currentUser)
+      );
+
+
+      closeModal();
+
+
+      showDashboard();
+
+
+      showToast(
+        "Welkom terug, " +
+        currentUser.first +
+        "!"
+      );
+
+
+    }
+
+
+  }catch(error){
+
+    console.error(
+      "Login error:",
+      error
+    );
+
+
+    alert(
+      "Er ging iets mis bij het aanmelden.\n\n" +
+      error.message
+    );
+
+
+  }finally{
+
+    buttons.forEach(
+      button => {
+        button.disabled = false;
+      }
+    );
+
+  }
 
 }
 
+
+/* =========================================================
+   LOGOUT
+========================================================= */
 
 function logout(){
 
@@ -1958,7 +2754,8 @@ function logout(){
 
   document
     .getElementById("dashboard")
-    .classList.remove("active");
+    .classList
+    .remove("active");
 
 
   showToast(
@@ -1983,9 +2780,13 @@ function showDashboard(){
   }
 
 
+  normalizeCurrentUser();
+
+
   document
     .getElementById("dashboard")
-    .classList.add("active");
+    .classList
+    .add("active");
 
 
   document
@@ -2003,21 +2804,37 @@ function showDashboard(){
 
   document
     .getElementById("accountInfo")
-    .innerHTML =
+    .innerHTML = `
 
-      `<strong>
-        ${currentUser.first}
-        ${currentUser.last}
+      <strong>
+
+        ${escapeHtml(
+          currentUser.first
+        )}
+
+        ${escapeHtml(
+          currentUser.last
+        )}
+
       </strong>
+
       <br>
-      ${currentUser.email}
+
+      ${escapeHtml(
+        currentUser.email
+      )}
+
       <br><br>
+
       Accounttype:
+
       ${
         currentUser.role === "parent"
           ? "Ouder / gezin"
           : "Danser 18+"
-      }`;
+      }
+
+    `;
 
 
   renderFamily();
@@ -2031,6 +2848,10 @@ function showDashboard(){
 }
 
 
+/* =========================================================
+   FAMILY
+========================================================= */
+
 function renderFamily(){
 
   const list =
@@ -2039,7 +2860,12 @@ function renderFamily(){
     );
 
 
-  if(currentUser.role === "dancer"){
+  normalizeCurrentUser();
+
+
+  if(
+    currentUser.role === "dancer"
+  ){
 
     list.innerHTML = `
 
@@ -2048,18 +2874,32 @@ function renderFamily(){
         <div>
 
           <div class="family-name">
-            ${currentUser.first}
-            ${currentUser.last}
+
+            ${escapeHtml(
+              currentUser.first
+            )}
+
+            ${escapeHtml(
+              currentUser.last
+            )}
+
           </div>
 
+
           <div class="family-meta">
+
             Eigen account • 18+
+
           </div>
 
         </div>
 
-        <span class="status status-open">
+
+        <span
+          class="status status-open">
+
           Danser
+
         </span>
 
       </div>
@@ -2077,42 +2917,83 @@ function renderFamily(){
   }
 
 
-  list.innerHTML =
+  if(
+    currentUser.children.length === 0
+  ){
 
-    currentUser.children
-      .map(
-        child => `
+    list.innerHTML = `
 
-          <div class="family-member">
+      <div
+        style="
+          padding:15px;
+          background:#f7f4ef;
+          border-radius:12px;
+          font-size:12px;
+          color:#777;
+          margin-bottom:12px;
+        ">
 
-            <div>
+        Voeg een kind toe
+        om een inschrijving te starten.
 
-              <div class="family-name">
-                ${child.first}
-                ${child.last}
+      </div>
+
+    `;
+
+  }else{
+
+    list.innerHTML =
+      currentUser.children
+        .map(
+          child => `
+
+            <div class="family-member">
+
+              <div>
+
+                <div class="family-name">
+
+                  ${escapeHtml(
+                    child.first
+                  )}
+
+                  ${escapeHtml(
+                    child.last
+                  )}
+
+                </div>
+
+
+                <div class="family-meta">
+
+                  ${
+                    child.birthYear
+                      ? "Geboortejaar " +
+                        escapeHtml(
+                          child.birthYear
+                        )
+                      : "Gegevens nog aanvullen"
+                  }
+
+                </div>
+
               </div>
 
-              <div class="family-meta">
 
-                ${
-                  child.birthYear
-                    ? "Geboortejaar " + child.birthYear
-                    : "Gegevens nog aanvullen"
-                }
+              <span
+                class="status status-open">
 
-              </div>
+                Lid
+
+              </span>
 
             </div>
 
-            <span class="status status-open">
-              Lid
-            </span>
+          `
+        )
+        .join("");
 
-          </div>
-
-        `
-      )
-      .join("");
+  }
 
 
   document
@@ -2129,6 +3010,26 @@ function renderFamily(){
 
 function openAddChild(){
 
+  if(!currentUser){
+
+    openLogin();
+
+    return;
+
+  }
+
+
+  if(currentUser.role !== "parent"){
+
+    alert(
+      "Alleen een ouderaccount kan kinderen toevoegen."
+    );
+
+    return;
+
+  }
+
+
   openModal(
 
     "Kind toevoegen",
@@ -2136,6 +3037,7 @@ function openAddChild(){
     `
 
       <div class="form-grid">
+
 
         <div class="form-group">
 
@@ -2147,6 +3049,7 @@ function openAddChild(){
 
         </div>
 
+
         <div class="form-group">
 
           <label>
@@ -2157,6 +3060,7 @@ function openAddChild(){
 
         </div>
 
+
         <div class="form-group full">
 
           <label>
@@ -2165,9 +3069,12 @@ function openAddChild(){
 
           <input
             id="childYear"
-            type="number">
+            type="number"
+            min="2000"
+            max="2026">
 
         </div>
+
 
       </div>
 
@@ -2193,19 +3100,30 @@ function openAddChild(){
 function addChild(){
 
   const first =
-    document.getElementById("childFirst")
-      .value.trim();
+    document
+      .getElementById("childFirst")
+      .value
+      .trim();
+
 
   const last =
-    document.getElementById("childLast")
-      .value.trim();
+    document
+      .getElementById("childLast")
+      .value
+      .trim();
+
 
   const birthYear =
-    document.getElementById("childYear")
-      .value.trim();
+    document
+      .getElementById("childYear")
+      .value
+      .trim();
 
 
-  if(!first || !last){
+  if(
+    !first ||
+    !last
+  ){
 
     alert(
       "Vul voornaam en achternaam in."
@@ -2216,15 +3134,18 @@ function addChild(){
   }
 
 
+  normalizeCurrentUser();
+
+
   currentUser.children.push({
 
     id:Date.now(),
 
-    first,
+    first:first,
 
-    last,
+    last:last,
 
-    birthYear,
+    birthYear:birthYear,
 
     enrollments:[]
 
@@ -2233,9 +3154,12 @@ function addChild(){
 
   saveCurrentUser();
 
+
   closeModal();
 
+
   renderFamily();
+
 
   showToast(
     "Kind toegevoegd."
@@ -2245,14 +3169,14 @@ function addChild(){
 
 
 /* =========================================================
-   TRIAL LES
+   TRIAL
 ========================================================= */
 
 function openTrial(id){
 
   const lesson =
     lessons.find(
-      l => l.id === id
+      item => item.id === id
     );
 
 
@@ -2277,8 +3201,11 @@ function openTrial(id){
     `
 
       <p>
+
         Je vraagt een gratis proefles aan voor:
+
       </p>
+
 
       <div
         class="card"
@@ -2288,27 +3215,37 @@ function openTrial(id){
         ">
 
         <strong>
-          ${lesson.title}
+
+          ${escapeHtml(
+            lesson.title
+          )}
+
         </strong>
+
 
         <br>
 
-        <span style="
-          font-size:12px;
-          color:#777;
-        ">
 
-          ${lesson.day}
+        <span
+          style="
+            font-size:12px;
+            color:#777;
+          ">
+
+          ${escapeHtml(
+            lesson.day
+          )}
+
           •
-          ${lesson.time}
 
-          <br>
-
-          ${lesson.location}
+          ${escapeHtml(
+            lesson.time
+          )}
 
         </span>
 
       </div>
+
 
       <div class="form-group">
 
@@ -2321,18 +3258,6 @@ function openTrial(id){
           placeholder="Voornaam + achternaam">
 
       </div>
-
-      <p style="
-        font-size:12px;
-        color:#777;
-        line-height:1.6;
-      ">
-
-        De proefles is gratis.
-        Na de proefles kan je beslissen
-        of je definitief wil inschrijven.
-
-      </p>
 
     `,
 
@@ -2384,7 +3309,7 @@ function confirmTrial(){
 
 
 /* =========================================================
-   DEFINITIVE ENROLLMENT
+   ENROLLMENT
 ========================================================= */
 
 function openEnroll(id){
@@ -2398,9 +3323,12 @@ function openEnroll(id){
   }
 
 
+  normalizeCurrentUser();
+
+
   const lesson =
     lessons.find(
-      l => l.id === id
+      item => item.id === id
     );
 
 
@@ -2418,6 +3346,70 @@ function openEnroll(id){
   selectedLesson = lesson;
 
 
+  let people = "";
+
+
+  if(
+    currentUser.role === "parent"
+  ){
+
+    people =
+      currentUser.children
+        .map(
+          child => `
+
+            <option
+              value="${child.id}">
+
+              ${escapeHtml(
+                child.first
+              )}
+
+              ${escapeHtml(
+                child.last
+              )}
+
+            </option>
+
+          `
+        )
+        .join("");
+
+
+    if(!people){
+
+      people = `
+
+        <option value="">
+          Voeg eerst een kind toe
+        </option>
+
+      `;
+
+    }
+
+  }else{
+
+    people = `
+
+      <option
+        value="${currentUser.id}">
+
+        ${escapeHtml(
+          currentUser.first
+        )}
+
+        ${escapeHtml(
+          currentUser.last
+        )}
+
+      </option>
+
+    `;
+
+  }
+
+
   openModal(
 
     "Definitief inschrijven",
@@ -2432,26 +3424,35 @@ function openEnroll(id){
         ">
 
         <strong>
-          ${lesson.title}
+
+          ${escapeHtml(
+            lesson.title
+          )}
+
         </strong>
 
-        <div style="
-          font-size:12px;
-          color:#777;
-          margin-top:5px;
-        ">
 
-          ${lesson.day}
+        <div
+          style="
+            font-size:12px;
+            color:#777;
+            margin-top:5px;
+          ">
+
+          ${escapeHtml(
+            lesson.day
+          )}
+
           •
-          ${lesson.time}
 
-          <br>
-
-          ${lesson.location}
+          ${escapeHtml(
+            lesson.time
+          )}
 
         </div>
 
       </div>
+
 
       <div class="form-group">
 
@@ -2459,43 +3460,15 @@ function openEnroll(id){
           Wie wil je inschrijven?
         </label>
 
-        <select id="enrollPerson">
+        <select
+          id="enrollPerson">
 
-          ${
-            currentUser.role === "parent"
-
-              ? currentUser.children
-                  .map(
-                    child => `
-
-                      <option
-                        value="${child.id}">
-
-                        ${child.first}
-                        ${child.last}
-
-                      </option>
-
-                    `
-                  )
-                  .join("")
-
-              : `
-
-                <option
-                  value="${currentUser.id}">
-
-                  ${currentUser.first}
-                  ${currentUser.last}
-
-                </option>
-
-              `
-          }
+          ${people}
 
         </select>
 
       </div>
+
 
       <div class="form-group">
 
@@ -2506,37 +3479,37 @@ function openEnroll(id){
         <select id="paymentPlan">
 
           <option value="year">
+
             1x betalen — €${lesson.price}
+
           </option>
 
+
           <option value="semester">
-            2 semesters —
-            €${Math.round(lesson.price / 2)}
-            +
-            €${Math.round(lesson.price / 2)}
+
+            2 semesters
+
           </option>
 
         </select>
 
       </div>
 
-      <div style="
-        background:#f7f4ef;
-        padding:15px;
-        border-radius:12px;
-        font-size:12px;
-        line-height:1.7;
-      ">
 
-        <strong>
-          Let op
-        </strong>
+      <div
+        style="
+          background:#f7f4ef;
+          padding:15px;
+          border-radius:12px;
+          font-size:12px;
+          line-height:1.7;
+        ">
 
-        <br>
+        De definitieve inschrijving wordt
+        voorlopig lokaal opgeslagen.
 
-        De definitieve inschrijving geldt
-        voor het dansseizoen 2026–2027.
-        Betaling kan eenmalig of in twee semesters.
+        De echte Azure-inschrijving bouwen
+        we als volgende backend-stap.
 
       </div>
 
@@ -2566,6 +3539,9 @@ function confirmEnrollment(){
   }
 
 
+  normalizeCurrentUser();
+
+
   const person =
     document
       .getElementById("enrollPerson")
@@ -2576,6 +3552,17 @@ function confirmEnrollment(){
     document
       .getElementById("paymentPlan")
       .value;
+
+
+  if(!person){
+
+    alert(
+      "Voeg eerst een kind toe."
+    );
+
+    return;
+
+  }
 
 
   currentUser.enrollments.push({
@@ -2596,131 +3583,14 @@ function confirmEnrollment(){
   saveCurrentUser();
 
 
-  selectedLesson.enrolled++;
-
-
   closeModal();
+
 
   showDashboard();
 
 
   showToast(
-    "Definitieve inschrijving geregistreerd."
-  );
-
-}
-
-
-/* =========================================================
-   WAITLIST
-========================================================= */
-
-function openWaitlist(id){
-
-  const lesson =
-    lessons.find(
-      l => l.id === id
-    );
-
-
-  if(!lesson){
-
-    alert(
-      "Les niet gevonden."
-    );
-
-    return;
-
-  }
-
-
-  selectedLesson = lesson;
-
-
-  openModal(
-
-    "Wachtlijst",
-
-    `
-
-      <p>
-
-        <strong>
-          ${lesson.title}
-        </strong>
-
-        is momenteel vol.
-
-      </p>
-
-      <p style="
-        font-size:13px;
-        line-height:1.7;
-        color:#777;
-      ">
-
-        Je kan je op de wachtlijst plaatsen.
-        Wanneer er een plaats vrijkomt,
-        kan Ntertainment je contacteren.
-
-      </p>
-
-      <div class="form-group">
-
-        <label>
-          Naam deelnemer
-        </label>
-
-        <input
-          id="waitName"
-          placeholder="Voornaam + achternaam">
-
-      </div>
-
-    `,
-
-    `
-
-      <button
-        class="btn btn-primary"
-        onclick="confirmWaitlist()">
-
-        Op wachtlijst plaatsen
-
-      </button>
-
-    `
-
-  );
-
-}
-
-
-function confirmWaitlist(){
-
-  const name =
-    document
-      .getElementById("waitName")
-      .value
-      .trim();
-
-
-  if(!name){
-
-    alert(
-      "Vul de naam van de deelnemer in."
-    );
-
-    return;
-
-  }
-
-
-  closeModal();
-
-
-  showToast(
-    `${name} staat op de wachtlijst voor ${selectedLesson.title}.`
+    "Inschrijving voorlopig geregistreerd."
   );
 
 }
@@ -2734,7 +3604,8 @@ function showCalendar(){
 
   document
     .getElementById("calendar")
-    .classList.add("active");
+    .classList
+    .add("active");
 
 
   document
@@ -2768,7 +3639,6 @@ function renderCalendar(){
 
 
   grid.innerHTML =
-
     days
       .map(
         day => `
@@ -2776,52 +3646,60 @@ function renderCalendar(){
           <div class="day">
 
             <div class="day-name">
+
               ${day[0]}
+
             </div>
 
+
             <div class="day-date">
+
               ${day[1]}
+
             </div>
+
 
             ${
               day[0] === "DI"
 
-                ? `
+              ? `
 
-                  <div class="event">
+                <div class="event">
 
-                    <strong>
-                      Hip Hop Kids
-                    </strong>
+                  <strong>
+                    Hip Hop Kids
+                  </strong>
 
-                    18:00–19:00
+                  18:00–19:00
 
-                  </div>
+                </div>
 
-                `
+              `
 
-                : ""
+              : ""
             }
+
 
             ${
               day[0] === "WO"
 
-                ? `
+              ? `
 
-                  <div class="event">
+                <div class="event">
 
-                    <strong>
-                      Hip Hop 11+
-                    </strong>
+                  <strong>
+                    Hip Hop 11+
+                  </strong>
 
-                    19:00–20:00
+                  19:00–20:00
 
-                  </div>
+                </div>
 
-                `
+              `
 
-                : ""
+              : ""
             }
+
 
           </div>
 
@@ -2844,22 +3722,26 @@ function openModal(
 
   document
     .getElementById("modalTitle")
-    .innerText = title;
+    .innerText =
+      title;
 
 
   document
     .getElementById("modalBody")
-    .innerHTML = body;
+    .innerHTML =
+      body;
 
 
   document
     .getElementById("modalFooter")
-    .innerHTML = footer;
+    .innerHTML =
+      footer;
 
 
   document
     .getElementById("modalBackdrop")
-    .classList.add("active");
+    .classList
+    .add("active");
 
 }
 
@@ -2880,24 +3762,9 @@ function closeModal(){
 
 function saveCurrentUser(){
 
-  const index =
-    users.findIndex(
-      u => u.id === currentUser.id
-    );
-
-
-  if(index >= 0){
-
-    users[index] =
-      currentUser;
-
+  if(!currentUser){
+    return;
   }
-
-
-  localStorage.setItem(
-    "ntertainment_users",
-    JSON.stringify(users)
-  );
 
 
   localStorage.setItem(
@@ -2946,4 +3813,3 @@ function showToast(message){
 
 </body>
 </html>
-```
