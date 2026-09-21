@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -773,304 +773,272 @@ a{
 
 <body>
 
-<!-- HEADER -->
-
 <header class="header">
   <div class="header-inner">
 
-```
-<a class="logo" href="#">
-  <div class="logo-mark">N</div>
-  <div class="logo-text">
-    NTERTAINMENT
-    <span>DANCE SCHOOL</span>
-  </div>
-</a>
+    <a class="logo" href="#">
+      <div class="logo-mark">N</div>
 
-<nav class="nav">
-  <a href="#lessons">Dansaanbod</a>
-  <a href="#calendar" onclick="showCalendar()">Mijn kalender</a>
-  <a href="#dashboard" onclick="showDashboard()">Mijn account</a>
-</nav>
+      <div class="logo-text">
+        NTERTAINMENT
+        <span>DANCE SCHOOL</span>
+      </div>
+    </a>
 
-<div class="header-actions">
-  <button class="btn btn-outline btn-small" onclick="openLogin()">
-    Aanmelden
-  </button>
+    <nav class="nav">
+      <a href="#lessons">Dansaanbod</a>
+      <a href="#calendar" onclick="showCalendar()">Mijn kalender</a>
+      <a href="#dashboard" onclick="showDashboard()">Mijn account</a>
+    </nav>
 
-  <button class="btn btn-primary btn-small" onclick="openRegister()">
-    Registreren
-  </button>
-</div>
-```
+    <div class="header-actions">
+      <button class="btn btn-outline btn-small" onclick="openLogin()">
+        Aanmelden
+      </button>
+
+      <button class="btn btn-primary btn-small" onclick="openRegister()">
+        Registreren
+      </button>
+    </div>
 
   </div>
 </header>
 
-<!-- HERO -->
-
 <section class="hero">
   <div class="hero-inner">
 
-```
-<div class="eyebrow">
-  Dansseizoen 2026 — 2027
-</div>
+    <div class="eyebrow">
+      Dansseizoen 2026 — 2027
+    </div>
 
-<h1>
-  Dans.<br>
-  Beleef.<br>
-  Groei.
-</h1>
+    <h1>
+      Dans.<br>
+      Beleef.<br>
+      Groei.
+    </h1>
 
-<p>
-  Welkom bij Ntertainment Dance School.
-  Bekijk ons dansaanbod, vraag een gratis proefles aan
-  of schrijf je definitief in voor het nieuwe dansseizoen.
-</p>
-```
+    <p>
+      Welkom bij Ntertainment Dance School.
+      Bekijk ons dansaanbod, vraag een gratis proefles aan
+      of schrijf je definitief in voor het nieuwe dansseizoen.
+    </p>
 
   </div>
 </section>
 
-<!-- MAIN APP -->
-
 <main class="app">
-
-  <!-- DASHBOARD -->
 
   <section id="dashboard" class="dashboard">
 
-```
-<div class="section-title">
-  <h2>Mijn Ntertainment</h2>
+    <div class="section-title">
+      <h2>Mijn Ntertainment</h2>
 
-  <p id="welcomeText">
-    Beheer hier je gezin, lessen en inschrijvingen.
-  </p>
-</div>
+      <p id="welcomeText">
+        Beheer hier je gezin, lessen en inschrijvingen.
+      </p>
+    </div>
 
-<div class="stats">
+    <div class="stats">
 
-  <div class="stat">
-    <div class="stat-label">Gezinsleden</div>
-    <div class="stat-value" id="statChildren">1</div>
-  </div>
+      <div class="stat">
+        <div class="stat-label">Gezinsleden</div>
+        <div class="stat-value" id="statChildren">1</div>
+      </div>
 
-  <div class="stat">
-    <div class="stat-label">Actieve lessen</div>
-    <div class="stat-value" id="statLessons">0</div>
-  </div>
+      <div class="stat">
+        <div class="stat-label">Actieve lessen</div>
+        <div class="stat-value" id="statLessons">0</div>
+      </div>
 
-  <div class="stat">
-    <div class="stat-label">Aanwezigheid</div>
-    <div class="stat-value">—</div>
-  </div>
+      <div class="stat">
+        <div class="stat-label">Aanwezigheid</div>
+        <div class="stat-value">—</div>
+      </div>
 
-  <div class="stat">
-    <div class="stat-label">Betaling</div>
-    <div class="stat-value">—</div>
-  </div>
+      <div class="stat">
+        <div class="stat-label">Betaling</div>
+        <div class="stat-value">—</div>
+      </div>
 
-</div>
+    </div>
 
-<div class="dashboard-grid">
+    <div class="dashboard-grid">
 
-  <div class="card">
+      <div class="card">
 
-    <h3>Mijn gezin</h3>
+        <h3>Mijn gezin</h3>
 
-    <div id="familyList"></div>
+        <div id="familyList"></div>
 
-    <button class="btn btn-secondary btn-small"
-            onclick="openAddChild()">
-      + Kind toevoegen
-    </button>
+        <button class="btn btn-secondary btn-small"
+                onclick="openAddChild()">
+          + Kind toevoegen
+        </button>
 
-  </div>
+      </div>
 
-  <div class="card">
+      <div class="card">
 
-    <h3>Mijn account</h3>
+        <h3>Mijn account</h3>
 
-    <p id="accountInfo" style="font-size:13px;line-height:1.7;"></p>
+        <p id="accountInfo" style="font-size:13px;line-height:1.7;"></p>
 
-    <button class="btn btn-outline btn-small"
-            onclick="logout()">
-      Afmelden
-    </button>
+        <button class="btn btn-outline btn-small"
+                onclick="logout()">
+          Afmelden
+        </button>
 
-  </div>
+      </div>
 
-</div>
-```
+    </div>
 
   </section>
-
-  <!-- LESAANBOD -->
 
   <section id="lessons">
 
-```
-<div class="section-title">
-  <h2>Dansaanbod 2026–2027</h2>
+    <div class="section-title">
+      <h2>Dansaanbod 2026–2027</h2>
 
-  <p>
-    Het dansseizoen start vanaf 7 september 2026.
-  </p>
-</div>
+      <p>
+        Het dansseizoen start vanaf 7 september 2026.
+      </p>
+    </div>
 
-<div class="filters">
+    <div class="filters">
 
-  <div class="field">
-    <label>Leeftijd</label>
+      <div class="field">
+        <label>Leeftijd</label>
 
-    <select id="ageFilter" onchange="renderLessons()">
-      <option value="">Alle leeftijden</option>
-      <option value="kleuters">Kleuters</option>
-      <option value="kids">Kids</option>
-      <option value="teens">Teens</option>
-      <option value="adults">Adults</option>
-    </select>
-  </div>
+        <select id="ageFilter" onchange="renderLessons()">
+          <option value="">Alle leeftijden</option>
+          <option value="Kids">Kids</option>
+          <option value="Teens">Teens</option>
+          <option value="Adults">Adults</option>
+        </select>
+      </div>
 
-  <div class="field">
-    <label>Stijl</label>
+      <div class="field">
+        <label>Stijl</label>
 
-    <select id="styleFilter" onchange="renderLessons()">
-      <option value="">Alle stijlen</option>
-      <option value="Hip Hop">Hip Hop</option>
-      <option value="Dancehall / Ragga">Dancehall / Ragga</option>
-      <option value="Jazz / Modern">Jazz / Modern</option>
-      <option value="Heels">Heels</option>
-      <option value="Hip Hop Fusion">Hip Hop Fusion</option>
-    </select>
-  </div>
+        <select id="styleFilter" onchange="renderLessons()">
+          <option value="">Alle stijlen</option>
+          <option value="Hip Hop">Hip Hop</option>
+          <option value="Dancehall / Ragga">Dancehall / Ragga</option>
+          <option value="Jazz / Modern">Jazz / Modern</option>
+          <option value="High Heels">High Heels</option>
+          <option value="Hip Hop Fusion">Hip Hop Fusion</option>
+        </select>
+      </div>
 
-  <div class="field">
-    <label>Locatie</label>
+      <div class="field">
+        <label>Locatie</label>
 
-    <select id="locationFilter" onchange="renderLessons()">
-      <option value="">Alle locaties</option>
-      <option value="Kattevennen">Kattevennen</option>
-      <option value="Opglabbeek">Opglabbeek</option>
-      <option value="Genk">Genk</option>
-    </select>
-  </div>
+        <select id="locationFilter" onchange="renderLessons()">
+          <option value="">Alle locaties</option>
+          <option value="Ntertainment">Ntertainment</option>
+        </select>
+      </div>
 
-  <div class="field">
-    <label>Type</label>
+      <div class="field">
+        <label>Type</label>
 
-    <select id="typeFilter" onchange="renderLessons()">
-      <option value="">Alle lessen</option>
-      <option value="open">Open inschrijving</option>
-      <option value="trial">Proefles mogelijk</option>
-      <option value="wait">Wachtlijst</option>
-    </select>
-  </div>
+        <select id="typeFilter" onchange="renderLessons()">
+          <option value="">Alle lessen</option>
+          <option value="open">Open inschrijving</option>
+          <option value="trial">Proefles mogelijk</option>
+          <option value="wait">Wachtlijst</option>
+        </select>
+      </div>
 
-</div>
+    </div>
 
-<div id="lessonGrid" class="lesson-grid"></div>
-```
+    <div id="lessonGrid" class="lesson-grid"></div>
 
   </section>
 
-  <!-- KALENDER -->
-
   <section id="calendar" class="calendar" style="margin-top:50px;">
 
-```
-<div class="calendar-header">
+    <div class="calendar-header">
 
-  <div class="section-title" style="margin:0;">
-    <h2>Mijn dansjaar</h2>
-    <p>Dansseizoen 2026–2027</p>
-  </div>
+      <div class="section-title" style="margin:0;">
+        <h2>Mijn dansjaar</h2>
+        <p>Dansseizoen 2026–2027</p>
+      </div>
 
-  <button class="btn btn-secondary btn-small"
-          onclick="showDashboard()">
-    ← Mijn account
-  </button>
+      <button class="btn btn-secondary btn-small"
+              onclick="showDashboard()">
+        ← Mijn account
+      </button>
 
-</div>
+    </div>
 
-<div class="card">
+    <div class="card">
 
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-    <strong>September 2026</strong>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <strong>September 2026</strong>
 
-    <span style="font-size:12px;color:#777;">
-      Week 1–4
-    </span>
-  </div>
+        <span style="font-size:12px;color:#777;">
+          Week 1–4
+        </span>
+      </div>
 
-  <div id="calendarGrid" class="calendar-grid"></div>
+      <div id="calendarGrid" class="calendar-grid"></div>
 
-</div>
-```
+    </div>
 
   </section>
 
 </main>
 
-<!-- FOOTER -->
-
 <footer class="footer">
 
   <div class="footer-inner">
 
-```
-<div>
-  <strong>NTERTAINMENT DANCE SCHOOL</strong>
+    <div>
+      <strong>NTERTAINMENT DANCE SCHOOL</strong>
 
-  <br><br>
+      <br><br>
 
-  <small>
-    Dance • Entertainment • Growth
-  </small>
-</div>
+      <small>
+        Dance • Entertainment • Growth
+      </small>
+    </div>
 
-<div>
+    <div>
 
-  <small>
-    Dansseizoen 2026–2027<br>
-    Oudsbergen • Genk
-  </small>
+      <small>
+        Dansseizoen 2026–2027<br>
+        Oudsbergen • Genk
+      </small>
 
-</div>
-```
+    </div>
 
   </div>
 
 </footer>
 
-<!-- MODAL -->
-
 <div id="modalBackdrop" class="modal-backdrop">
 
   <div class="modal">
 
-```
-<div class="modal-header">
+    <div class="modal-header">
 
-  <h3 id="modalTitle"></h3>
+      <h3 id="modalTitle"></h3>
 
-  <button class="close"
-          onclick="closeModal()">
-    ×
-  </button>
+      <button class="close"
+              onclick="closeModal()">
+        ×
+      </button>
 
-</div>
+    </div>
 
-<div id="modalBody"
-     class="modal-body">
-</div>
+    <div id="modalBody"
+         class="modal-body">
+    </div>
 
-<div id="modalFooter"
-     class="modal-footer">
-</div>
-```
+    <div id="modalFooter"
+         class="modal-footer">
+    </div>
 
   </div>
 
@@ -1102,20 +1070,13 @@ function formatApiTime(value) {
     return "";
   }
 
-  const match =
-    String(value).match(/T(\d{2}:\d{2})/);
-
-  return match
-    ? match[1]
-    : String(value).slice(0,5);
-
+  return String(value).slice(0,5);
 }
 
 
 function getDayName(dayNumber) {
 
   const days = {
-
     1:"Maandag",
     2:"Dinsdag",
     3:"Woensdag",
@@ -1123,11 +1084,9 @@ function getDayName(dayNumber) {
     5:"Vrijdag",
     6:"Zaterdag",
     7:"Zondag"
-
   };
 
   return days[dayNumber] || "";
-
 }
 
 
@@ -1135,36 +1094,36 @@ function mapApiLesson(item) {
 
   return {
 
-    id:item.ClassId,
+    id: item.ClassId,
 
-    title:item.Name,
+    title: item.Name,
 
-    category:item.Level,
+    category: item.Level,
 
-    age:item.AgeGroup,
+    age: item.AgeGroup,
 
-    style:item.Style,
+    style: item.Style,
 
-    day:getDayName(item.DayOfWeek),
+    day: getDayName(item.DayOfWeek),
 
     time:
       formatApiTime(item.StartTime)
-      +
-      " – "
-      +
-      formatApiTime(item.EndTime),
+      + " – "
+      + formatApiTime(item.EndTime),
 
-    location:item.Location,
+    location: "Ntertainment",
 
-    teacher:item.Teacher || "",
+    teacher: "",
 
-    capacity:Number(item.Capacity || 0),
+    capacity: Number(item.Capacity || 0),
 
-    enrolled:Number(item.Enrolled || 0),
+    enrolled: 0,
 
-    trial:Boolean(item.TrialAvailable),
+    trial: Boolean(item.TrialAvailable),
 
-    price:Number(item.Price || 0)
+    registrationOpen: Boolean(item.RegistrationOpen),
+
+    price: Number(item.Price || 0)
 
   };
 
@@ -1179,9 +1138,7 @@ async function loadLessons() {
 
   try {
 
-    console.log(
-      "Lessen ophalen uit Azure..."
-    );
+    console.log("Lessen ophalen uit Azure...");
 
     const response =
       await fetch(API_URL);
@@ -1350,46 +1307,49 @@ function renderLessons(){
   let filtered =
     lessons.filter(l => {
 
-      if(age &&
-         l.age !== age){
-
+      if(
+        age &&
+        l.category !== age
+      ){
         return false;
-
       }
 
-      if(style &&
-         l.style !== style){
-
+      if(
+        style &&
+        l.style !== style
+      ){
         return false;
-
       }
 
-      if(location &&
-         l.location !== location){
-
+      if(
+        location &&
+        l.location !== location
+      ){
         return false;
-
       }
 
-      if(type === "open" &&
-         l.enrolled >= l.capacity){
-
+      if(
+        type === "open" &&
+        (
+          !l.registrationOpen ||
+          l.enrolled >= l.capacity
+        )
+      ){
         return false;
-
       }
 
-      if(type === "trial" &&
-         !l.trial){
-
+      if(
+        type === "trial" &&
+        !l.trial
+      ){
         return false;
-
       }
 
-      if(type === "wait" &&
-         l.enrolled < l.capacity){
-
+      if(
+        type === "wait" &&
+        l.enrolled < l.capacity
+      ){
         return false;
-
       }
 
       return true;
@@ -1463,56 +1423,31 @@ function renderLessons(){
 
           </div>
 
-
           <div class="lesson-body">
 
             <div class="lesson-info">
 
               <div class="info-row">
-
                 <span>Dag</span>
-
-                <strong>
-                  ${l.day}
-                </strong>
-
+                <strong>${l.day}</strong>
               </div>
 
-
               <div class="info-row">
-
                 <span>Uur</span>
-
-                <strong>
-                  ${l.time}
-                </strong>
-
+                <strong>${l.time}</strong>
               </div>
 
-
               <div class="info-row">
-
                 <span>Locatie</span>
-
-                <strong>
-                  ${l.location || "-"}
-                </strong>
-
+                <strong>${l.location}</strong>
               </div>
 
-
               <div class="info-row">
-
-                <span>Docent</span>
-
-                <strong>
-                  ${l.teacher || "-"}
-                </strong>
-
+                <span>Prijs</span>
+                <strong>€${l.price}</strong>
               </div>
 
             </div>
-
 
             <div class="capacity">
 
@@ -1528,99 +1463,96 @@ function renderLessons(){
 
               </div>
 
-
               <div class="capacity-bar">
 
                 <div
                   class="capacity-fill"
-                  style="
-                    width:${percentage}%;
-                  ">
+                  style="width:${percentage}%;">
                 </div>
 
               </div>
 
             </div>
 
-
             <div style="margin-bottom:14px;">
 
               ${
                 full
 
-                  ? `
+                ? `
 
-                    <span
-                      class="status status-full">
+                  <span class="status status-full">
+                    Vol
+                  </span>
 
-                      Vol
+                `
 
-                    </span>
+                : `
 
-                  `
+                  <span class="status status-open">
+                    ${l.capacity - l.enrolled}
+                    plaatsen vrij
+                  </span>
 
-                  : `
-
-                    <span
-                      class="status status-open">
-
-                      ${
-                        l.capacity -
-                        l.enrolled
-                      }
-                      plaatsen vrij
-
-                    </span>
-
-                  `
+                `
               }
 
             </div>
-
 
             <div class="lesson-actions">
 
               ${
                 full
 
-                  ? `
+                ? `
 
-                    <button
-                      class="btn btn-secondary btn-small"
-                      onclick="
-                        openWaitlist(${l.id})
-                      ">
+                  <button
+                    class="btn btn-secondary btn-small"
+                    onclick="openWaitlist(${l.id})">
 
-                      Wachtlijst
+                    Wachtlijst
 
-                    </button>
+                  </button>
 
-                  `
+                `
 
-                  : `
+                : `
 
-                    <button
-                      class="btn btn-primary btn-small"
-                      onclick="
-                        openTrial(${l.id})
-                      ">
+                  ${
+                    l.trial
 
-                      Gratis proefles
+                    ? `
 
-                    </button>
+                      <button
+                        class="btn btn-primary btn-small"
+                        onclick="openTrial(${l.id})">
 
+                        Gratis proefles
 
-                    <button
-                      class="btn btn-secondary btn-small"
-                      onclick="
-                        openEnroll(${l.id})
-                      ">
+                      </button>
 
-                      Definitief inschrijven
+                    `
+                    : ""
+                  }
 
-                    </button>
+                  ${
+                    l.registrationOpen
 
-                  `
+                    ? `
+
+                      <button
+                        class="btn btn-secondary btn-small"
+                        onclick="openEnroll(${l.id})">
+
+                        Definitief inschrijven
+
+                      </button>
+
+                    `
+                    : ""
+                  }
+
+                `
               }
 
             </div>
@@ -1659,15 +1591,12 @@ function openRegister(){
           </strong>
 
           <span>
-
             Maak een account aan
             voor jezelf en beheer
             één of meerdere kinderen.
-
           </span>
 
         </div>
-
 
         <div
           class="choice"
@@ -1678,10 +1607,8 @@ function openRegister(){
           </strong>
 
           <span>
-
             Maak een persoonlijk
             account voor jezelf.
-
           </span>
 
         </div>
@@ -1698,16 +1625,12 @@ function openRegister(){
 
 
 function registerParent(){
-
   registrationForm("parent");
-
 }
 
 
 function registerDancer(){
-
   registrationForm("dancer");
-
 }
 
 
@@ -1733,7 +1656,6 @@ function registrationForm(role){
 
         </div>
 
-
         <div class="form-group">
 
           <label>
@@ -1743,7 +1665,6 @@ function registrationForm(role){
           <input id="regLast">
 
         </div>
-
 
         <div class="form-group full">
 
@@ -1756,7 +1677,6 @@ function registrationForm(role){
             type="email">
 
         </div>
-
 
         <div class="form-group full">
 
@@ -1774,7 +1694,6 @@ function registrationForm(role){
 
     `,
 
-
     `
 
       <button
@@ -1785,12 +1704,9 @@ function registrationForm(role){
 
       </button>
 
-
       <button
         class="btn btn-primary"
-        onclick="
-          createAccount('${role}')
-        ">
+        onclick="createAccount('${role}')">
 
         Account aanmaken
 
@@ -1806,28 +1722,16 @@ function registrationForm(role){
 function createAccount(role){
 
   const first =
-    document
-      .getElementById("regFirst")
-      .value
-      .trim();
+    document.getElementById("regFirst").value.trim();
 
   const last =
-    document
-      .getElementById("regLast")
-      .value
-      .trim();
+    document.getElementById("regLast").value.trim();
 
   const email =
-    document
-      .getElementById("regEmail")
-      .value
-      .trim()
-      .toLowerCase();
+    document.getElementById("regEmail").value.trim().toLowerCase();
 
   const password =
-    document
-      .getElementById("regPassword")
-      .value;
+    document.getElementById("regPassword").value;
 
 
   if(
@@ -1837,9 +1741,7 @@ function createAccount(role){
     !password
   ){
 
-    alert(
-      "Vul alle velden in."
-    );
+    alert("Vul alle velden in.");
 
     return;
 
@@ -1871,12 +1773,6 @@ function createAccount(role){
 
     email,
 
-    /*
-      DEMO ONLY.
-      In productie nooit wachtwoorden
-      in localStorage bewaren.
-    */
-
     password,
 
     role,
@@ -1884,21 +1780,21 @@ function createAccount(role){
     children:
       role === "parent"
 
-        ? [{
+      ? [{
 
-            id:Date.now()+1,
+          id:Date.now()+1,
 
-            first:"Mijn kind",
+          first:"Mijn kind",
 
-            last:"",
+          last:"",
 
-            birthYear:"",
+          birthYear:"",
 
-            enrollments:[]
+          enrollments:[]
 
-          }]
+        }]
 
-        : [],
+      : [],
 
     enrollments:[]
 
@@ -1944,7 +1840,6 @@ function openLogin(){
 
     "Aanmelden",
 
-
     `
 
       <div class="form-group">
@@ -1959,7 +1854,6 @@ function openLogin(){
 
       </div>
 
-
       <div class="form-group">
 
         <label>
@@ -1972,7 +1866,6 @@ function openLogin(){
 
       </div>
 
-
       <p style="
         font-size:12px;
         color:#777;
@@ -1983,7 +1876,6 @@ function openLogin(){
       </p>
 
     `,
-
 
     `
 
@@ -2005,15 +1897,13 @@ function openLogin(){
 function login(){
 
   const email =
-    document
-      .getElementById("loginEmail")
+    document.getElementById("loginEmail")
       .value
       .trim()
       .toLowerCase();
 
   const password =
-    document
-      .getElementById("loginPassword")
+    document.getElementById("loginPassword")
       .value;
 
 
@@ -2108,7 +1998,6 @@ function showDashboard(){
   document
     .getElementById("welcomeText")
     .innerText =
-
       `Welkom ${currentUser.first}. Hier beheer je je Ntertainment-account.`;
 
 
@@ -2159,25 +2048,18 @@ function renderFamily(){
         <div>
 
           <div class="family-name">
-
             ${currentUser.first}
             ${currentUser.last}
-
           </div>
 
           <div class="family-meta">
-
             Eigen account • 18+
-
           </div>
 
         </div>
 
-
         <span class="status status-open">
-
           Danser
-
         </span>
 
       </div>
@@ -2206,21 +2088,15 @@ function renderFamily(){
             <div>
 
               <div class="family-name">
-
                 ${child.first}
                 ${child.last}
-
               </div>
-
 
               <div class="family-meta">
 
                 ${
                   child.birthYear
-
-                    ? "Geboortejaar " +
-                      child.birthYear
-
+                    ? "Geboortejaar " + child.birthYear
                     : "Gegevens nog aanvullen"
                 }
 
@@ -2228,11 +2104,8 @@ function renderFamily(){
 
             </div>
 
-
             <span class="status status-open">
-
               Lid
-
             </span>
 
           </div>
@@ -2260,7 +2133,6 @@ function openAddChild(){
 
     "Kind toevoegen",
 
-
     `
 
       <div class="form-grid">
@@ -2275,7 +2147,6 @@ function openAddChild(){
 
         </div>
 
-
         <div class="form-group">
 
           <label>
@@ -2285,7 +2156,6 @@ function openAddChild(){
           <input id="childLast">
 
         </div>
-
 
         <div class="form-group full">
 
@@ -2302,7 +2172,6 @@ function openAddChild(){
       </div>
 
     `,
-
 
     `
 
@@ -2324,22 +2193,16 @@ function openAddChild(){
 function addChild(){
 
   const first =
-    document
-      .getElementById("childFirst")
-      .value
-      .trim();
+    document.getElementById("childFirst")
+      .value.trim();
 
   const last =
-    document
-      .getElementById("childLast")
-      .value
-      .trim();
+    document.getElementById("childLast")
+      .value.trim();
 
   const birthYear =
-    document
-      .getElementById("childYear")
-      .value
-      .trim();
+    document.getElementById("childYear")
+      .value.trim();
 
 
   if(!first || !last){
@@ -2411,15 +2274,11 @@ function openTrial(id){
 
     "Gratis proefles",
 
-
     `
 
       <p>
-
         Je vraagt een gratis proefles aan voor:
-
       </p>
-
 
       <div
         class="card"
@@ -2446,13 +2305,10 @@ function openTrial(id){
           <br>
 
           ${lesson.location}
-          •
-          ${lesson.teacher || "-"}
 
         </span>
 
       </div>
-
 
       <div class="form-group">
 
@@ -2465,7 +2321,6 @@ function openTrial(id){
           placeholder="Voornaam + achternaam">
 
       </div>
-
 
       <p style="
         font-size:12px;
@@ -2480,7 +2335,6 @@ function openTrial(id){
       </p>
 
     `,
-
 
     `
 
@@ -2568,7 +2422,6 @@ function openEnroll(id){
 
     "Definitief inschrijven",
 
-
     `
 
       <div
@@ -2581,7 +2434,6 @@ function openEnroll(id){
         <strong>
           ${lesson.title}
         </strong>
-
 
         <div style="
           font-size:12px;
@@ -2597,22 +2449,15 @@ function openEnroll(id){
 
           ${lesson.location}
 
-          <br>
-
-          Docent:
-          ${lesson.teacher || "-"}
-
         </div>
 
       </div>
-
 
       <div class="form-group">
 
         <label>
           Wie wil je inschrijven?
         </label>
-
 
         <select id="enrollPerson">
 
@@ -2652,41 +2497,28 @@ function openEnroll(id){
 
       </div>
 
-
       <div class="form-group">
 
         <label>
           Betalingswijze
         </label>
 
-
         <select id="paymentPlan">
 
           <option value="year">
-
-            1x betalen —
-            €${lesson.price}
-
+            1x betalen — €${lesson.price}
           </option>
 
-
           <option value="semester">
-
             2 semesters —
-            €${Math.round(
-              lesson.price / 2
-            )}
+            €${Math.round(lesson.price / 2)}
             +
-            €${Math.round(
-              lesson.price / 2
-            )}
-
+            €${Math.round(lesson.price / 2)}
           </option>
 
         </select>
 
       </div>
-
 
       <div style="
         background:#f7f4ef;
@@ -2710,7 +2542,6 @@ function openEnroll(id){
 
     `,
 
-
     `
 
       <button
@@ -2731,9 +2562,7 @@ function openEnroll(id){
 function confirmEnrollment(){
 
   if(!selectedLesson){
-
     return;
-
   }
 
 
@@ -2812,7 +2641,6 @@ function openWaitlist(id){
 
     "Wachtlijst",
 
-
     `
 
       <p>
@@ -2825,7 +2653,6 @@ function openWaitlist(id){
 
       </p>
 
-
       <p style="
         font-size:13px;
         line-height:1.7;
@@ -2837,7 +2664,6 @@ function openWaitlist(id){
         kan Ntertainment je contacteren.
 
       </p>
-
 
       <div class="form-group">
 
@@ -2852,7 +2678,6 @@ function openWaitlist(id){
       </div>
 
     `,
-
 
     `
 
@@ -2954,11 +2779,9 @@ function renderCalendar(){
               ${day[0]}
             </div>
 
-
             <div class="day-date">
               ${day[1]}
             </div>
-
 
             ${
               day[0] === "DI"
@@ -2979,7 +2802,6 @@ function renderCalendar(){
 
                 : ""
             }
-
 
             ${
               day[0] === "WO"
@@ -3124,3 +2946,4 @@ function showToast(message){
 
 </body>
 </html>
+```
