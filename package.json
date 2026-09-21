@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Ntertainment Dance School platform",
   "main": "{Login,PublicClasses,Register,TNTActivate,TNTBootstrap,TNTDashboard,TNTEvaluationDetail,TNTMyEvaluation,TNTSaveEvaluation,TNTUsers,TNTAdminData,TNTSchoolYears,TNTTeamStats,UpdateProfile}/index.js",
-  "scripts": {},
+  "scripts": {
+    "verify:functions": "node -e \"const fs=require('fs');const p=require('./package.json');const required=['TNTBootstrap','TNTTeamStats','TNTAdminData','TNTSchoolYears'];for(const n of required){if(!fs.existsSync(n+'/index.js'))throw new Error('Missing '+n);if(!p.main.includes(n))throw new Error('Not registered '+n)};console.log('TNT API entry points verified')\""
+  },
   "dependencies": {
     "@azure/functions": "^4.8.0",
     "mssql": "^11.0.1",
