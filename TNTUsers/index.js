@@ -6,7 +6,7 @@ function makeCode(){return crypto.randomBytes(5).toString('hex').toUpperCase()}
 function codeHash(code){return crypto.createHash('sha256').update(code).digest('hex')}
 function placeholderPassword(){const salt=crypto.randomBytes(16),hash=crypto.scryptSync(crypto.randomBytes(32).toString('hex'),salt,64);return `scrypt$${salt.toString('hex')}$${hash.toString('hex')}`}
 async function setTeams(tx,userId,role,teamIds){await new sql.Request(tx).input('UserId',sql.Int,userId).query(`DELETE FROM dbo.TNTUserTeams WHERE UserId=@UserId`);if(role==='TNTEvaluator')for(const teamId of teamIds)await new sql.Request(tx).input('UserId',sql.Int,userId).input('TeamId',sql.Int,teamId).query(`INSERT INTO dbo.TNTUserTeams(UserId,TeamId) SELECT @UserId,@TeamId WHERE EXISTS(SELECT 1 FROM dbo.TNTTeams WHERE TeamId=@TeamId AND IsActive=1)`)}
-app.http('TNTUsers',{methods:['GET','POST','PUT','OPTIONS'],authLevel:'anonymous',handler:async(req,ctx)=>{
+app.http('TNTUsers',{methods:['GET','POST','PUT','DELETE','OPTIONS'],authLevel:'anonymous',handler:async(req,ctx)=>{
  if(req.method==='OPTIONS')return{status:204,headers:corsHeaders()};
  try{
   const admin=requireTntUser(req,['Admin']),pool=await getPool();
@@ -14,6 +14,7 @@ app.http('TNTUsers',{methods:['GET','POST','PUT','OPTIONS'],authLevel:'anonymous
    const r=await pool.request().query(`SELECT u.UserId,u.FirstName,u.LastName,u.Email,u.Role,u.IsActive,COALESCE(u.MustSetPassword,0) MustSetPassword,ut.TeamId FROM dbo.Users u LEFT JOIN dbo.TNTUserTeams ut ON ut.UserId=u.UserId ORDER BY u.LastName,u.FirstName,u.Email,ut.TeamId`);
    const m=new Map();for(const x of r.recordset){if(!m.has(x.UserId))m.set(x.UserId,{UserId:x.UserId,FirstName:x.FirstName,LastName:x.LastName,Email:x.Email,Role:x.Role,IsActive:x.IsActive,MustSetPassword:x.MustSetPassword,TeamIds:[]});if(x.TeamId)m.get(x.UserId).TeamIds.push(x.TeamId)}return{status:200,headers:corsHeaders(),jsonBody:[...m.values()]}
   }
+  if(req.method==='DELETE'){const userId=+(req.query.get('userId')||0);if(!userId)return{status:400,headers:corsHeaders(),jsonBody:{error:'Ongeldige gebruiker.'}};if(userId===+admin.userId)return{status:400,headers:corsHeaders(),jsonBody:{error:'Je kunt je eigen Admin-account niet verwijderen.'}};const refs=await pool.request().input('UserId',sql.Int,userId).query(`SELECT (SELECT COUNT(*) FROM dbo.TNTEvaluations WHERE EvaluatorUserId=@UserId) EvaluationCount`);const hasHistory=+refs.recordset[0].EvaluationCount>0;if(hasHistory){await pool.request().input('UserId',sql.Int,userId).query(`UPDATE dbo.Users SET IsActive=0 WHERE UserId=@UserId; DELETE dbo.TNTUserTeams WHERE UserId=@UserId`)}else{await pool.request().input('UserId',sql.Int,userId).query(`DELETE dbo.TNTUserTeams WHERE UserId=@UserId; DELETE dbo.Users WHERE UserId=@UserId`)}return{status:200,headers:corsHeaders(),jsonBody:{success:true,archived:hasHistory}}}
   const b=await req.json(),roles=['Parent','TNTEvaluator','Admin'],teamIds=[...new Set((b.teamIds||[]).map(Number).filter(Number.isInteger))];
   if(req.method==='POST'){
    const firstName=String(b.firstName||'').trim(),lastName=String(b.lastName||'').trim(),email=String(b.email||'').trim().toLowerCase(),role=b.role||'TNTEvaluator';
