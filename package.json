@@ -2,7 +2,7 @@
   "name": "ntertainment-platform",
   "version": "1.0.0",
   "description": "Ntertainment Dance School platform",
-  "main": "index.js",
+  "main": "{Login,PublicClasses,Register,TNTActivate,TNTBootstrap,TNTDashboard,TNTEvaluationDetail,TNTMyEvaluation,TNTSaveEvaluation,TNTUsers,UpdateProfile}/index.js",
   "scripts": {},
   "dependencies": {
     "@azure/functions": "^4.8.0",
