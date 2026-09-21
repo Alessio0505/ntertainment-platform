@@ -786,6 +786,10 @@ a{
     grid-template-columns:1fr;
   }
 
+  .form-group.full{
+    grid-column:auto;
+  }
+
   .footer-inner{
     flex-direction:column;
   }
@@ -852,6 +856,7 @@ a{
     <div class="header-actions">
 
       <button
+        id="loginHeaderButton"
         class="btn btn-outline btn-small"
         onclick="openLogin()">
 
@@ -861,6 +866,7 @@ a{
 
 
       <button
+        id="registerHeaderButton"
         class="btn btn-primary btn-small"
         onclick="openRegister()">
 
@@ -1043,7 +1049,7 @@ a{
           ">
 
           <button
-            class="btn btn-outline btn-small"
+            class="btn btn-secondary btn-small"
             onclick="openEditProfile()">
 
             Gegevens aanpassen
@@ -1411,6 +1417,18 @@ let selectedLesson = null;
 
 
 /* =========================================================
+   CURRENT USER
+========================================================= */
+
+let currentUser =
+  JSON.parse(
+    localStorage.getItem(
+      "ntertainment_current_user"
+    ) || "null"
+  );
+
+
+/* =========================================================
    API HELPERS
 ========================================================= */
 
@@ -1428,7 +1446,6 @@ function formatApiTime(value){
 function getDayName(dayNumber){
 
   const days = {
-
     1:"Maandag",
     2:"Dinsdag",
     3:"Woensdag",
@@ -1436,7 +1453,6 @@ function getDayName(dayNumber){
     5:"Vrijdag",
     6:"Zaterdag",
     7:"Zondag"
-
   };
 
   return days[dayNumber] || "";
@@ -1463,9 +1479,7 @@ function getAgeCategory(ageGroup){
     value.includes("10-17") ||
     value.includes("11-17")
   ){
-
     return "Teens";
-
   }
 
 
@@ -1475,9 +1489,7 @@ function getAgeCategory(ageGroup){
     value.includes("6-") ||
     value.includes("8-")
   ){
-
     return "Kids";
-
   }
 
 
@@ -1549,9 +1561,7 @@ async function loadLessons(){
     grid.innerHTML = `
 
       <div class="loading">
-
         Lessen worden geladen...
-
       </div>
 
     `;
@@ -1654,15 +1664,26 @@ function escapeHtml(value){
 
 
 /* =========================================================
-   CURRENT USER
+   NORMALIZE USER
 ========================================================= */
 
-let currentUser =
-  JSON.parse(
-    localStorage.getItem(
-      "ntertainment_current_user"
-    ) || "null"
-  );
+function normalizeCurrentUser(){
+
+  if(!currentUser){
+    return;
+  }
+
+
+  if(!Array.isArray(currentUser.children)){
+    currentUser.children = [];
+  }
+
+
+  if(!Array.isArray(currentUser.enrollments)){
+    currentUser.enrollments = [];
+  }
+
+}
 
 
 /* =========================================================
@@ -1686,31 +1707,74 @@ document.addEventListener(
 
     }
 
+    updateHeader();
+
   }
 );
 
 
 /* =========================================================
-   NORMALIZE USER
+   HEADER STATE
 ========================================================= */
 
-function normalizeCurrentUser(){
+function updateHeader(){
 
-  if(!currentUser){
-    return;
-  }
+  const loginButton =
+    document.getElementById(
+      "loginHeaderButton"
+    );
+
+  const registerButton =
+    document.getElementById(
+      "registerHeaderButton"
+    );
 
 
-  if(!Array.isArray(currentUser.children)){
+  if(currentUser){
 
-    currentUser.children = [];
+    if(loginButton){
 
-  }
+      loginButton.innerText =
+        "Mijn account";
+
+      loginButton.onclick =
+        showDashboard;
+
+    }
 
 
-  if(!Array.isArray(currentUser.enrollments)){
+    if(registerButton){
 
-    currentUser.enrollments = [];
+      registerButton.innerText =
+        "Afmelden";
+
+      registerButton.onclick =
+        logout;
+
+    }
+
+  }else{
+
+    if(loginButton){
+
+      loginButton.innerText =
+        "Aanmelden";
+
+      loginButton.onclick =
+        openLogin;
+
+    }
+
+
+    if(registerButton){
+
+      registerButton.innerText =
+        "Registreren";
+
+      registerButton.onclick =
+        openRegister;
+
+    }
 
   }
 
@@ -1757,14 +1821,11 @@ function renderLessons(){
     lessons.filter(
       lesson => {
 
-
         if(
           age &&
           lesson.ageCategory !== age
         ){
-
           return false;
-
         }
 
 
@@ -1772,9 +1833,7 @@ function renderLessons(){
           style &&
           lesson.style !== style
         ){
-
           return false;
-
         }
 
 
@@ -1782,9 +1841,7 @@ function renderLessons(){
           location &&
           lesson.location !== location
         ){
-
           return false;
-
         }
 
 
@@ -1792,9 +1849,7 @@ function renderLessons(){
           type === "open" &&
           !lesson.registrationOpen
         ){
-
           return false;
-
         }
 
 
@@ -1802,9 +1857,7 @@ function renderLessons(){
           type === "trial" &&
           !lesson.trial
         ){
-
           return false;
-
         }
 
 
@@ -1863,7 +1916,6 @@ function renderLessonCard(lesson){
 
     <article class="lesson">
 
-
       <div class="lesson-top">
 
         <div class="lesson-category">
@@ -1888,9 +1940,7 @@ function renderLessonCard(lesson){
 
       <div class="lesson-body">
 
-
         <div class="lesson-info">
-
 
           <div class="info-row">
 
@@ -1964,7 +2014,6 @@ function renderLessonCard(lesson){
 
           </div>
 
-
         </div>
 
 
@@ -1977,11 +2026,9 @@ function renderLessonCard(lesson){
             </span>
 
             <span>
-
               ${lesson.enrolled}
               /
               ${lesson.capacity}
-
             </span>
 
           </div>
@@ -1999,13 +2046,9 @@ function renderLessonCard(lesson){
         </div>
 
 
-        <div
-          style="
-            margin-bottom:14px;
-          ">
+        <div style="margin-bottom:14px;">
 
-          <span
-            class="status status-open">
+          <span class="status status-open">
 
             ${lesson.capacity}
             plaatsen
@@ -2017,10 +2060,8 @@ function renderLessonCard(lesson){
 
         <div class="lesson-actions">
 
-
           ${
             lesson.trial
-
             ? `
 
               <button
@@ -2032,15 +2073,12 @@ function renderLessonCard(lesson){
               </button>
 
             `
-
             : ""
-
           }
 
 
           ${
             lesson.registrationOpen
-
             ? `
 
               <button
@@ -2052,23 +2090,18 @@ function renderLessonCard(lesson){
               </button>
 
             `
-
             : `
 
-              <span
-                class="status status-full">
+              <span class="status status-full">
 
                 Inschrijving gesloten
 
               </span>
 
             `
-
           }
 
-
         </div>
-
 
       </div>
 
@@ -2093,7 +2126,6 @@ function openRegister(){
 
       <div class="choice-grid">
 
-
         <div
           class="choice"
           onclick="registerParent()">
@@ -2103,10 +2135,8 @@ function openRegister(){
           </strong>
 
           <span>
-
             Account voor jezelf
             en je kinderen.
-
           </span>
 
         </div>
@@ -2121,14 +2151,11 @@ function openRegister(){
           </strong>
 
           <span>
-
             Persoonlijk account
             voor jezelf.
-
           </span>
 
         </div>
-
 
       </div>
 
@@ -2142,16 +2169,12 @@ function openRegister(){
 
 
 function registerParent(){
-
   registrationForm("parent");
-
 }
 
 
 function registerDancer(){
-
   registrationForm("dancer");
-
 }
 
 
@@ -2170,7 +2193,6 @@ function registrationForm(role){
     `
 
       <div class="form-grid">
-
 
         <div class="form-group">
 
@@ -2236,7 +2258,6 @@ function registrationForm(role){
           </div>
 
         </div>
-
 
       </div>
 
@@ -2451,16 +2472,14 @@ async function createAccount(role){
       };
 
 
-      localStorage.setItem(
-        "ntertainment_current_user",
-        JSON.stringify(currentUser)
-      );
+      saveCurrentUser();
 
 
       closeModal();
 
-
       showDashboard();
+
+      updateHeader();
 
 
       showToast(
@@ -2545,6 +2564,7 @@ function openLogin(){
 
       <button
         class="btn btn-primary"
+        id="loginButton"
         onclick="login()">
 
         Aanmelden
@@ -2589,19 +2609,22 @@ async function login(){
   }
 
 
-  const buttons =
-    document.querySelectorAll(
-      "#modalFooter button"
+  const button =
+    document.getElementById(
+      "loginButton"
     );
 
 
   try{
 
-    buttons.forEach(
-      button => {
-        button.disabled = true;
-      }
-    );
+    if(button){
+
+      button.disabled = true;
+
+      button.innerText =
+        "Aanmelden...";
+
+    }
 
 
     const response =
@@ -2711,16 +2734,14 @@ async function login(){
       };
 
 
-      localStorage.setItem(
-        "ntertainment_current_user",
-        JSON.stringify(currentUser)
-      );
+      saveCurrentUser();
 
 
       closeModal();
 
-
       showDashboard();
+
+      updateHeader();
 
 
       showToast(
@@ -2728,7 +2749,6 @@ async function login(){
         currentUser.first +
         "!"
       );
-
 
     }
 
@@ -2749,11 +2769,14 @@ async function login(){
 
   }finally{
 
-    buttons.forEach(
-      button => {
-        button.disabled = false;
-      }
-    );
+    if(button){
+
+      button.disabled = false;
+
+      button.innerText =
+        "Aanmelden";
+
+    }
 
   }
 
@@ -3007,6 +3030,19 @@ async function saveProfile(){
   }
 
 
+  if(
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  ){
+
+    showToast(
+      "Vul een geldig e-mailadres in."
+    );
+
+    return;
+
+  }
+
+
   if(newPassword && newPassword.length < 8){
 
     showToast(
@@ -3021,7 +3057,7 @@ async function saveProfile(){
   if(newPassword && !currentPassword){
 
     showToast(
-      "Vul je huidige wachtwoord in om een nieuw wachtwoord te kiezen."
+      "Vul je huidige wachtwoord in om je wachtwoord te wijzigen."
     );
 
     return;
@@ -3047,6 +3083,12 @@ async function saveProfile(){
     }
 
 
+    /*
+      BELANGRIJK:
+      De API verwacht newPassword.
+      Niet "password".
+    */
+
     const response =
       await fetch(
         UPDATE_PROFILE_API,
@@ -3060,7 +3102,7 @@ async function saveProfile(){
 
           body:JSON.stringify({
 
-            userId:currentUser.id,
+            userId:Number(currentUser.id),
 
             first:first,
 
@@ -3068,9 +3110,11 @@ async function saveProfile(){
 
             email:email,
 
-            currentPassword:currentPassword,
+            currentPassword:
+              currentPassword || null,
 
-            password:newPassword
+            newPassword:
+              newPassword || null
 
           })
 
@@ -3078,8 +3122,29 @@ async function saveProfile(){
       );
 
 
-    const data =
-      await response.json();
+    const contentType =
+      response.headers.get(
+        "content-type"
+      ) || "";
+
+
+    let data = {};
+
+    if(contentType.includes("application/json")){
+
+      data =
+        await response.json();
+
+    }else{
+
+      const text =
+        await response.text();
+
+      data = {
+        error:text
+      };
+
+    }
 
 
     console.log(
@@ -3089,14 +3154,72 @@ async function saveProfile(){
     );
 
 
-    if(!response.ok){
+    if(response.status === 400){
 
       showToast(
         data.error ||
-        "Je gegevens konden niet worden opgeslagen."
+        "Controleer je gegevens."
       );
 
       return;
+
+    }
+
+
+    if(response.status === 401){
+
+      showToast(
+        data.error ||
+        "Het huidige wachtwoord is niet correct."
+      );
+
+      return;
+
+    }
+
+
+    if(response.status === 403){
+
+      showToast(
+        data.error ||
+        "Dit account is niet actief."
+      );
+
+      return;
+
+    }
+
+
+    if(response.status === 404){
+
+      showToast(
+        data.error ||
+        "Gebruiker niet gevonden."
+      );
+
+      return;
+
+    }
+
+
+    if(response.status === 409){
+
+      showToast(
+        data.error ||
+        "Dit e-mailadres wordt al gebruikt."
+      );
+
+      return;
+
+    }
+
+
+    if(!response.ok){
+
+      throw new Error(
+        data.error ||
+        "Je gegevens konden niet worden opgeslagen."
+      );
 
     }
 
@@ -3127,8 +3250,17 @@ async function saveProfile(){
       showDashboard();
 
 
+      updateHeader();
+
+
       showToast(
         "Je gegevens zijn succesvol opgeslagen."
+      );
+
+    }else{
+
+      throw new Error(
+        "De API gaf geen bijgewerkte gebruiker terug."
       );
 
     }
@@ -3143,6 +3275,7 @@ async function saveProfile(){
 
 
     showToast(
+      error.message ||
       "Er ging iets mis bij het opslaan."
     );
 
@@ -3183,6 +3316,9 @@ function logout(){
     .remove("active");
 
 
+  updateHeader();
+
+
   showToast(
     "Je bent afgemeld."
   );
@@ -3206,6 +3342,12 @@ function showDashboard(){
 
 
   normalizeCurrentUser();
+
+
+  document
+    .getElementById("calendar")
+    .classList
+    .remove("active");
 
 
   document
@@ -3463,7 +3605,6 @@ function openAddChild(){
 
       <div class="form-grid">
 
-
         <div class="form-group">
 
           <label>
@@ -3499,7 +3640,6 @@ function openAddChild(){
             max="2026">
 
         </div>
-
 
       </div>
 
@@ -3626,9 +3766,7 @@ function openTrial(id){
     `
 
       <p>
-
         Je vraagt een gratis proefles aan voor:
-
       </p>
 
 
@@ -3904,16 +4042,12 @@ function openEnroll(id){
         <select id="paymentPlan">
 
           <option value="year">
-
             1x betalen — €${lesson.price}
-
           </option>
 
 
           <option value="semester">
-
             2 semesters
-
           </option>
 
         </select>
@@ -4027,6 +4161,21 @@ function confirmEnrollment(){
 
 function showCalendar(){
 
+  if(!currentUser){
+
+    openLogin();
+
+    return;
+
+  }
+
+
+  document
+    .getElementById("dashboard")
+    .classList
+    .remove("active");
+
+
   document
     .getElementById("calendar")
     .classList
@@ -4071,22 +4220,17 @@ function renderCalendar(){
           <div class="day">
 
             <div class="day-name">
-
               ${day[0]}
-
             </div>
 
 
             <div class="day-date">
-
               ${day[1]}
-
             </div>
 
 
             ${
               day[0] === "DI"
-
               ? `
 
                 <div class="event">
@@ -4100,14 +4244,12 @@ function renderCalendar(){
                 </div>
 
               `
-
               : ""
             }
 
 
             ${
               day[0] === "WO"
-
               ? `
 
                 <div class="event">
@@ -4121,10 +4263,8 @@ function renderCalendar(){
                 </div>
 
               `
-
               : ""
             }
-
 
           </div>
 
@@ -4182,6 +4322,48 @@ function closeModal(){
 
 
 /* =========================================================
+   MODAL EVENTS
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key === "Escape"
+    ){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "click",
+  event => {
+
+    const backdrop =
+      document.getElementById(
+        "modalBackdrop"
+      );
+
+
+    if(
+      event.target === backdrop
+    ){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
    STORAGE
 ========================================================= */
 
@@ -4204,6 +4386,9 @@ function saveCurrentUser(){
    TOAST
 ========================================================= */
 
+let toastTimer = null;
+
+
 function showToast(message){
 
   const toast =
@@ -4221,16 +4406,20 @@ function showToast(message){
   );
 
 
-  setTimeout(
-    () => {
+  clearTimeout(toastTimer);
 
-      toast.classList.remove(
-        "show"
-      );
 
-    },
-    3500
-  );
+  toastTimer =
+    setTimeout(
+      () => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      3500
+    );
 
 }
 
