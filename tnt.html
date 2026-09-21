@@ -74,6 +74,41 @@ button,input,select,textarea{font-size:16px}
 
 
 .schoolYearBadge{display:inline-flex;align-items:center;gap:7px;background:#efe4cf;border:1px solid #ddcda9;border-radius:999px;padding:7px 12px;font-size:11px;font-weight:700;margin-top:10px}.statsGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.statParam{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}.statParam h3{font-size:13px;margin:0 0 8px}.statLine{display:flex;gap:8px;align-items:center;margin:7px 0;font-size:10px}.statLine span:first-child{width:90px}.statTrack{height:9px;flex:1;background:#eee6d8;border-radius:10px;overflow:hidden}.statTrack i{display:block;height:100%;background:var(--gold)}.adminInput{width:130px;padding:8px;border:1px solid var(--line);border-radius:8px}.dangerBtn{background:#fff4f2!important;color:#8f2922!important;border:1px solid #e6b9b5!important}.yearRow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.yearChip{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff}.yearChip.active{background:#111;color:#fff;border-color:#111}.teamSummary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}@media(max-width:700px){.statsGrid,.teamSummary{grid-template-columns:1fr}.adminInput{width:100%}}
+
+/* Mobile responsive override v2 */
+@media screen and (max-width:768px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  body{padding-left:0!important;padding-right:0!important}
+  .top{position:relative!important;top:auto!important;width:100%;height:auto!important;min-height:74px;padding:10px 14px!important;padding-top:max(10px,env(safe-area-inset-top))!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto;gap:10px}
+  .top .logo{min-width:0;gap:8px}.top .brandLogo{width:min(180px,48vw)!important;height:auto!important;max-width:100%!important}
+  .top .tag{display:none}.top .user{max-width:42vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .layout{display:block!important;min-height:0!important;width:100%!important}
+  .side{position:relative!important;top:auto!important;width:100%!important;max-width:100%!important;border-right:0!important;border-bottom:1px solid #e8dfd2;padding:8px 10px!important;display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .side::-webkit-scrollbar{display:none}.side .nav{flex:0 0 auto!important;width:auto!important;margin:0 4px 0 0!important;padding:10px 13px!important;min-height:42px!important}
+  .main{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;padding:18px 14px 90px!important;overflow:hidden!important}
+  section{width:100%!important;max-width:100%!important;min-width:0!important}
+  .hero{width:100%;max-width:100%;display:block!important;overflow:hidden}.hero h1{font-size:clamp(27px,8vw,36px);line-height:1.08;overflow-wrap:anywhere}.hero p{font-size:14px;line-height:1.45;white-space:normal;overflow-wrap:anywhere}
+  .schoolYearBadge{max-width:100%;width:max-content}
+  .hero>.btn{width:100%!important;margin-top:16px!important;min-height:50px}
+  .kpis{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;width:100%!important}
+  .kpi{width:auto!important;min-width:0!important;min-height:120px!important;padding:16px!important}.kpi b{font-size:32px!important}
+  .card{width:100%!important;max-width:100%!important;min-width:0!important;margin-left:0!important;margin-right:0!important;overflow:hidden}
+  .grid,.split,.statsGrid,.teamSummary,.miniScore,.evolutionGrid{grid-template-columns:1fr!important;width:100%!important}
+  .dashboardFilters{display:grid!important;grid-template-columns:1fr!important}
+  .tableWrap{width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+  .tableWrap .table{width:max-content!important;min-width:620px!important;max-width:none!important}
+  .scores{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+  .score label{height:44px!important}
+  .parameterBand{display:block!important}.performanceMetric{grid-template-columns:1fr!important}
+  .scatterWrap,.chartWrap{width:100%!important;max-width:100%!important;height:300px!important}
+  canvas{max-width:100%!important}
+}
+@media screen and (max-width:420px){
+  .main{padding-left:10px!important;padding-right:10px!important}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .kpi{min-height:108px!important;padding:13px!important}.kpi b{font-size:28px!important}
+  .top .brandLogo{width:min(150px,46vw)!important}.top .user{font-size:9px!important}
+}
 </style></head><body><div id="loginShell" class="loginWrap"><section class="login card"><div class="logo loginLogo" style="margin-bottom:25px"><img class="brandLogo" src="assets/ntertainment-logo.png" alt="Ntertainment Dance School"></div><div id="normalLogin"><h1>TNT Evaluaties</h1><p>Beveiligde omgeving voor TNT evaluatoren.</p><input id="email" type="email" placeholder="E-mailadres"><input id="password" type="password" placeholder="Wachtwoord"><button class="btn gold" onclick="login()">Aanmelden</button><button class="btn light" style="margin-left:6px" onclick="showActivation()">Eerste keer aanmelden</button><p style="font-size:11px;color:var(--muted)">Wachtwoord vergeten? Vraag een Admin om een nieuwe activatiecode en kies daarna “Eerste keer aanmelden”.</p><p id="loginError" class="error"></p></div><div id="activationLogin" class="hidden"><h1>Account activeren</h1><p>Gebruik het e-mailadres en de activatiecode die je van de Admin hebt gekregen.</p><input id="activateEmail" type="email" placeholder="E-mailadres"><input id="activateCode" type="text" placeholder="Activatiecode"><input id="activatePassword" type="password" placeholder="Nieuw wachtwoord (min. 8 tekens)"><input id="activatePassword2" type="password" placeholder="Herhaal nieuw wachtwoord"><button class="btn gold" onclick="activateAccount()">Account activeren</button><button class="btn light" style="margin-left:6px" onclick="showNormalLogin()">Terug</button><p id="activateStatus" class="error"></p></div></section></div>
 <div id="appShell" class="hidden"><header class="top"><div class="logo"><img class="brandLogo" src="assets/ntertainment-logo.png" alt="Ntertainment Dance School"></div><div class="tag"><b>TNT</b><small>VAN TALENT NAAR TOPNIVEAU</small></div><div class="user" id="who"></div></header><div class="layout"><aside class="side noPrint"><button class="nav active" data-view="dashboardView" onclick="go('dashboardView',this);loadDashboard()">⌂ Dashboard</button><button class="nav" data-view="evaluationView" onclick="go('evaluationView',this)">✓ Evaluaties</button><button class="nav" data-view="teamStatsView" onclick="go('teamStatsView',this);loadTeamStats()">◫ Teamstatistieken</button><button class="nav adminOnly" data-view="usersView" onclick="go('usersView',this);loadUsers();loadDancers();loadSchoolYears()">♙ Beheer</button><button class="nav" onclick="logout()">↪ Afmelden</button></aside><main class="main">
 <section id="dashboardView"><div id="dashboardFlash" class="status hidden"></div><div class="hero"><div><h1 id="welcome">TNT Dashboard</h1><p>Overzicht van alle TNT-evaluaties binnen Ntertainment.</p><div class="schoolYearBadge">Dansjaar <span class="activeYearText">2026-2027</span></div></div><button class="btn gold" onclick="go('evaluationView')">+ Nieuwe evaluatie</button></div><div class="kpis"><div class="kpi"><b id="kDancers">–</b><small>Dansers</small></div><div class="kpi"><b id="kEval">–</b><small>Evaluaties ingevuld</small></div><div class="kpi"><b id="kProgress">–</b><small>Voortgang</small></div><div class="kpi"><b id="kEvaluators">–</b><small>Evaluatoren actief</small></div></div><div class="card dashboardFilters"><div class="grid"><div class="field"><label>TNT TYPE</label><select id="dashPeriod" onchange="loadDashboard()"></select></div><div class="field"><label>TEAM</label><select id="dashTeam" onchange="loadDashboard()"></select></div></div></div><div class="card"><h2>Evaluatieoverzicht</h2><table class="table"><thead><tr><th>Danser</th><th>Team</th><th>TNT type</th><th>Evaluatoren</th><th>Gemiddelde</th><th></th></tr></thead><tbody id="dashRows"></tbody></table></div></section>
