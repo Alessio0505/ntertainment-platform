@@ -14,6 +14,55 @@
 
 .schoolYearBadge{display:inline-flex;align-items:center;gap:7px;background:#efe4cf;border:1px solid #ddcda9;border-radius:999px;padding:7px 12px;font-size:11px;font-weight:700;margin-top:10px}.statsGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.statParam{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}.statParam h3{font-size:13px;margin:0 0 8px}.statLine{display:flex;gap:8px;align-items:center;margin:7px 0;font-size:10px}.statLine span:first-child{width:90px}.statTrack{height:9px;flex:1;background:#eee6d8;border-radius:10px;overflow:hidden}.statTrack i{display:block;height:100%;background:var(--gold)}.adminInput{width:130px;padding:8px;border:1px solid var(--line);border-radius:8px}.dangerBtn{background:#fff4f2!important;color:#8f2922!important;border:1px solid #e6b9b5!important}.yearRow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.yearChip{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff}.yearChip.active{background:#111;color:#fff;border-color:#111}.teamSummary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}@media(max-width:700px){.statsGrid,.teamSummary{grid-template-columns:1fr}.adminInput{width:100%}}
 .dashboardFilters{margin-top:28px;margin-bottom:26px}.performanceMetric{grid-template-columns:220px 1fr!important;gap:18px!important;padding:12px 0!important}.dualBars{width:100%}.barLine{grid-template-columns:100px 1fr 38px!important}.barTrack{height:11px!important}.dancerAccordion{border:1px solid var(--line);border-radius:12px;background:#fff;margin:8px 0;overflow:hidden}.dancerAccordion summary{cursor:pointer;padding:14px 16px;font-weight:700;display:flex;justify-content:space-between;gap:12px}.dancerEdit{padding:0 16px 16px}.importBox textarea{width:100%;min-height:150px;border:1px solid var(--line);border-radius:10px;padding:12px;font:12px Montserrat}.scatterWrap{height:560px;position:relative}.scatterWrap canvas{width:100%!important;height:100%!important}@media(max-width:700px){.scatterWrap{height:430px}.performanceMetric{grid-template-columns:1fr!important}.barLine{grid-template-columns:82px 1fr 34px!important}}@media print{body{background:var(--cream)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.reportPage{background:var(--paper)!important;border:1px solid var(--line)!important;border-radius:12px!important;height:auto!important;min-height:180mm!important;max-height:none!important;overflow:visible!important;break-after:page;page-break-after:always}.performanceMetric{break-inside:avoid}.barTrack,.barFill,.pdfHeader,.parameterBand,.feedbackBox,.overallCard{print-color-adjust:exact;-webkit-print-color-adjust:exact}.evoCard{break-inside:avoid}.feedbackBox{break-inside:avoid}}
+
+/* iOS / iPhone responsive */
+html{-webkit-text-size-adjust:100%}
+button,input,select,textarea{font-size:16px}
+@supports(padding:max(0px)){
+  body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+  .top{padding-top:env(safe-area-inset-top);height:calc(86px + env(safe-area-inset-top))}
+}
+@media(max-width:600px){
+  body{overflow-x:hidden}
+  .top{padding-left:14px;padding-right:14px;gap:8px}
+  .brandLogo{max-width:155px;height:auto}
+  .user{font-size:10px;max-width:120px;text-align:right}
+  .side{position:sticky;top:0;z-index:20;gap:6px;-webkit-overflow-scrolling:touch}
+  .nav{min-height:44px;padding:10px 12px}
+  .main{padding:18px 12px 90px;min-width:0}
+  .hero{display:block}
+  .hero .btn{width:100%;margin-top:12px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .kpi{min-width:0;padding:14px 10px}
+  .grid,.split,.statsGrid,.teamSummary,.miniScore{grid-template-columns:1fr!important}
+  .card{padding:16px 13px;border-radius:13px;min-width:0}
+  input,select,textarea,.adminInput{width:100%!important;max-width:100%;box-sizing:border-box;min-height:44px}
+  textarea{min-height:120px}
+  .scores{grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+  .scoreBtn{min-width:0;min-height:44px;padding:0}
+  .actions{display:grid;grid-template-columns:1fr;gap:8px}
+  .actions .btn{width:100%;min-height:46px}
+  .tableWrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .table{min-width:680px}
+  #dashboardView .table{min-width:620px}
+  #teamStatsView .table{min-width:560px}
+  .scatterWrap,.chartWrap{height:310px;overflow:hidden}
+  .teamCards{grid-template-columns:1fr!important}
+  .teamCheck{min-height:40px}
+  .dancerCard,.userCreateCard{min-width:0}
+  .pdfHeader{grid-template-columns:1fr!important}
+  .reportPage{padding:16px!important}
+  .performanceMetric{grid-template-columns:1fr!important}
+  .barLine{grid-template-columns:82px minmax(0,1fr) 32px!important}
+}
+@media(max-width:390px){
+  .main{padding-left:10px;padding-right:10px}
+  .scores{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .scoreBtn{font-size:13px}
+  .kpi b{font-size:25px}
+  .brandLogo{max-width:135px}
+  .nav{font-size:11px;padding:9px 10px}
+}
 </style>
 <style>
 .parameterBand{margin:20px 0 6px;background:linear-gradient(90deg,#f4efe6,#faf8f3);border-radius:12px;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;border:1px solid #eee6d9}.parameterBand b{font-size:18px}.parameterBand span{font-size:10px;color:var(--muted)}.teamBand{margin-top:24px}.reportTitle{display:flex;justify-content:space-between;align-items:flex-start}.performanceMetric{display:grid;grid-template-columns:220px 52px 1fr;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid #eee6db}.performanceMetric .name{font-weight:700;font-size:11px}.dualBars{display:grid;gap:4px}.barLine{display:grid;grid-template-columns:1fr 35px;gap:8px;align-items:center}.barTrack{height:8px;background:#eee9e1;border-radius:999px;overflow:hidden}.barFill{height:100%;border-radius:999px}.barFill.dancer{background:var(--gold)}.barFill.teamavg{background:#222}.barValue{font-size:10px;font-weight:700}.scorePair{font-size:10px;line-height:1.5}.scorePair b{color:var(--gold2);display:block}.teamChecks{display:flex;flex-wrap:wrap;gap:6px;max-width:520px}.teamCheck{font-size:10px;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:6px 8px;background:#fff}.teamCheck input{margin-right:4px}.saveOk{color:#247a3b;font-size:10px;font-weight:700;margin-top:5px}.evolutionGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.evoCard{border:1px solid var(--line);border-radius:13px;padding:14px;background:#fff}.evoCard h3{margin:0 0 8px;font-size:13px}.evoCanvas{height:155px}.modalBack{position:fixed;inset:0;background:rgba(0,0,0,.55);display:grid;place-items:center;z-index:100}.modalBox{width:min(480px,92vw);background:#fffdf9;border-radius:16px;padding:26px;box-shadow:0 25px 80px rgba(0,0,0,.25)}.modalBox h2{margin-top:0}.modalActions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}@media(max-width:900px){.performanceMetric{grid-template-columns:1fr}.evolutionGrid{grid-template-columns:1fr}.parameterBand{display:block}.parameterBand span{display:block;margin-top:4px}}@media print{.performancePage{font-size:90%}.evolutionGrid{grid-template-columns:1fr 1fr}.evoCanvas{height:145px}.parameterBand{break-inside:avoid}.performanceMetric{break-inside:avoid}}
