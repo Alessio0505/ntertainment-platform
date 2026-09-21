@@ -1,23 +1,2 @@
-const { app } = require('@azure/functions');
-const { getPool, sql } = require('../shared/db');
-const { corsHeaders, requireTntUser } = require('../shared/auth');
-app.http('TNTSaveEvaluation',{methods:['POST','OPTIONS'],authLevel:'anonymous',handler:async(req,ctx)=>{
- if(req.method==='OPTIONS') return {status:204,headers:corsHeaders()};
- try{
-  const user=requireTntUser(req); const b=await req.json();
-  if(!b.periodId||!b.dancerId||!Array.isArray(b.scores)||b.scores.length!==11||b.scores.some(s=>!Number.isInteger(+s.score)||+s.score<1||+s.score>10)) return {status:400,headers:corsHeaders(),jsonBody:{error:'Vul alle 11 scores in (1-10).'}};
-  const pool=await getPool(); const tx=new sql.Transaction(pool); await tx.begin();
-  try{
-   const er=await new sql.Request(tx).input('PeriodId',sql.Int,b.periodId).input('DancerId',sql.Int,b.dancerId).input('EvaluatorUserId',sql.Int,user.userId).input('Feedback',sql.NVarChar(sql.MAX),(b.feedback||'').trim()).query(`
-    MERGE dbo.TNTEvaluations AS t USING (SELECT @PeriodId PeriodId,@DancerId DancerId,@EvaluatorUserId EvaluatorUserId) s
-    ON t.PeriodId=s.PeriodId AND t.DancerId=s.DancerId AND t.EvaluatorUserId=s.EvaluatorUserId
-    WHEN MATCHED THEN UPDATE SET Feedback=@Feedback,UpdatedAt=SYSUTCDATETIME()
-    WHEN NOT MATCHED THEN INSERT(PeriodId,DancerId,EvaluatorUserId,Feedback,CreatedAt,UpdatedAt) VALUES(@PeriodId,@DancerId,@EvaluatorUserId,@Feedback,SYSUTCDATETIME(),SYSUTCDATETIME())
-    OUTPUT inserted.EvaluationId;`);
-   const id=er.recordset[0].EvaluationId;
-   await new sql.Request(tx).input('EvaluationId',sql.Int,id).query(`DELETE FROM dbo.TNTEvaluationScores WHERE EvaluationId=@EvaluationId`);
-   for(const s of b.scores) await new sql.Request(tx).input('EvaluationId',sql.Int,id).input('CriterionId',sql.Int,s.criterionId).input('Score',sql.TinyInt,+s.score).query(`INSERT dbo.TNTEvaluationScores(EvaluationId,CriterionId,Score) VALUES(@EvaluationId,@CriterionId,@Score)`);
-   await tx.commit(); return {status:200,headers:corsHeaders(),jsonBody:{success:true,evaluationId:id}};
-  }catch(e){await tx.rollback();throw e}
- }catch(e){ctx.error(e);return {status:e.status||500,headers:corsHeaders(),jsonBody:{error:e.message||'Opslaan mislukt.'}}}
-}});
+const {app}=require('@azure/functions');const {getPool,sql}=require('../shared/db');const {corsHeaders,requireTntUser}=require('../shared/auth');
+app.http('TNTSaveEvaluation',{methods:['POST','OPTIONS'],authLevel:'anonymous',handler:async(req,ctx)=>{if(req.method==='OPTIONS')return{status:204,headers:corsHeaders()};try{const user=requireTntUser(req),b=await req.json();if(!b.periodId||!b.dancerId||!Array.isArray(b.scores)||b.scores.length!==11||b.scores.some(s=>!Number.isInteger(+s.score)||+s.score<1||+s.score>10))return{status:400,headers:corsHeaders(),jsonBody:{error:'Vul alle 11 scores in (1-10).'}};const evaluatorUserId=(user.role==='Admin'&&b.evaluatorUserId)?+b.evaluatorUserId:user.userId;const pool=await getPool(),tx=new sql.Transaction(pool);await tx.begin();try{const er=await new sql.Request(tx).input('PeriodId',sql.Int,+b.periodId).input('DancerId',sql.Int,+b.dancerId).input('EvaluatorUserId',sql.Int,evaluatorUserId).input('Feedback',sql.NVarChar(sql.MAX),(b.feedback||'').trim()).input('GrowthPlan',sql.NVarChar(sql.MAX),(b.growthPlan||'').trim()).query(`MERGE dbo.TNTEvaluations AS t USING(SELECT @PeriodId PeriodId,@DancerId DancerId,@EvaluatorUserId EvaluatorUserId)s ON t.PeriodId=s.PeriodId AND t.DancerId=s.DancerId AND t.EvaluatorUserId=s.EvaluatorUserId WHEN MATCHED THEN UPDATE SET Feedback=@Feedback,GrowthPlan=@GrowthPlan,UpdatedAt=SYSUTCDATETIME() WHEN NOT MATCHED THEN INSERT(PeriodId,DancerId,EvaluatorUserId,Feedback,GrowthPlan,CreatedAt,UpdatedAt)VALUES(@PeriodId,@DancerId,@EvaluatorUserId,@Feedback,@GrowthPlan,SYSUTCDATETIME(),SYSUTCDATETIME()) OUTPUT inserted.EvaluationId;`);const id=er.recordset[0].EvaluationId;await new sql.Request(tx).input('EvaluationId',sql.Int,id).query(`DELETE FROM dbo.TNTEvaluationScores WHERE EvaluationId=@EvaluationId`);for(const s of b.scores)await new sql.Request(tx).input('EvaluationId',sql.Int,id).input('CriterionId',sql.Int,+s.criterionId).input('Score',sql.TinyInt,+s.score).query(`INSERT dbo.TNTEvaluationScores(EvaluationId,CriterionId,Score)VALUES(@EvaluationId,@CriterionId,@Score)`);await tx.commit();return{status:200,headers:corsHeaders(),jsonBody:{success:true,evaluationId:id}}}catch(e){await tx.rollback();throw e}}catch(e){ctx.error(e);return{status:e.status||500,headers:corsHeaders(),jsonBody:{error:e.message||'Opslaan mislukt.'}}}}});
