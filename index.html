@@ -1034,13 +1034,31 @@ a{
 
         </p>
 
-        <button
-          class="btn btn-outline btn-small"
-          onclick="logout()">
+        <div
+          style="
+            display:flex;
+            gap:8px;
+            flex-wrap:wrap;
+            margin-top:15px;
+          ">
 
-          Afmelden
+          <button
+            class="btn btn-outline btn-small"
+            onclick="openEditProfile()">
 
-        </button>
+            Gegevens aanpassen
+
+          </button>
+
+          <button
+            class="btn btn-outline btn-small"
+            onclick="logout()">
+
+            Afmelden
+
+          </button>
+
+        </div>
 
       </div>
 
@@ -1381,6 +1399,7 @@ const REGISTER_API =
 
 const LOGIN_API =
   API_BASE + "/Login";
+
 
 const UPDATE_PROFILE_API =
   API_BASE + "/UpdateProfile";
@@ -2735,6 +2754,409 @@ async function login(){
         button.disabled = false;
       }
     );
+
+  }
+
+}
+
+
+/* =========================================================
+   EDIT PROFILE
+========================================================= */
+
+function openEditProfile(){
+
+  if(!currentUser){
+
+    openLogin();
+
+    return;
+
+  }
+
+
+  normalizeCurrentUser();
+
+
+  openModal(
+
+    "Mijn gegevens",
+
+    `
+
+      <div
+        style="
+          font-size:12px;
+          color:#777;
+          line-height:1.6;
+          margin-bottom:20px;
+        ">
+
+        Pas hieronder je persoonlijke gegevens aan.
+        Je wijzigingen worden opgeslagen in je
+        Ntertainment-account.
+
+      </div>
+
+
+      <div class="form-grid">
+
+
+        <div class="form-group">
+
+          <label>
+            Voornaam
+          </label>
+
+          <input
+            id="profileFirstName"
+            type="text"
+            value="${escapeHtml(currentUser.first)}"
+            autocomplete="given-name">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Achternaam
+          </label>
+
+          <input
+            id="profileLastName"
+            type="text"
+            value="${escapeHtml(currentUser.last)}"
+            autocomplete="family-name">
+
+        </div>
+
+
+        <div class="form-group full">
+
+          <label>
+            E-mailadres
+          </label>
+
+          <input
+            id="profileEmail"
+            type="email"
+            value="${escapeHtml(currentUser.email)}"
+            autocomplete="email">
+
+        </div>
+
+
+        <div
+          class="form-group full"
+          style="
+            border-top:1px solid var(--border);
+            padding-top:20px;
+            margin-top:5px;
+          ">
+
+          <strong
+            style="
+              display:block;
+              margin-bottom:8px;
+              font-size:14px;
+            ">
+
+            Wachtwoord wijzigen
+
+          </strong>
+
+          <div
+            style="
+              font-size:11px;
+              color:#777;
+              margin-bottom:15px;
+            ">
+
+            Laat deze velden leeg als je je wachtwoord
+            niet wilt wijzigen.
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Huidig wachtwoord
+          </label>
+
+          <input
+            id="profileCurrentPassword"
+            type="password"
+            autocomplete="current-password">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Nieuw wachtwoord
+          </label>
+
+          <input
+            id="profileNewPassword"
+            type="password"
+            minlength="8"
+            autocomplete="new-password">
+
+        </div>
+
+
+      </div>
+
+    `,
+
+    `
+
+      <button
+        class="btn btn-secondary"
+        onclick="closeModal()">
+
+        Annuleren
+
+      </button>
+
+
+      <button
+        id="saveProfileButton"
+        class="btn btn-primary"
+        onclick="saveProfile()">
+
+        Wijzigingen opslaan
+
+      </button>
+
+    `
+
+  );
+
+}
+
+
+/* =========================================================
+   SAVE PROFILE
+========================================================= */
+
+async function saveProfile(){
+
+  if(!currentUser || !currentUser.id){
+
+    showToast(
+      "Je bent niet ingelogd."
+    );
+
+    return;
+
+  }
+
+
+  const first =
+    document
+      .getElementById("profileFirstName")
+      ?.value
+      .trim();
+
+
+  const last =
+    document
+      .getElementById("profileLastName")
+      ?.value
+      .trim();
+
+
+  const email =
+    document
+      .getElementById("profileEmail")
+      ?.value
+      .trim()
+      .toLowerCase();
+
+
+  const currentPassword =
+    document
+      .getElementById("profileCurrentPassword")
+      ?.value || "";
+
+
+  const newPassword =
+    document
+      .getElementById("profileNewPassword")
+      ?.value || "";
+
+
+  if(
+    !first ||
+    !last ||
+    !email
+  ){
+
+    showToast(
+      "Voornaam, achternaam en e-mailadres zijn verplicht."
+    );
+
+    return;
+
+  }
+
+
+  if(newPassword && newPassword.length < 8){
+
+    showToast(
+      "Nieuw wachtwoord moet minimaal 8 tekens bevatten."
+    );
+
+    return;
+
+  }
+
+
+  if(newPassword && !currentPassword){
+
+    showToast(
+      "Vul je huidige wachtwoord in om een nieuw wachtwoord te kiezen."
+    );
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      "saveProfileButton"
+    );
+
+
+  try{
+
+    if(button){
+
+      button.disabled = true;
+
+      button.innerText =
+        "Opslaan...";
+
+    }
+
+
+    const response =
+      await fetch(
+        UPDATE_PROFILE_API,
+        {
+
+          method:"POST",
+
+          headers:{
+            "Content-Type":"application/json"
+          },
+
+          body:JSON.stringify({
+
+            userId:currentUser.id,
+
+            first:first,
+
+            last:last,
+
+            email:email,
+
+            currentPassword:currentPassword,
+
+            password:newPassword
+
+          })
+
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    console.log(
+      "UpdateProfile API:",
+      response.status,
+      data
+    );
+
+
+    if(!response.ok){
+
+      showToast(
+        data.error ||
+        "Je gegevens konden niet worden opgeslagen."
+      );
+
+      return;
+
+    }
+
+
+    if(
+      data.success &&
+      data.user
+    ){
+
+      currentUser.first =
+        data.user.FirstName;
+
+
+      currentUser.last =
+        data.user.LastName;
+
+
+      currentUser.email =
+        data.user.Email;
+
+
+      saveCurrentUser();
+
+
+      closeModal();
+
+
+      showDashboard();
+
+
+      showToast(
+        "Je gegevens zijn succesvol opgeslagen."
+      );
+
+    }
+
+
+  }catch(error){
+
+    console.error(
+      "saveProfile error:",
+      error
+    );
+
+
+    showToast(
+      "Er ging iets mis bij het opslaan."
+    );
+
+
+  }finally{
+
+    if(button){
+
+      button.disabled = false;
+
+      button.innerText =
+        "Wijzigingen opslaan";
+
+    }
 
   }
 
