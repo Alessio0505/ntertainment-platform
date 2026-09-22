@@ -1022,6 +1022,10 @@ a{
 
         </button>
 
+        <div style="margin-top:10px;font-size:11px;color:var(--muted);line-height:1.6;">
+          Een kind kan zonder eigen e-mailadres worden toegevoegd. Een eigen login kan later aan het dansersprofiel gekoppeld worden.
+        </div>
+
       </div>
 
 
@@ -2147,7 +2151,7 @@ function openRegister(){
           onclick="registerDancer()">
 
           <strong>
-            🧑‍🎤 Danser 18+
+            🧑‍🎤 Danser 16+
           </strong>
 
           <span>
@@ -2188,7 +2192,7 @@ function registrationForm(role){
 
     role === "parent"
       ? "Ouderaccount"
-      : "Danser 18+ account",
+      : "Danser 16+ account",
 
     `
 
@@ -3400,7 +3404,7 @@ function showDashboard(){
       ${
         currentUser.role === "parent"
           ? "Ouder / gezin"
-          : "Danser 18+"
+          : "Danser 16+"
       }
 
     `;
@@ -3457,7 +3461,7 @@ function renderFamily(){
 
           <div class="family-meta">
 
-            Eigen account • 18+
+            Eigen account • 16+
 
           </div>
 
