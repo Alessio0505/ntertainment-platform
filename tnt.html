@@ -338,25 +338,23 @@ function makeDancerScoreChart(canvasId,key,label){
  const canvas=document.getElementById(canvasId);if(!canvas)return;
  const compact=window.matchMedia('(max-width:768px)').matches;
  const ordered=[...sortedScatter].sort((a,b)=>(+b[key])-(+a[key]));
- const n=ordered.length;
- // Stack dancers vertically: highest score at the top, then descending.
- // X only provides a fixed horizontal position; the Y axis remains the score axis.
- const points=ordered.map((x,i)=>({x:1,y:+x[key]}));
- const labelPlugin={id:'dancerLabels'+canvasId,afterDatasetsDraw(chart){
-  const ctx=chart.ctx,meta=chart.getDatasetMeta(0),area=chart.chartArea,placed=[];
-  ctx.save();ctx.font=(compact?'600 9px ':'600 10px ')+'Montserrat';ctx.textBaseline='middle';
-  meta.data.forEach((pt,i)=>{
-   const name=ordered[i].FirstName+' '+ordered[i].LastName,w=ctx.measureText(name).width+12,h=18;
-   const candidates=[[18,0],[18,-18],[18,18],[-w-18,0],[-w-18,-18],[-w-18,18],[24,-34],[24,34],[-w-24,-34],[-w-24,34]];
-   let pos=null,linked=false;
-   for(const [dx,dy] of candidates){const x=pt.x+dx,y=pt.y+dy;if(x<area.left||x+w>area.right||y-h/2<area.top||y+h/2>area.bottom)continue;if(!placed.some(q=>x<q.x+q.w+4&&x+w+4>q.x&&y-h/2<q.y+q.h/2+4&&y+h/2+4>q.y-q.h/2)){pos={x,y,w,h};linked=Math.abs(dx)>18||Math.abs(dy)>20;break}}
-   if(!pos){const y=Math.max(area.top+h/2,Math.min(area.bottom-h/2,pt.y+((i%5)-2)*21));const x=Math.max(area.left,Math.min(area.right-w,pt.x+(i%2?14:-w-14)));pos={x,y,w,h};linked=true}
-   if(linked){const tx=pos.x>pt.x?pos.x-3:pos.x+pos.w+3;ctx.strokeStyle='#9b8250';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pt.x,pt.y);ctx.lineTo(tx,pos.y);ctx.stroke()}
-   ctx.fillStyle='rgba(255,253,249,.96)';ctx.fillRect(pos.x-2,pos.y-h/2,pos.w+4,h);
-   ctx.fillStyle='#171717';ctx.fillText(name,pos.x+5,pos.y);placed.push(pos)
+ const labels=ordered.map(x=>x.FirstName+' '+x.LastName);
+ const values=ordered.map(x=>+x[key]);
+ const wrap=canvas.parentElement;if(wrap){const h=Math.max(compact?360:380,ordered.length*(compact?36:38)+70);wrap.style.height=h+'px';wrap.style.minHeight=h+'px';canvas.style.height=h+'px'}
+ const valuePlugin={id:'barValues'+canvasId,afterDatasetsDraw(chart){
+  const ctx=chart.ctx,meta=chart.getDatasetMeta(0);
+  ctx.save();ctx.font=(compact?'700 10px ':'700 11px ')+'Montserrat';ctx.textBaseline='middle';
+  meta.data.forEach((bar,i)=>{
+   const value=values[i];
+   const text=Number(value).toFixed(1);
+   const w=ctx.measureText(text).width;
+   // Put score inside the right end of the bar when there is room.
+   let x=bar.x-w-8,align='left',fill='#171717';
+   if(bar.x-bar.base<w+22){x=bar.x+7;fill='#171717'}
+   ctx.fillStyle=fill;ctx.fillText(text,x,bar.y);
   });ctx.restore()
  }};
- const chart=new Chart(canvas,{type:'scatter',data:{datasets:[{data:points,pointRadius:compact?5:7,pointHoverRadius:compact?7:9,backgroundColor:'#d4af37',borderColor:'#111',borderWidth:1}]},plugins:[labelPlugin],options:{responsive:true,maintainAspectRatio:false,layout:{padding:{left:compact?5:12,right:compact?5:12,top:32,bottom:12}},scales:{x:{min:.55,max:2.35,display:false,grid:{display:false}},y:{min:1,max:10,reverse:false,title:{display:!compact,text:label+' gemiddelde'},ticks:{stepSize:1,font:{size:compact?9:11}},grid:{color:'rgba(0,0,0,.09)',borderDash:[4,4]}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:(ctx)=>{const x=ordered[ctx.dataIndex];return (x.FirstName+' '+x.LastName)+': '+Number(x[key]).toFixed(1)}}}}}});
+ const chart=new Chart(canvas,{type:'bar',data:{labels,datasets:[{data:values,backgroundColor:'#d4af37',borderColor:'#8a6d16',borderWidth:1,borderRadius:7,barThickness:compact?18:24}]},plugins:[valuePlugin],options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,layout:{padding:{left:compact?0:4,right:compact?10:18,top:8,bottom:4}},scales:{x:{min:0,max:10,title:{display:!compact,text:label+' gemiddelde'},ticks:{stepSize:1,font:{size:compact?9:11}},grid:{color:'rgba(0,0,0,.08)',borderDash:[4,4]}},y:{ticks:{autoSkip:false,font:{size:compact?9:11},color:'#222'},grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:(ctx)=>label+': '+Number(ctx.raw).toFixed(1)}}}}});
  teamScatterCharts.push(chart);
 }
 makeDancerScoreChart('individualScoreChart','IndividualScore','Individuele parameters');
