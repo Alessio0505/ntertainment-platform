@@ -940,7 +940,7 @@ a{
 
 
   <!-- N-ACADEMY V1 -->
-  <section id="academyPanel" class="academy-panel">
+  <section id="academyPanel" class="academy-panel active">
     <div class="academy-welcome">
       <div>
         <img src="assets/n-academy-logo.svg" alt="N-Academy by Ntertainment" style="display:block;width:min(650px,100%);height:auto;margin:0 0 20px;">
@@ -3368,7 +3368,7 @@ function logout(){
     .remove("active");
 
   const academyPanel = document.getElementById("academyPanel");
-  if(academyPanel){ academyPanel.classList.remove("active"); }
+  if(academyPanel){ academyPanel.classList.add("active"); }
 
   updateHeader();
 
