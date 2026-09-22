@@ -796,6 +796,27 @@ a{
 
 }
 
+
+/* =========================
+   N-ACADEMY V1
+========================= */
+.academy-panel{display:none;margin-bottom:42px}
+.academy-panel.active{display:block}
+.academy-welcome{background:linear-gradient(120deg,#171717,#30352d);color:#fff;border-radius:24px;padding:32px;margin-bottom:22px;display:flex;justify-content:space-between;gap:20px;align-items:center}
+.academy-welcome .eyebrow{color:#d8c7aa;margin-bottom:10px}
+.academy-welcome h2{font-size:32px;margin:0 0 8px}
+.academy-welcome p{margin:0;color:#ddd;line-height:1.6}
+.academy-badge{border:1px solid rgba(255,255,255,.22);border-radius:50px;padding:12px 18px;font-size:12px;font-weight:700;white-space:nowrap}
+.academy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.academy-tile{background:#fff;border:1px solid var(--border);border-radius:18px;padding:22px;min-height:160px;transition:.2s;cursor:pointer}
+.academy-tile:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.academy-icon{font-size:25px;margin-bottom:18px}
+.academy-tile h3{margin:0 0 8px;font-size:17px}
+.academy-tile p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}
+.academy-tile.primary{background:var(--black);color:#fff}
+.academy-tile.primary p{color:#ccc}
+@media(max-width:850px){.academy-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.academy-grid{grid-template-columns:1fr}.academy-welcome{align-items:flex-start;flex-direction:column}}
 </style>
 
 </head>
@@ -917,6 +938,26 @@ a{
 
 <main class="app">
 
+
+  <!-- N-ACADEMY V1 -->
+  <section id="academyPanel" class="academy-panel">
+    <div class="academy-welcome">
+      <div>
+        <div class="eyebrow">N-ACADEMY · 2026–2027</div>
+        <h2 id="academyWelcome">Welkom bij N-Academy</h2>
+        <p>Van talent naar topniveau. Jouw persoonlijke omgeving voor ontwikkeling, training en evaluatie.</p>
+      </div>
+      <div class="academy-badge">TALENT PASSPORT</div>
+    </div>
+    <div class="academy-grid">
+      <div class="academy-tile" onclick="showDashboard()"><div class="academy-icon">◈</div><h3>Mijn Talent Passport</h3><p>Persoonlijk profiel, team, Academy-level en jouw traject binnen N-Academy.</p></div>
+      <div class="academy-tile" onclick="academySoon('Mijn team')"><div class="academy-icon">◎</div><h3>Mijn team</h3><p>Bekijk je team, coaches, trainingen, wedstrijden en optredens.</p></div>
+      <div class="academy-tile primary" onclick="window.location.href='tnt.html'"><div class="academy-icon">★</div><h3>TNT Evaluaties</h3><p>Bekijk evaluaties, scores, feedback en je evolutie doorheen het seizoen.</p></div>
+      <div class="academy-tile" onclick="academySoon('Mijn doelen')"><div class="academy-icon">↗</div><h3>Mijn doelen</h3><p>Werk gericht aan persoonlijke doelen voor techniek, muzikaliteit en performance.</p></div>
+      <div class="academy-tile" onclick="academySoon('Training & Workshops')"><div class="academy-icon">＋</div><h3>Training & Workshops</h3><p>Academy-trainingen, workshops en gastdocenten op één plek.</p></div>
+      <div class="academy-tile" onclick="academySoon('Mijn ontwikkeling')"><div class="academy-icon">⌁</div><h3>Mijn ontwikkeling</h3><p>Volg je groei, milestones en resultaten doorheen je Academy-traject.</p></div>
+    </div>
+  </section>
 
   <!-- DASHBOARD -->
 
@@ -3306,6 +3347,10 @@ async function saveProfile(){
    LOGOUT
 ========================================================= */
 
+function academySoon(name){
+  showToast(name + " bouwen we in de volgende Academy-versie.");
+}
+
 function logout(){
 
   currentUser = null;
@@ -3321,6 +3366,8 @@ function logout(){
     .classList
     .remove("active");
 
+  const academyPanel = document.getElementById("academyPanel");
+  if(academyPanel){ academyPanel.classList.remove("active"); }
 
   updateHeader();
 
@@ -3360,6 +3407,15 @@ function showDashboard(){
     .getElementById("dashboard")
     .classList
     .add("active");
+
+  const academyPanel = document.getElementById("academyPanel");
+  if(academyPanel){
+    academyPanel.classList.add("active");
+    const academyWelcome = document.getElementById("academyWelcome");
+    if(academyWelcome){
+      academyWelcome.innerText = "Welkom " + currentUser.first;
+    }
+  }
 
 
   document
