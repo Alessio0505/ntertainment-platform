@@ -1,9 +1,6 @@
 const jwt = require('jsonwebtoken');
 function corsHeaders(){return {'Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'GET, POST, PUT, OPTIONS','Access-Control-Allow-Headers':'Content-Type, Authorization','Content-Type':'application/json'};}
-function requireTntUser(request,allowedRoles=['Admin','TNTEvaluator']){
- const auth=request.headers.get('authorization')||''; if(!auth.startsWith('Bearer ')){const e=new Error('Niet aangemeld.');e.status=401;throw e;}
- const secret=process.env.JWT_SECRET;if(!secret){const e=new Error('JWT_SECRET ontbreekt in Azure configuration.');e.status=500;throw e;}
- let user;try{user=jwt.verify(auth.slice(7),secret)}catch{const e=new Error('Sessie is ongeldig of verlopen.');e.status=401;throw e;}
- if(!allowedRoles.includes(user.role)){const e=new Error('Geen toegang tot TNT Evaluaties.');e.status=403;throw e;}return user;
-}
-module.exports={corsHeaders,requireTntUser};
+function tokenUser(request){const auth=request.headers.get('authorization')||'';if(!auth.startsWith('Bearer ')){const e=new Error('Niet aangemeld.');e.status=401;throw e;}const secret=process.env.JWT_SECRET;if(!secret){const e=new Error('JWT_SECRET ontbreekt in Azure configuration.');e.status=500;throw e;}try{return jwt.verify(auth.slice(7),secret)}catch{const e=new Error('Sessie is ongeldig of verlopen.');e.status=401;throw e;}}
+function requireTntUser(request,allowedRoles=['Admin','TNTEvaluator']){const u=tokenUser(request);if(!allowedRoles.includes(u.role)){const e=new Error('Geen toegang tot TNT Evaluaties.');e.status=403;throw e;}return u}
+async function requirePlatformUser(request,pool,allowed=[]){const u=tokenUser(request);let roles=[];try{const {sql}=require('./db');const r=await pool.request().input('U',sql.Int,u.userId).query("IF OBJECT_ID('dbo.UserPlatformRoles') IS NOT NULL SELECT RoleCode FROM dbo.UserPlatformRoles WHERE UserId=@U");roles=r.recordset?.map(x=>x.RoleCode)||[]}catch(_){}if(!roles.length)roles=[u.role==='Member'?'Dancer':u.role==='Coach'?'AcademyCoach':u.role];if(allowed.length&&!roles.some(x=>allowed.includes(x))){const e=new Error('Geen toegang tot dit onderdeel.');e.status=403;throw e;}return{...u,roles}}
+module.exports={corsHeaders,requireTntUser,requirePlatformUser};
